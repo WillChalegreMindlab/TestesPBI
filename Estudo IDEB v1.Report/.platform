@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Estudo IDEB v1"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "84aec10a-976c-4dd3-8ab0-f1c1ec4cbfeb"
+  }
+}

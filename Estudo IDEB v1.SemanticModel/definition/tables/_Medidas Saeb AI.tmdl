@@ -1,0 +1,277 @@
+table '_Medidas Saeb AI'
+	lineageTag: 5d5dfdef-4875-4476-be11-acde92677f00
+
+	measure '% Saeb AI Crescimento Mat' =
+			
+			DIVIDE([!avg Saeb AI Mat 2023], [! Saeb AI Mat Par Anos])-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 7138f277-b45e-484a-ac64-8cbc022c971e
+
+	measure '% Saeb AI Crescimento Port' =
+			
+			DIVIDE([!avg Saeb AI Port 2021], [! Saeb AI Port Par Anos])-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: af89fac0-121d-4548-8149-03fd28aa7176
+
+	measure 'Clientes Matemática > Nacional' =
+			
+			CALCULATE(
+			    SUMX(
+			        dClientes,
+			        IF([!dif Saeb AI Mat 23/21] > 8.38, 1, 0)
+			    )
+			)
+		formatString: 0
+		lineageTag: f28bb5ac-da9d-4f38-b6e6-caf1b58b11ad
+
+	measure 'Clientes Portugues > Nacional' =
+			
+			CALCULATE(
+			    SUMX(
+			        dClientes,
+			        IF([!dif Saeb AI Port 23/21] > 6.49, 1, 0)
+			    )
+			)
+		formatString: 0
+		lineageTag: f05f56e5-9b22-4d88-9405-c0ef4b35918b
+
+	measure '!dif Saeb AI Mat 23/21' =
+			
+			[!avg Saeb AI Mat 2023] - [! Saeb AI Mat Par Anos]
+		formatString: #,0.00
+		lineageTag: 7493a093-f697-451c-abdb-69393bd00fbf
+
+	measure '!dif Saeb AI Port 23/21' =
+			
+			[!avg Saeb AI Port 2023] - [! Saeb AI Port Par Anos]
+		formatString: #,0.00
+		lineageTag: e203c597-e6c1-4e77-afef-7f4cd15d4087
+
+	measure '!avg Saeb AI Mat 2021' =
+			
+			CALCULATE(AVERAGE(fIdebAIMunicipios[NotaSAEB2021_Matematica]))
+		formatString: #,0.00
+		lineageTag: 58bd414a-48df-4e06-8208-88d740f724a9
+
+	measure '!avg Saeb AI Mat 2023' =
+			
+			CALCULATE(AVERAGE(fIdebAIMunicipios[NotaSAEB2023_Matematica]))
+		formatString: #,0.00
+		lineageTag: bfa3ae65-b5d4-4009-a668-561c6fa65f69
+
+	measure '!avg Saeb AI Port 2021' =
+			
+			CALCULATE(AVERAGE(fIdebAIMunicipios[NotaSAEB2021_LinguaPortuguesa]))
+		formatString: #,0.00
+		lineageTag: 1bec0078-db1c-4d1b-b59a-a22b7a765b03
+
+	measure '!avg Saeb AI Port 2023' =
+			
+			CALCULATE(AVERAGE(fIdebAIMunicipios[NotaSAEB2023_LinguaPortuguesa]))
+		formatString: #,0.00
+		lineageTag: 119a201c-6020-4cf1-a383-950bb203a04f
+
+	measure '!avg Saeb AI Mat 2019' =
+			
+			CALCULATE(AVERAGE(fIdebAIMunicipios[NotaSAEB2019_Matematica]))
+		formatString: #,0.00
+		lineageTag: a3909a8a-91c7-4233-a3fa-d99eacb43c26
+
+	measure '!dif Avg Saeb AI Mat 23/21 Client' =
+			
+			CALCULATE([!dif Saeb AI Mat 23/21]
+			                , KEEPFILTERS(dMunicipios[_MunicipioCliente] = "Clientes")
+			    )
+		formatString: #,0.00
+		lineageTag: 56eda900-030f-43b7-a98d-19c51f84dc00
+
+	measure '!dif Avg Saeb AI Mat 23/21 Nac Total' =
+			
+			CALCULATE([!dif Saeb AI Mat 23/21]
+			                , ALL(dClientes)
+			                , ALL(fIdebAIMunicipios[IdMunicipio])
+			        )
+		formatString: #,0.00
+		lineageTag: d779fe82-45bc-4776-8666-246eb604fbfc
+
+	measure '!dif Avg Saeb AI Mat 23/21 Client - Nac' =
+			
+			[!dif Avg Saeb AI Mat 23/21 Client] - [!dif Avg Saeb AI Mat 23/21 Nac Total]
+		formatString: #,0.00
+		lineageTag: eb82ff28-46b1-4554-a64a-9c764681ffdd
+
+	measure '% dif Saeb AI Mat Client vs Nac' =
+			
+			DIVIDE([!dif Avg Saeb AI Mat 23/21 Client], [!dif Avg Saeb AI Mat 23/21 Nac Total])-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 1e53e481-3329-4392-afcc-d2aa7986234c
+
+	measure '!avg Saeb AI Port 2019' =
+			
+			CALCULATE(AVERAGE(fIdebAIMunicipios[NotaSAEB2019_LinguaPortuguesa]))
+		formatString: #,0.00
+		lineageTag: 4ef9eebc-a81a-4713-a0b9-98c40bd7f2b9
+
+	measure '!dif Avg Saeb AI Port 23/21 Nac Total' =
+			
+			CALCULATE([!dif Saeb AI Port 23/21]
+			                , ALL(dClientes)
+			                , ALL(fIdebAIMunicipios[IdMunicipio])
+			        )
+		formatString: #,0.00
+		lineageTag: d233ef8a-77c1-42b8-9a53-118680f53de4
+
+	measure '!dif Avg Saeb AI Port 23/21 Client - Nac' =
+			
+			[!dif Avg Saeb AI Port 23/21 Client] - [!dif Avg Saeb AI Port 23/21 Nac Total]
+		formatString: #,0.00
+		lineageTag: df8013fa-7d00-404c-9f39-b662227b515c
+
+	measure '!dif Avg Saeb AI Port 23/21 Client' =
+			
+			CALCULATE([!dif Saeb AI Port 23/21]
+			                , KEEPFILTERS(dMunicipios[_MunicipioCliente] = "Clientes")
+			    )
+		formatString: #,0.00
+		lineageTag: e5ebc9fa-5354-4409-b721-e7b52aa57634
+
+	measure '% dif Saeb AI Port Client vs Nac' =
+			
+			DIVIDE([!dif Avg Saeb AI Port 23/21 Client], [!dif Avg Saeb AI Port 23/21 Nac Total])-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 047a8f43-8fb7-4d01-8f9f-f16ac41d1726
+
+	measure '! Saeb AI Mat Par Anos' =
+			
+			var vSelect = SELECTEDVALUE(zParSaebMatAI[zParSaebMatAI Fields])
+			
+			return
+			SWITCH(
+			    vSelect
+			    , "'_Medidas Saeb AI'[!avg Saeb AI Mat 2021]", [!avg Saeb AI Mat 2021]
+			    , "'_Medidas Saeb AI'[!avg Saeb AI Mat 2019]", [!avg Saeb AI Mat 2019]
+			)
+		formatString: #,0.00
+		lineageTag: 12f19d57-f726-453a-9566-f3a438e92786
+
+	measure '! Saeb AI Port Par Anos' =
+			
+			var vSelect = SELECTEDVALUE(zParSaebPortAI[zParSaebPortAI Fields])
+			
+			return
+			SWITCH(
+			    vSelect
+			    , "'_Medidas Saeb AI'[!avg Saeb AI Port 2021]", [!avg Saeb AI Port 2021]
+			    , "'_Medidas Saeb AI'[!avg Saeb AI Port 2019]", [!avg Saeb AI Port 2019]
+			)
+		formatString: #,0.00
+		lineageTag: c8b74ded-0e0b-4d19-8740-2bbc37389405
+
+	measure '# Saeb AI Mat Clientes Posit' =
+			
+			CALCULATE(
+			    [# Clientes Ideb AI]
+			    , FILTER(fIdebAIMunicipios, [!dif Saeb AI Mat 23/21] > 0)
+			    , FILTER(fIdebAIMunicipios, [! Saeb AI Mat Par Anos] > 0)
+			)
+		formatString: #,0
+		lineageTag: 9ccb6517-2acb-4336-a7ef-820b8e1643b0
+
+	measure '# Saeb AI Mat Clientes Total' =
+			
+			CALCULATE([# Clientes Ideb AI]
+			            , FILTER(fIdebAIMunicipios, [! Saeb AI Mat Par Anos]))
+		formatString: #,0
+		lineageTag: d65c83ae-bcad-4f5a-9cd6-3aac05b3f105
+
+	measure '%# Saeb AI Mat Clientes Posit' =
+			
+			DIVIDE([# Saeb AI Mat Clientes Posit], [# Saeb AI Mat Clientes Total])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 40930f13-835d-47d9-8c8d-15325ec2dfb5
+
+	measure '# Saeb AI Mat Municipios Total' =
+			
+			CALCULATE([# Municipios Ideb AI]
+			            , FILTER(fIdebAIMunicipios, [! Saeb AI Mat Par Anos]))
+		formatString: #,0
+		lineageTag: f44545c0-3937-4ab3-b252-951729b80eb2
+
+	measure '# Saeb AI Mat Municipios Posit' =
+			
+			CALCULATE([# Municipios Ideb AI]
+			            , FILTER(fIdebAIMunicipios, [!dif Saeb AI Mat 23/21] > 0)
+			            , FILTER(fIdebAIMunicipios, [! Saeb AI Mat Par Anos] > 0)
+			        )
+		formatString: #,0
+		lineageTag: dd450f73-70d4-43c4-99c0-1d5542f768f8
+
+	measure '%# Saeb AI Mat Municipios Posit' =
+			
+			DIVIDE([# Saeb AI Mat Municipios Posit], [# Saeb AI Mat Municipios Total])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f722b836-27fd-4469-8724-c633af16570f
+
+	measure '# Saeb AI Port Clientes Total' =
+			
+			CALCULATE([# Clientes Ideb AI]
+			            , FILTER(fIdebAIMunicipios, [! Saeb AI Port Par Anos]))
+		formatString: #,0
+		lineageTag: 1238188f-b3b5-473c-bc8a-9d455ea0ef42
+
+	measure '# Saeb AI Port Clientes Posit' =
+			
+			CALCULATE(
+			    [# Clientes Ideb AI]
+			    , FILTER(fIdebAIMunicipios, [!dif Saeb AI Port 23/21] > 0)
+			    , FILTER(fIdebAIMunicipios, [! Saeb AI Port Par Anos] > 0)
+			)
+		formatString: 0
+		lineageTag: 18ffa248-31d6-43d9-91b5-7942e3bf335b
+
+	measure '%# Saeb AI Port Clientes Posit' =
+			
+			DIVIDE([# Saeb AI Port Clientes Posit], [# Saeb AI Port Clientes Total])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 352a5ea8-8adc-4204-80e4-2e1aecec66ce
+
+	measure '# Saeb AI Port Municipios Total' =
+			
+			CALCULATE([# Municipios Ideb AI]
+			            , FILTER(fIdebAIMunicipios, [! Saeb AI Port Par Anos]))
+		formatString: #,0
+		lineageTag: 308f0410-4222-4472-8c3e-931c25505c8c
+
+	measure '# Saeb AI Port Municipios Posit' =
+			
+			CALCULATE([# Municipios Ideb AI]
+			            , FILTER(fIdebAIMunicipios, [!dif Saeb AI Port 23/21] > 0)
+			            , FILTER(fIdebAIMunicipios, [! Saeb AI Port Par Anos] > 0)
+			        )
+		formatString: #,0
+		lineageTag: 4594dcad-840a-4a73-b094-6c4ce336aa03
+
+	measure '%# Saeb AI Port Municipios Posit' =
+			
+			DIVIDE([# Saeb AI Port Municipios Posit], [# Saeb AI Port Municipios Total])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 2db51295-2b1b-4b9c-95f0-80186d0c5260
+
+	column i
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d5f493e7-229d-4220-92be-a04af41cfb32
+		summarizeBy: sum
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [i]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '_Medidas Saeb AI' = calculated
+		mode: import
+		source = DATATABLE("i", INTEGER, {{}})
+
+	annotation PBI_Id = 0ed135224c5346cbb0f6331709ceee8a
+

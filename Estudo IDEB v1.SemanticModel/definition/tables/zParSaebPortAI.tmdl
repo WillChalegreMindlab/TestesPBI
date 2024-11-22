@@ -1,0 +1,54 @@
+table zParSaebPortAI
+	lineageTag: ab8fb8a3-c409-4e2b-b386-de47b909b34a
+
+	column Ano
+		dataType: string
+		lineageTag: 758b89ed-c350-4a94-9312-2267108e4c47
+		summarizeBy: none
+		isDataTypeInferred
+		sourceColumn: [Value1]
+		sortByColumn: 'zParSaebPortAI Order'
+
+		relatedColumnDetails
+			groupByColumn: 'zParSaebPortAI Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zParSaebPortAI Fields'
+		dataType: string
+		isHidden
+		lineageTag: efebb50e-0031-4bd2-aa26-0b3533b79162
+		summarizeBy: none
+		isDataTypeInferred
+		sourceColumn: [Value2]
+		sortByColumn: 'zParSaebPortAI Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'zParSaebPortAI Order'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 6a4c350f-e427-4c73-85ee-fe7edec44a50
+		summarizeBy: sum
+		isDataTypeInferred
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition zParSaebPortAI = calculated
+		mode: import
+		source =
+				{
+				    ("2019", NAMEOF('_Medidas Saeb AI'[!avg Saeb AI Port 2019]), 0),
+				    ("2021", NAMEOF('_Medidas Saeb AI'[!avg Saeb AI Port 2021]), 1)
+				}
+
+	annotation PBI_Id = 2b254d87cc314b8da49cbc181d7a5215
+

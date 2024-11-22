@@ -1,0 +1,1593 @@
+table fIdebAIMunicipios
+	lineageTag: b780af74-95e2-4c8d-a556-775b1f411753
+
+	column UF
+		dataType: string
+		lineageTag: 1bac58af-d3d2-452d-8aa7-c8445089bc2c
+		summarizeBy: none
+		sourceColumn: UF
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdMunicipio
+		dataType: string
+		lineageTag: eca9b673-3ce5-48f9-b3ff-0bd0cc35b2de
+		summarizeBy: none
+		sourceColumn: IdMunicipio
+
+		annotation SummarizationSetBy = Automatic
+
+	column NomeMunicipio
+		dataType: string
+		lineageTag: bae204a9-a2ad-4506-8eba-d4657cb8a051
+		summarizeBy: none
+		sourceColumn: NomeMunicipio
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rede
+		dataType: string
+		lineageTag: 139ad0cc-766e-4b69-a84c-0eb527534225
+		summarizeBy: none
+		sourceColumn: Rede
+
+		annotation SummarizationSetBy = Automatic
+
+	column TaxaAprovacao2005_1a5Ano
+		dataType: double
+		lineageTag: de148cb3-e2bf-45f9-b089-47f107fa33fe
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2005_1a5Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2005_1Ano
+		dataType: double
+		lineageTag: 9b38d2b6-260b-4ba8-8f25-18db064e9147
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2005_1Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2005_2Ano
+		dataType: double
+		lineageTag: 94f2654b-2566-46f1-bc54-9f9cf59494ad
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2005_2Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2005_3Ano
+		dataType: double
+		lineageTag: 307f4bfb-99ac-4028-ae0e-138c2fa2928a
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2005_3Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2005_4Ano
+		dataType: double
+		lineageTag: d0d2a945-1544-46cc-8441-fb1c95e415d7
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2005_4Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2005_5Ano
+		dataType: double
+		lineageTag: c6782bdb-f249-4506-b8b0-8d97d6bafec5
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2005_5Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2005_IndRendimento(P)
+		dataType: double
+		lineageTag: 09cedc1a-3ad4-475b-b9dc-c58f9c79f441
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2005_IndRendimento(P)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2007_1a5Ano
+		dataType: double
+		lineageTag: 8bf8cb5e-5530-4350-b152-54517fba1ed0
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2007_1a5Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2007_1Ano
+		dataType: double
+		lineageTag: c3aa737f-b70e-4c5e-8218-0003a16cf93f
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2007_1Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2007_2Ano
+		dataType: double
+		lineageTag: 77790f85-6218-49ba-9a5a-0425b70f1bb5
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2007_2Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2007_3Ano
+		dataType: double
+		lineageTag: 44bdf9b4-c814-401e-a072-db0c27946491
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2007_3Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2007_4Ano
+		dataType: double
+		lineageTag: d8589402-fb17-4e9c-8c28-de97decb991b
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2007_4Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2007_5Ano
+		dataType: double
+		lineageTag: ae0bdcd8-4d57-43de-b34e-8510c13605e1
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2007_5Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2007_IndRendimento(P)
+		dataType: double
+		lineageTag: 033a5b77-e9c0-430a-8daa-8e4153048780
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2007_IndRendimento(P)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2009_1a5Ano
+		dataType: double
+		lineageTag: 60aba71c-258d-403e-8816-fdc7fc66d925
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2009_1a5Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2009_1Ano
+		dataType: double
+		lineageTag: 6f352b23-239c-4424-99df-e514fb562f0f
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2009_1Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2009_2Ano
+		dataType: double
+		lineageTag: 470f3e97-e3c3-4416-b302-6627c6bceaf8
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2009_2Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2009_3Ano
+		dataType: double
+		lineageTag: 27db814f-8741-4df0-a552-3aaf691a0a28
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2009_3Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2009_4Ano
+		dataType: double
+		lineageTag: ea844b5c-f2a0-4736-a122-b4521a71e10b
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2009_4Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2009_5Ano
+		dataType: double
+		lineageTag: e5e51212-1c23-4049-af14-eff44a34487d
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2009_5Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2009_IndRendimento(P)
+		dataType: double
+		lineageTag: 38423ab5-23a2-41ad-adfa-abcabf3e5f91
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2009_IndRendimento(P)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2011_1a5Ano
+		dataType: double
+		lineageTag: 68eab0e1-eed6-433e-a05b-a0ceff239772
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2011_1a5Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2011_1Ano
+		dataType: double
+		lineageTag: 7ae60dea-535b-4698-8069-588e72407fd6
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2011_1Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2011_2Ano
+		dataType: double
+		lineageTag: 63aa85ba-af8f-4d0a-9122-9652f5b57b6c
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2011_2Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2011_3Ano
+		dataType: double
+		lineageTag: 2a2b56cf-6109-4fee-9281-7fe00b5f00e3
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2011_3Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2011_4Ano
+		dataType: double
+		lineageTag: 4f1b44da-e6a0-416c-9f54-ac7daa27b764
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2011_4Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2011_5Ano
+		dataType: double
+		lineageTag: e74a4a8b-1457-4eed-97fb-22ccf5e6965e
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2011_5Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2011_IndRendimento(P)
+		dataType: double
+		lineageTag: ade7fe3e-087c-4a39-a10f-4caa81087673
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2011_IndRendimento(P)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2013_1a5Ano
+		dataType: double
+		lineageTag: f4a4a5df-079d-44e1-9874-c8df6032dd4d
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2013_1a5Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2013_1Ano
+		dataType: double
+		lineageTag: cddf262f-7eb7-4498-b2f0-0e87e5f31abc
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2013_1Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2013_2Ano
+		dataType: double
+		lineageTag: 0adb43ed-65df-4870-8466-47f78b17402d
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2013_2Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2013_3Ano
+		dataType: double
+		lineageTag: 0c6f6b0f-2faa-4879-b7e1-701f51019c45
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2013_3Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2013_4Ano
+		dataType: double
+		lineageTag: 123b6c4b-5231-404f-80cc-a562cebfb5a7
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2013_4Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2013_5Ano
+		dataType: double
+		lineageTag: 171f12e8-1f49-4097-8482-9ccb8bc81f37
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2013_5Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Taxa de Aprovação - 2013 - Indicador de Rendimento (P)'
+		dataType: double
+		lineageTag: 7b84080d-ad5f-4a3a-886a-407aaecd331d
+		summarizeBy: sum
+		sourceColumn: Taxa de Aprovação - 2013 - Indicador de Rendimento (P)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2015_1a5Ano
+		dataType: double
+		lineageTag: c358b297-2fb0-45f0-ba38-a304cdceba08
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2015_1a5Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2015_1Ano
+		dataType: double
+		lineageTag: c83fdf1a-b6ff-4e9d-86f9-f2652198f517
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2015_1Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2015_2Ano
+		dataType: double
+		lineageTag: cc0fc680-ec5f-49da-b304-560fe3a0645b
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2015_2Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2015_3Ano
+		dataType: double
+		lineageTag: 40ee227a-f1f1-4808-b5e8-4437fd0b56ed
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2015_3Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2015_4Ano
+		dataType: double
+		lineageTag: d2920cf6-49e8-478a-9376-41f7e8670282
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2015_4Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2015_5Ano
+		dataType: double
+		lineageTag: df5c8883-1779-4374-ae12-ddcf3dab4a40
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2015_5Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2015_IndRendimento(P)
+		dataType: double
+		lineageTag: 45d5bd7d-02cb-4d6c-9015-d885bf31cacb
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2015_IndRendimento(P)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2017_1a5Ano
+		dataType: double
+		lineageTag: 371febf4-281e-4a35-9420-948f2ec37be6
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2017_1a5Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2017_1Ano
+		dataType: double
+		lineageTag: d4bfc7d0-f7b6-4c44-9727-0192fc052e3e
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2017_1Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2017_2Ano
+		dataType: double
+		lineageTag: 5de45b73-8760-45e8-9ac5-950eca1cec6b
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2017_2Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2017_3Ano
+		dataType: double
+		lineageTag: 41d3ed8c-a923-4e96-a367-ccdf0dee4f5b
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2017_3Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2017_4Ano
+		dataType: double
+		lineageTag: 4018c073-3a7d-497a-8633-08ca5d678a3d
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2017_4Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2017_5Ano
+		dataType: double
+		lineageTag: 2de0267b-2fbf-48fd-aa28-1dee70508018
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2017_5Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2017_IndRendimento(P)
+		dataType: double
+		lineageTag: 980b5aa5-61c1-4542-942e-3b335bd2d5ac
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2017_IndRendimento(P)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2019_1a5Ano
+		dataType: double
+		lineageTag: 045cea8d-b19b-48c6-9c3e-2609557dc977
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2019_1a5Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2019_1Ano
+		dataType: double
+		lineageTag: 83b5eb57-a775-40fd-bc1d-a3b9de54c345
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2019_1Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2019_2Ano
+		dataType: double
+		lineageTag: e7f07074-da8b-4060-adf8-93f401a87632
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2019_2Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2019_3Ano
+		dataType: double
+		lineageTag: ccdabe2e-9b68-4947-b9fd-8ba6669dca8f
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2019_3Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2019_4Ano
+		dataType: double
+		lineageTag: 6caf4921-d484-4cb8-9890-b1b65cee7cfe
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2019_4Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2019_5Ano
+		dataType: double
+		lineageTag: b05acb77-127c-44a4-abc9-28889e8c756b
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2019_5Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2019_IndRendimento(P)
+		dataType: double
+		lineageTag: 9cc7221e-b9b0-4cf1-ae11-24d1d9ceb1d5
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2019_IndRendimento(P)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2021_1a5Ano
+		dataType: double
+		lineageTag: 8abf4dcc-5294-4ed9-84fe-d87178df134a
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2021_1a5Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2021_1Ano
+		dataType: double
+		lineageTag: 524c270e-6bd5-4da5-9ada-f546d6848861
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2021_1Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2021_2Ano
+		dataType: double
+		lineageTag: 55bf62c9-c049-4476-8030-95b72f6444b3
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2021_2Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2021_3Ano
+		dataType: double
+		lineageTag: 950d3dee-3f59-4bc3-bc26-9a22ad7d8d3a
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2021_3Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2021_4Ano
+		dataType: double
+		lineageTag: c7db0abf-6113-4f53-aff8-0a6a7c08df8b
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2021_4Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2021_5Ano
+		dataType: double
+		lineageTag: 63b6d9c8-222a-41c6-9f09-c14da2f469ad
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2021_5Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2021_IndRendimento(P)
+		dataType: double
+		lineageTag: 00caf81d-2796-4495-8909-932194ceb816
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2021_IndRendimento(P)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2023_1a5Ano
+		dataType: double
+		lineageTag: 8df78c71-5821-480d-8be8-45999249ee97
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2023_1a5Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2023_1Ano
+		dataType: double
+		lineageTag: ea71e36d-05f7-44cf-b84e-1342c7a5c6c3
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2023_1Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2023_2Ano
+		dataType: double
+		lineageTag: 17330b27-4485-43e0-878c-4adddf3249c7
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2023_2Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2023_3Ano
+		dataType: double
+		lineageTag: a78f2549-d3f5-40cb-bc76-c247d45099f4
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2023_3Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2023_4Ano
+		dataType: double
+		lineageTag: 3d52b229-1800-4467-91d1-8ef6dc6011dd
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2023_4Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2023_5Ano
+		dataType: double
+		lineageTag: 318439f3-86db-41b9-a4ef-2a091e4dbd3c
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2023_5Ano
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxaAprovacao2023_IndRendimento(P)
+		dataType: double
+		lineageTag: a5bd9b4a-53f2-46ec-aeed-073b23d9e13e
+		summarizeBy: sum
+		sourceColumn: TaxaAprovacao2023_IndRendimento(P)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2005_Matematica
+		dataType: double
+		lineageTag: c6252f44-53dd-4db4-bd11-f298038d70f9
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2005_Matematica
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2005_LinguaPortuguesa
+		dataType: double
+		lineageTag: 9806b60b-e5d4-488d-8d96-bd4005106516
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2005_LinguaPortuguesa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2005_NotaMedia_Padronizada(N)
+		dataType: double
+		lineageTag: 1f2eab94-0f43-415d-99c7-ce30149332c9
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2005_NotaMedia_Padronizada(N)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2007_Matematica
+		dataType: double
+		lineageTag: 5abb23fb-5bec-4d9d-b530-04085922e80d
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2007_Matematica
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2007_LinguaPortuguesa
+		dataType: double
+		lineageTag: c6de3ee1-77f1-4a58-9b96-b9fdf5034d9b
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2007_LinguaPortuguesa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2007_NotaMedia_Padronizada(N)
+		dataType: double
+		lineageTag: dea18dc9-b738-44a7-b7aa-c019961cbce5
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2007_NotaMedia_Padronizada(N)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2009_Matematica
+		dataType: double
+		lineageTag: 37403116-2c61-42e8-b672-38340ad7c46c
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2009_Matematica
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2009_LinguaPortuguesa
+		dataType: double
+		lineageTag: cc71363f-6933-4614-930c-358758d2f099
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2009_LinguaPortuguesa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2009_NotaMedia_Padronizada(N)
+		dataType: double
+		lineageTag: 0af88906-bb3d-49d0-af62-494ef5116f50
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2009_NotaMedia_Padronizada(N)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2011_Matematica
+		dataType: double
+		lineageTag: 0a6f1e9f-4895-4721-a005-d0877f65ced6
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2011_Matematica
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2011_LinguaPortuguesa
+		dataType: double
+		lineageTag: af66f948-7b4b-4718-bfd9-9c9f918bec80
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2011_LinguaPortuguesa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2011_NotaMedia_Padronizada(N)
+		dataType: double
+		lineageTag: 9dd8a7c3-dc38-42ed-953e-f7bb85e2485e
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2011_NotaMedia_Padronizada(N)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2013_Matematica
+		dataType: double
+		lineageTag: e136a277-4748-4eb7-9553-4a589183bf67
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2013_Matematica
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2013_LinguaPortuguesa
+		dataType: double
+		lineageTag: 1e980e85-e15f-4fc6-9cef-3a46834fc513
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2013_LinguaPortuguesa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2013_NotaMedia_Padronizada(N)
+		dataType: double
+		lineageTag: 6e383558-c0e5-4846-9690-afbe79980f39
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2013_NotaMedia_Padronizada(N)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2015_Matematica
+		dataType: double
+		lineageTag: 1b137a8c-612b-468b-a5e2-ed2542d9c74a
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2015_Matematica
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2015_LinguaPortuguesa
+		dataType: double
+		lineageTag: 77965b21-89db-4502-8590-ac4a25d93c3b
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2015_LinguaPortuguesa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2015_NotaMedia_Padronizada(N)
+		dataType: double
+		lineageTag: 736f60c8-b682-4e60-bd15-ad364599d395
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2015_NotaMedia_Padronizada(N)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2017_Matematica
+		dataType: double
+		lineageTag: f6e4aa4a-2be5-4404-a3a7-1e9f3957f90e
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2017_Matematica
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2017_LinguaPortuguesa
+		dataType: double
+		lineageTag: 83567516-a898-492c-b12c-dc3e8582b9d2
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2017_LinguaPortuguesa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2017_NotaMedia_Padronizada(N)
+		dataType: double
+		lineageTag: 0d79b6ac-2f67-45cc-8499-862dc55163e4
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2017_NotaMedia_Padronizada(N)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2019_Matematica
+		dataType: double
+		lineageTag: 16e76c0f-e9ea-44ec-9ee4-71460d7723bb
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2019_Matematica
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2019_LinguaPortuguesa
+		dataType: double
+		lineageTag: c97cd578-3b10-4537-be2e-1b1023b7a5d4
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2019_LinguaPortuguesa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2019_NotaMedia_Padronizada(N)
+		dataType: double
+		lineageTag: cc9ab4b8-9cf5-4bc7-bce3-1577eda707ab
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2019_NotaMedia_Padronizada(N)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2021_Matematica
+		dataType: double
+		lineageTag: 70418c6f-3f89-4eb0-9d24-b806bb84eba4
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2021_Matematica
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2021_LinguaPortuguesa
+		dataType: double
+		lineageTag: a0e16885-10d1-4fe5-bcfa-dd3989912d9e
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2021_LinguaPortuguesa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2021_NotaMedia_Padronizada(N)
+		dataType: double
+		lineageTag: 60eb075a-16ed-43ab-8f73-330199bcb2d1
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2021_NotaMedia_Padronizada(N)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2023_Matematica
+		dataType: double
+		lineageTag: 3df065c5-0ec3-4ed6-ac23-13a0e35a66c5
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2023_Matematica
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2023_LinguaPortuguesa
+		dataType: double
+		lineageTag: d0aa6cf9-17b0-40a3-9450-b36e18aed3f4
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2023_LinguaPortuguesa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NotaSAEB2023_NotaMedia_Padronizada(N)
+		dataType: double
+		lineageTag: 7bd68bac-49b3-43ec-be34-d644467b0dd3
+		summarizeBy: sum
+		sourceColumn: NotaSAEB2023_NotaMedia_Padronizada(N)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Taxa de Aprovação - 2005 - Indicador de Rendimento (P)_1'
+		dataType: double
+		lineageTag: 3b07acab-3295-4684-a70c-29779ae8eabf
+		summarizeBy: sum
+		sourceColumn: Taxa de Aprovação - 2005 - Indicador de Rendimento (P)_1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Taxa de Aprovação - 2007 - Indicador de Rendimento (P)_2'
+		dataType: double
+		lineageTag: f261c961-b9fd-4f84-8d30-f2a1dbd77421
+		summarizeBy: sum
+		sourceColumn: Taxa de Aprovação - 2007 - Indicador de Rendimento (P)_2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Taxa de Aprovação - 2009 - Indicador de Rendimento (P)_3'
+		dataType: double
+		lineageTag: 205998e7-8baf-4aaf-8b3f-d1445503619e
+		summarizeBy: sum
+		sourceColumn: Taxa de Aprovação - 2009 - Indicador de Rendimento (P)_3
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Taxa de Aprovação - 2011 - Indicador de Rendimento (P)_4'
+		dataType: double
+		lineageTag: 1be5afb6-2d31-49c3-a1d5-1cf10d5aca8a
+		summarizeBy: sum
+		sourceColumn: Taxa de Aprovação - 2011 - Indicador de Rendimento (P)_4
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Taxa de Aprovação - 2013 - Indicador de Rendimento (P)_5'
+		dataType: double
+		lineageTag: 2314b3a7-c583-4ca7-bc9d-42560b0641d8
+		summarizeBy: sum
+		sourceColumn: Taxa de Aprovação - 2013 - Indicador de Rendimento (P)_5
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Taxa de Aprovação - 2015 - Indicador de Rendimento (P)_6'
+		dataType: double
+		lineageTag: 29c7d85f-c41c-4a65-8c10-395f14da5d6e
+		summarizeBy: sum
+		sourceColumn: Taxa de Aprovação - 2015 - Indicador de Rendimento (P)_6
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Taxa de Aprovação - 2017 - Indicador de Rendimento (P)_7'
+		dataType: double
+		lineageTag: 86b524e8-c988-4f67-9a99-fee1fb264178
+		summarizeBy: sum
+		sourceColumn: Taxa de Aprovação - 2017 - Indicador de Rendimento (P)_7
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Taxa de Aprovação - 2019 - Indicador de Rendimento (P)_8'
+		dataType: double
+		lineageTag: cd2bd83f-26aa-4047-956d-5516c871ffb1
+		summarizeBy: sum
+		sourceColumn: Taxa de Aprovação - 2019 - Indicador de Rendimento (P)_8
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Taxa de Aprovação - 2021 - Indicador de Rendimento (P)_9'
+		dataType: double
+		lineageTag: f21affbb-f796-4df4-ac68-df46208b0f76
+		summarizeBy: sum
+		sourceColumn: Taxa de Aprovação - 2021 - Indicador de Rendimento (P)_9
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Taxa de Aprovação - 2023 - Indicador de Rendimento (P)_10'
+		dataType: double
+		lineageTag: 26015019-c258-46b3-8076-c608800c3575
+		summarizeBy: sum
+		sourceColumn: Taxa de Aprovação - 2023 - Indicador de Rendimento (P)_10
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Nota SAEB - 2005 - Nota Média Padronizada (N)_11'
+		dataType: double
+		lineageTag: 7d6e261a-7acb-4d88-a70b-05d86a2550d2
+		summarizeBy: sum
+		sourceColumn: Nota SAEB - 2005 - Nota Média Padronizada (N)_11
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Nota SAEB - 2007 - Nota Média Padronizada (N)_12'
+		dataType: double
+		lineageTag: 70bb18f7-6371-4e65-9d57-86a30351829f
+		summarizeBy: sum
+		sourceColumn: Nota SAEB - 2007 - Nota Média Padronizada (N)_12
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Nota SAEB - 2009 - Nota Média Padronizada (N)_13'
+		dataType: double
+		lineageTag: 25bcb89e-a04e-4edf-92d2-46217aef3be6
+		summarizeBy: sum
+		sourceColumn: Nota SAEB - 2009 - Nota Média Padronizada (N)_13
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Nota SAEB - 2011 - Nota Média Padronizada (N)_14'
+		dataType: double
+		lineageTag: ce6749d1-bd28-44f6-a2f8-259c9232e362
+		summarizeBy: sum
+		sourceColumn: Nota SAEB - 2011 - Nota Média Padronizada (N)_14
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Nota SAEB - 2013 - Nota Média Padronizada (N)_15'
+		dataType: double
+		lineageTag: 7305995b-c226-49c5-9633-5eb5e33dc3b2
+		summarizeBy: sum
+		sourceColumn: Nota SAEB - 2013 - Nota Média Padronizada (N)_15
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Nota SAEB - 2015 - Nota Média Padronizada (N)_16'
+		dataType: double
+		lineageTag: 08de4beb-6bb7-411d-89d6-908ed1a784a3
+		summarizeBy: sum
+		sourceColumn: Nota SAEB - 2015 - Nota Média Padronizada (N)_16
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Nota SAEB - 2017 - Nota Média Padronizada (N)_17'
+		dataType: double
+		lineageTag: 0925853e-95b9-46a1-a17d-6534f2e57b7f
+		summarizeBy: sum
+		sourceColumn: Nota SAEB - 2017 - Nota Média Padronizada (N)_17
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Nota SAEB - 2019 - Nota Média Padronizada (N)_18'
+		dataType: double
+		lineageTag: f4a2910a-61a0-4627-9519-cc9001cfb2c3
+		summarizeBy: sum
+		sourceColumn: Nota SAEB - 2019 - Nota Média Padronizada (N)_18
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Nota SAEB - 2021 - Nota Média Padronizada (N)_19'
+		dataType: double
+		lineageTag: 12dbdbf9-b1a0-452e-9a6e-df989aa9fe16
+		summarizeBy: sum
+		sourceColumn: Nota SAEB - 2021 - Nota Média Padronizada (N)_19
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Nota SAEB - 2023 - Nota Média Padronizada (N)_20'
+		dataType: double
+		lineageTag: f456ef62-efcf-4b81-9583-7cf7ba160a9e
+		summarizeBy: sum
+		sourceColumn: Nota SAEB - 2023 - Nota Média Padronizada (N)_20
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Metas do 1º ciclo do Ideb3,4 (2007-2021) - 2007'
+		dataType: double
+		lineageTag: 2b54deb1-990d-4b2e-ab6e-757cde7fdb52
+		summarizeBy: sum
+		sourceColumn: Metas do 1º ciclo do Ideb3,4 (2007-2021) - 2007
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Metas do 1º ciclo do Ideb3,4 (2007-2021) - 2009'
+		dataType: double
+		lineageTag: 92973970-d6dd-48b0-9d65-3a06bd4216c0
+		summarizeBy: sum
+		sourceColumn: Metas do 1º ciclo do Ideb3,4 (2007-2021) - 2009
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Metas do 1º ciclo do Ideb3,4 (2007-2021) - 2011'
+		dataType: double
+		lineageTag: 4ac69dff-b9cd-43ae-b5c4-c02f03bf3a06
+		summarizeBy: sum
+		sourceColumn: Metas do 1º ciclo do Ideb3,4 (2007-2021) - 2011
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Metas do 1º ciclo do Ideb3,4 (2007-2021) - 2013'
+		dataType: double
+		lineageTag: 6e9ecc46-6dae-4f9e-8302-fdc662cfa23e
+		summarizeBy: sum
+		sourceColumn: Metas do 1º ciclo do Ideb3,4 (2007-2021) - 2013
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Metas do 1º ciclo do Ideb3,4 (2007-2021) - 2015'
+		dataType: double
+		lineageTag: 003c7c4b-b106-4bcf-ae2f-121e79ba2107
+		summarizeBy: sum
+		sourceColumn: Metas do 1º ciclo do Ideb3,4 (2007-2021) - 2015
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Metas do 1º ciclo do Ideb3,4 (2007-2021) - 2017'
+		dataType: double
+		lineageTag: ee56ec70-f2c5-4466-8052-975f8ab06ce1
+		summarizeBy: sum
+		sourceColumn: Metas do 1º ciclo do Ideb3,4 (2007-2021) - 2017
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Metas do 1º ciclo do Ideb3,4 (2007-2021) - 2019'
+		dataType: double
+		lineageTag: db3f55b9-29d7-4b73-a5bc-fc7dd7740b87
+		summarizeBy: sum
+		sourceColumn: Metas do 1º ciclo do Ideb3,4 (2007-2021) - 2019
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Metas do 1º ciclo do Ideb3,4 (2007-2021) - 2021'
+		dataType: double
+		lineageTag: 24196c16-f53f-47f9-ad7d-5b65c4171f39
+		summarizeBy: sum
+		sourceColumn: Metas do 1º ciclo do Ideb3,4 (2007-2021) - 2021
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Cliente ML'
+		dataType: string
+		lineageTag: a9da1b53-d8d1-4375-b856-b365ed220694
+		summarizeBy: none
+		sourceColumn: Cliente ML
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_REGIAO
+		dataType: string
+		lineageTag: f69c87c8-20b7-41e9-b38e-65d0cf0ef071
+		summarizeBy: none
+		sourceColumn: NO_REGIAO
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO_REGIAO
+		dataType: string
+		lineageTag: 29a51268-c30d-4b8f-9c1f-d3a26b173969
+		summarizeBy: none
+		sourceColumn: CO_REGIAO
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_UF
+		dataType: string
+		lineageTag: ac4b16dd-4878-447c-8820-00c807c8abde
+		summarizeBy: none
+		sourceColumn: NO_UF
+
+		annotation SummarizationSetBy = Automatic
+
+	column SG_UF
+		dataType: string
+		lineageTag: 43da7b2a-42a7-42a0-8ccb-9a7a1192319d
+		summarizeBy: none
+		sourceColumn: SG_UF
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO_UF
+		dataType: string
+		lineageTag: 72e62193-f219-4e61-8e8e-786597b4d384
+		summarizeBy: none
+		sourceColumn: CO_UF
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_MUNICIPIO
+		dataType: string
+		lineageTag: 3887ea82-4bdd-4b71-ad1f-270c0f7b5959
+		summarizeBy: none
+		sourceColumn: NO_MUNICIPIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO_MUNICIPIO
+		dataType: string
+		lineageTag: 64605fa8-0e14-430f-990b-922023f98cb8
+		summarizeBy: none
+		sourceColumn: CO_MUNICIPIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_REGIAO_GEOG_INTERM
+		dataType: string
+		lineageTag: 53e039db-54d9-45df-b82b-4e0d87426330
+		summarizeBy: none
+		sourceColumn: NO_REGIAO_GEOG_INTERM
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO_REGIAO_GEOG_INTERM
+		dataType: string
+		lineageTag: fe7741a7-1719-45c6-876f-aef8f927a7d3
+		summarizeBy: none
+		sourceColumn: CO_REGIAO_GEOG_INTERM
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_REGIAO_GEOG_IMED
+		dataType: string
+		lineageTag: 5a516726-6860-4dba-8c92-fca59b20bd1b
+		summarizeBy: none
+		sourceColumn: NO_REGIAO_GEOG_IMED
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO_REGIAO_GEOG_IMED
+		dataType: string
+		lineageTag: 8c5c2dfa-8e49-4b4d-af56-4c0cd761dc5b
+		summarizeBy: none
+		sourceColumn: CO_REGIAO_GEOG_IMED
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_MESORREGIAO
+		dataType: string
+		lineageTag: 0cd1a6d8-c432-4386-9a9a-bbf255d77c09
+		summarizeBy: none
+		sourceColumn: NO_MESORREGIAO
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO_MESORREGIAO
+		dataType: string
+		lineageTag: 9e55bc0c-f17b-4451-b943-82abb38bc4eb
+		summarizeBy: none
+		sourceColumn: CO_MESORREGIAO
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_MICRORREGIAO
+		dataType: string
+		lineageTag: f66a4f3c-84af-4461-b799-c3e434fb3b29
+		summarizeBy: none
+		sourceColumn: NO_MICRORREGIAO
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO_MICRORREGIAO
+		dataType: string
+		lineageTag: a7a8f157-b8e5-43e3-8a14-f631951dfb61
+		summarizeBy: none
+		sourceColumn: CO_MICRORREGIAO
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chave
+		dataType: string
+		lineageTag: 914ef501-c80b-4c62-a31c-230e5181d025
+		summarizeBy: none
+		sourceColumn: Chave
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Diferença Absoluta'
+		dataType: double
+		lineageTag: ca8a1a71-33ef-4034-8d64-718b27407434
+		summarizeBy: sum
+		sourceColumn: Diferença Absoluta
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Diferença Percentual'
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 6a88a0bb-b942-4055-b045-d7812592bb70
+		summarizeBy: sum
+		sourceColumn: Diferença Percentual
+
+		annotation SummarizationSetBy = Automatic
+
+	column IDEB2005(NP)
+		dataType: double
+		lineageTag: 9bcc4c65-494a-4e9c-b2e4-6a77e0f8fd47
+		summarizeBy: sum
+		sourceColumn: IDEB2005(NP)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IDEB2007(NP)
+		dataType: double
+		lineageTag: d005a4b6-a494-45a4-8bfd-a13199cb927f
+		summarizeBy: sum
+		sourceColumn: IDEB2007(NP)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IDEB2009(NP)
+		dataType: double
+		lineageTag: 0557032d-fffe-4635-9759-436e27a5a63b
+		summarizeBy: sum
+		sourceColumn: IDEB2009(NP)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IDEB2011(NP)
+		dataType: double
+		lineageTag: bac45cc7-b6c5-4da9-8277-0e6e3976757a
+		summarizeBy: sum
+		sourceColumn: IDEB2011(NP)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IDEB2013(NP)
+		dataType: double
+		lineageTag: 8fdd4aa0-fbd5-4a3d-bf21-29ac8b282966
+		summarizeBy: sum
+		sourceColumn: IDEB2013(NP)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IDEB2015(NP)
+		dataType: double
+		lineageTag: 2a2df75e-1782-4c91-867d-30af3e6347fb
+		summarizeBy: sum
+		sourceColumn: IDEB2015(NP)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IDEB2017(NP)
+		dataType: double
+		lineageTag: 230851cb-2dd9-48e0-9715-85426758ea83
+		summarizeBy: sum
+		sourceColumn: IDEB2017(NP)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IDEB2019(NP)
+		dataType: double
+		lineageTag: 7a0e5e86-7b99-419a-93ea-dc4c5e77f8fc
+		summarizeBy: sum
+		sourceColumn: IDEB2019(NP)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IDEB2021(NP)
+		dataType: double
+		lineageTag: 1c49048e-59ae-452e-9f4b-6d000b90043f
+		summarizeBy: sum
+		sourceColumn: IDEB2021(NP)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IDEB2023(NP)
+		dataType: double
+		lineageTag: 09cfadb4-98bd-4117-ba8d-5bc771c30e7a
+		summarizeBy: sum
+		sourceColumn: IDEB2023(NP)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column _MetasIdeb2023 = [Metas do 1º ciclo do Ideb3,4 (2007-2021) - 2021]+0.3
+		dataType: double
+		lineageTag: 6eb26fc8-95b6-4b37-8d2e-49a337eb6ed7
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fIdebAIMunicipios = m
+		mode: import
+		queryGroup: Fatos
+		source =
+				let
+				    Fonte = tIdebAIMunicipios
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

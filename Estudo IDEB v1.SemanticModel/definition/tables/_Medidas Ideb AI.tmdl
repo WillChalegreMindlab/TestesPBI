@@ -1,0 +1,325 @@
+table '_Medidas Ideb AI'
+	lineageTag: 3145d8a6-0765-4834-8e27-1e22c202fb61
+
+	measure '# Municipios Ideb AI' =
+			
+			CALCULATE(DISTINCTCOUNTNOBLANK(fIdebAIMunicipios[IdMunicipio]))
+		formatString: #,0
+		lineageTag: 6f6cae2c-7913-4ea1-a2ef-9ceff98facc8
+
+	measure '!avg Municipios Ideb AI 2021' =
+			
+			CALCULATE(AVERAGE(fIdebAIMunicipios[IDEB2021(NP)]))
+		formatString: #,0.00
+		lineageTag: b442af9e-11bd-4397-a236-d26c988dabfb
+
+	measure '!avg Ideb AI 2023' =
+			
+			CALCULATE(AVERAGE(fIdebAIMunicipios[IDEB2023(NP)]))
+		formatString: #,0.00
+		lineageTag: 476c7fcd-6a17-4c67-9a63-b0a58f4017fd
+
+	measure '!dif Ideb AI 23/21' =
+			
+			[!avg Ideb AI 2023] - [! Ideb AI Par Anos]
+		formatString: #,0.00
+		lineageTag: 1335680c-ebbc-4833-a145-ec1cfd9b39cd
+
+	measure '% dif municipios ideb AI' =
+			
+			DIVIDE([!avg Ideb AI 2023], [! Ideb AI Par Anos])-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 0a34157a-7703-48c5-bd62-304738162d5e
+
+	measure totalClientes =
+			
+			CALCULATE(
+			    DISTINCTCOUNTNOBLANK(dClientes[IdClientes]),
+			    dClientes[Cliente] <> "PM Sobral"
+			)
+		formatString: 0
+		displayFolder: geral
+		lineageTag: c6304c10-4e61-4755-8303-3e99061d4176
+
+	measure 'Total Clientes com Diferença Maior que Nacional 1' = ```
+			
+			CALCULATE(
+			    SUMX(
+			        dClientes,
+			        IF(
+			            ABS([!dif Ideb AI 23/21]) > 0.25, 
+			            1, 
+			            0
+			        )
+			    ),
+			    dClientes[Cliente] <> "PM Sobral"
+			)
+			```
+		formatString: 0
+		displayFolder: geral
+		lineageTag: 5e542af9-0301-4d1e-aa2a-f5d6d4923d5d
+
+	measure 'Total Clientes com Média Maior que Nacional 2021' = ```
+			
+			CALCULATE(
+			    SUMX(
+			        dClientes,
+			        IF(
+			            [!avg Municipios Ideb AI 2021] > 5.54, 
+			            1, 
+			            0
+			        )
+			    ),
+			    dClientes[Cliente] <> "PM Sobral"
+			)
+			```
+		formatString: 0
+		displayFolder: geral
+		lineageTag: fac1a043-85f3-4be6-a056-77af4f414d26
+
+	measure 'Total Clientes com Média Maior que Nacional 2023' = ```
+			
+			CALCULATE(
+			    SUMX(
+			        dClientes,
+			        IF(
+			            [!avg Municipios Ideb AI 2021] > 5.79, 
+			            1, 
+			            0
+			        )
+			    ),
+			    dClientes[Cliente] <> "PM Sobral"
+			)
+			```
+		formatString: 0
+		displayFolder: geral
+		lineageTag: 2f3cd726-5281-4004-a855-74b98dbe7a1b
+
+	measure '!dif avg Municipios Ideb AI Client' =
+			
+			CALCULATE(
+			    [!dif Ideb AI 23/21],
+			    KEEPFILTERS(not ISBLANK(dClientes[IdClientes]))
+			)
+		formatString: #,0.00
+		lineageTag: b57c3fcc-aee7-4d16-8d87-7be1075dd056
+
+	measure '!avg Municipios Taxa Aprov AI 2021' =
+			
+			CALCULATE(AVERAGE(fIdebAIMunicipios[TaxaAprovacao2021_1a5Ano]))
+		formatString: #,0.00
+		lineageTag: b9696ac8-2647-477d-b3c8-b85c82fed481
+
+	measure '!avg Municipios Taxa Aprov AI 2023' =
+			
+			CALCULATE(AVERAGE(fIdebAIMunicipios[TaxaAprovacao2023_1a5Ano]))
+		formatString: #,0.00
+		lineageTag: 070a3092-25ce-4e4e-b1e9-4d22faf4144f
+
+	measure '!dif Avg Municipios Ideb AI 23/21 Client' =
+			
+			CALCULATE([!dif Ideb AI 23/21]
+			                , KEEPFILTERS(dMunicipios[_MunicipioCliente] = "Clientes")
+			    )
+		formatString: #,0.00
+		lineageTag: d7422e31-ef66-4d92-9e6f-81c375dd9eed
+
+	measure '!dif Avg Municipios Ideb AI 23/21 Client - Nac' =
+			
+			[!dif Avg Municipios Ideb AI 23/21 Client] - [!dif Avg Municipios Ideb AI 23/21 Nac Total]
+		formatString: #,0.00
+		lineageTag: 556ea8fa-5a81-4053-a65c-c07fbc4e6910
+
+	measure '!dif Avg Municipios Ideb AI 23/21 Nac' =
+			
+			CALCULATE([!dif Ideb AI 23/21]
+			                , KEEPFILTERS(ISBLANK(dMunicipios[_MunicipioCliente]))
+			        )
+		formatString: #,0.00
+		lineageTag: 96165886-e9a2-410d-a364-c2b3d1fe31b5
+
+	measure '!dif Avg Municipios Ideb AI 23/21 Nac Total' =
+			
+			CALCULATE([!dif Ideb AI 23/21]
+			                , ALL(dClientes)
+			                , ALL(fIdebAIMunicipios[IdMunicipio])
+			        )
+		formatString: #,0.00
+		lineageTag: 807a69d4-cde7-408f-adfc-d95057ea2ac7
+
+	measure '!dif Ideb Taxa Aprov AI 23/21' =
+			
+			[!avg Municipios Taxa Aprov AI 2023] - [!avg Municipios Taxa Aprov AI 2021]
+		formatString: #,0.00
+		lineageTag: e9f1226d-f6e9-49ab-a670-1ea3a623f215
+
+	measure '# Clientes Ideb AI' =
+			
+			CALCULATE([# Municipios Ideb AI]
+			                , KEEPFILTERS(not ISBLANK(dClientes[IdClientes]))
+			        )
+		formatString: #,0
+		lineageTag: 908ed94c-2e2e-467e-836a-a96e41d40646
+
+	measure '% dif municipios ideb AI Client vs Nac' =
+			
+			DIVIDE([!dif Avg Municipios Ideb AI 23/21 Client], [!dif Avg Municipios Ideb AI 23/21 Nac Total])-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 1de33ad7-c622-47f7-ab1f-171b1196b506
+
+	measure '!avg Municipios Ideb AI 2019' =
+			
+			CALCULATE(AVERAGE(fIdebAIMunicipios[IDEB2019(NP)]))
+		formatString: #,0.00
+		lineageTag: ed88ee79-256a-42f5-8df4-f3cbbb66b48b
+
+	measure '! Ideb AI Par Anos' =
+			
+			var vSelect = SELECTEDVALUE(zParIdebAI[Parameter Fields])
+			
+			return
+			SWITCH(
+			    vSelect
+			    , "'_Medidas Ideb AI'[!avg Municipios Ideb AI 2021]", [!avg Municipios Ideb AI 2021]
+			    , "'_Medidas Ideb AI'[!avg Municipios Ideb AI 2019]", [!avg Municipios Ideb AI 2019]
+			)
+		lineageTag: d2f746a7-3607-4a46-af97-703fdcb7be2e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '!avg Municipios Taxa Aprov AI 2019' =
+			
+			CALCULATE(AVERAGE(fIdebAIMunicipios[TaxaAprovacao2019_1a5Ano]))
+		formatString: #,0.00
+		lineageTag: 6e8ba6ce-2dfb-42ad-9b57-e54586d92dd6
+
+	measure '!avg Municipios Ideb AI Meta 2019' =
+			
+			CALCULATE(AVERAGE(fIdebAIMunicipios[Metas do 1º ciclo do Ideb3,4 (2007-2021) - 2019]))
+		formatString: #,0.00
+		lineageTag: 11c7ae6b-16ee-4e64-aca8-32a24e768f0d
+
+	measure '!avg Municipios Ideb AI Meta 2021' =
+			
+			CALCULATE(AVERAGE(fIdebAIMunicipios[Metas do 1º ciclo do Ideb3,4 (2007-2021) - 2021]))
+		formatString: #,0.00
+		lineageTag: 098450ba-80f4-4a9d-808d-519a0bf23cd7
+
+	measure '!avg Municipios Ideb AI Meta 2023' =
+			
+			CALCULATE(AVERAGE(fIdebAIMunicipios[_MetasIdeb2023]))
+		formatString: #,0.00
+		lineageTag: a0b2d177-d47e-48d9-a2b5-d6aad84ec4b9
+
+	measure '!dif Ideb AI vs Meta 2019' =
+			
+			[!avg Municipios Ideb AI 2019]-[!avg Municipios Ideb AI Meta 2019]
+		formatString: #,0.00
+		lineageTag: 0d98d3ba-4423-4363-b0e1-568133cdf711
+
+	measure '!dif Ideb AI vs Meta 2021' =
+			
+			[!avg Municipios Ideb AI 2021]-[!avg Municipios Ideb AI Meta 2021]
+		formatString: #,0.00
+		lineageTag: 83b61646-e3fb-458a-90f0-861be844f882
+
+	measure '!dif Ideb AI vs Meta 2023' =
+			
+			[!avg Ideb AI 2023]-[!avg Municipios Ideb AI Meta 2023]
+		formatString: #,0.00
+		lineageTag: 0f401194-ca04-4398-b73c-38eacd0eec18
+
+	measure '! Ideb AI vs Meta Par Anos' =
+			
+			var vSelect = SELECTEDVALUE(zParIdebAIMeta[zParIdebAIMeta Fields])
+			
+			return
+			SWITCH(
+			    vSelect
+			    , "'_Medidas Ideb AI'[!dif Municipios Ideb AI vs Meta 2021]", [!dif Ideb AI vs Meta 2021]
+			    , "'_Medidas Ideb AI'[!dif Municipios Ideb AI vs Meta 2019]", [!dif Ideb AI vs Meta 2019]
+			    , "'_Medidas Ideb AI'[!dif Municipios Ideb AI vs Meta 2023]", [!dif Ideb AI vs Meta 2023]
+			)
+		lineageTag: f380dd29-42e7-4cff-b8c2-a62afaeb2e88
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '# Municipios Ideb AI Clientes Nao' =
+			
+			CALCULATE([# Municipios Ideb AI]
+			            , KEEPFILTERS(ISBLANK(dMunicipios[_MunicipioCliente]))
+			        )
+		formatString: #,0
+		lineageTag: 04798acc-ef2c-4d28-9040-d69dd3d1847c
+
+	measure '# Clientes Ideb AI Total' =
+			
+			CALCULATE([# Clientes Ideb AI]
+			            , FILTER(fIdebAIMunicipios, [! Ideb AI Par Anos]))
+		formatString: #,0
+		lineageTag: 931e200f-f045-43fd-bfd4-bf1b547895e6
+
+	measure '# Clientes Ideb AI Posit' =
+			
+			CALCULATE(
+			    [# Clientes Ideb AI]
+			    , FILTER(fIdebAIMunicipios, [!dif Ideb AI 23/21] >= 0.01)
+			    , FILTER(fIdebAIMunicipios, [! Ideb AI Par Anos] >= 0.01)
+			)
+		lineageTag: b9ff18a6-bf5d-4a89-a7d3-18ea96ecbe26
+
+	measure '%# Clientes Ideb AI Posit' =
+			
+			DIVIDE([# Clientes Ideb AI Posit], [# Clientes Ideb AI Total])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: b098f291-ab08-42a8-95f5-89f110bff93d
+
+	measure '# Municipios Ideb AI Total' =
+			
+			CALCULATE([# Municipios Ideb AI Clientes Nao]
+			            , KEEPFILTERS(ISBLANK(dMunicipios[_MunicipioCliente]))
+			            , FILTER(fIdebAIMunicipios, [! Ideb AI Par Anos])
+			        )
+		formatString: #,0
+		lineageTag: 66baca03-015e-49ec-b805-60ae099c47b4
+
+	measure '# Municipios Ideb AI Posit' =
+			
+			CALCULATE(
+			    [# Municipios Ideb AI Clientes Nao]
+			    , FILTER(fIdebAfMunicipios, [!dif Ideb AI 23/21] >= 0.01)
+			    , FILTER(fIdebAfMunicipios, [! Ideb AI Par Anos] >= 0.01)
+			)
+		formatString: #,0
+		lineageTag: 2f9a1a51-db9f-416e-a13d-b92f0537a937
+
+	measure '%# Municipios Ideb AI Posit' =
+			
+			DIVIDE([# Municipios Ideb AI Posit], [# Municipios Ideb AI Total])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: d320b6d8-9326-42d0-8633-173e0ad91c15
+
+	measure '%dif Ideb AI Clientes vs Municipios' =
+			
+			DIVIDE([# Clientes Ideb AI Posit], [# Municipios Ideb AI Posit])-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 93085994-e9e8-4d73-9ecc-aac98220c8d2
+
+	column i
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 76417ab8-f8ef-42f1-a3d5-145fe5ce2c2b
+		summarizeBy: sum
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [i]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '_Medidas Ideb AI' = calculated
+		mode: import
+		source = DATATABLE("i", INTEGER, {{}})
+
+	annotation PBI_Id = 9eb7e1f7c2384cfc8fb3e01f1ad46b7a
+

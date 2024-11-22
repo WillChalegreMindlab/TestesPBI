@@ -1,0 +1,54 @@
+table zParIdebAI
+	lineageTag: 0b0a4628-1ac3-46ac-a308-c15b794e51fb
+
+	column Ano
+		dataType: string
+		lineageTag: 03f3a4d2-2412-470f-97bf-1bd27f15515e
+		summarizeBy: none
+		isDataTypeInferred
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		dataType: string
+		isHidden
+		lineageTag: 9aa902c0-7658-45ff-a63c-99cac6d4db4b
+		summarizeBy: none
+		isDataTypeInferred
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9937d6d3-7515-4434-ae9b-17bc33ecf91a
+		summarizeBy: sum
+		isDataTypeInferred
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition zParIdebAI = calculated
+		mode: import
+		source =
+				{
+				    ("2021", NAMEOF('_Medidas Ideb AI'[!avg Municipios Ideb AI 2021]), 1),
+				    ("2019", NAMEOF('_Medidas Ideb AI'[!avg Municipios Ideb AI 2019]), 0)
+				}
+
+	annotation PBI_Id = df312e2e65014b5b8dc4a9603a846723
+

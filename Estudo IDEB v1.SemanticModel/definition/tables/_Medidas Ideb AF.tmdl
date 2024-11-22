@@ -1,0 +1,205 @@
+table '_Medidas Ideb AF'
+	lineageTag: e5454d2b-4b82-407d-b99c-418eb12eafbb
+
+	measure '! Teste TMDL ' =
+			
+			"Testando o TMDL"
+
+	measure '!avg Ideb Taxa Aprov AF 2021' =
+			
+			CALCULATE(AVERAGE(fIdebAFMunicipios[TaxaAprovacao2021_1a5Ano]))
+		formatString: #,0.00
+		lineageTag: a382ed29-5a65-4d25-85af-62f2d8b435db
+
+	measure '!avg Ideb Taxa Aprov AF 2023' =
+			
+			CALCULATE(AVERAGE(fIdebAFMunicipios[TaxaAprovacao2023_1a5Ano]))
+		formatString: #,0.00
+		lineageTag: 30736489-e27a-4b39-aa36-35286845c780
+
+	measure '!dif Avg Ideb AF Client' =
+			
+			CALCULATE(
+			    [!dif Ideb AF 23/21],
+			    KEEPFILTERS(not ISBLANK(dClientes[IdClientes]))
+			)
+		formatString: #,0.00
+		lineageTag: 3050d7c4-672e-4cb3-95d3-ca22fdbca7cf
+
+	measure '!dif Avg Ideb AF 23/21 Client - Nac' =
+			
+			[!dif Avg Ideb AF 23/21 Client] - [!dif Avg Ideb AF 23/21 Nac Total]
+		formatString: #,0.00
+		lineageTag: 57f504fa-8523-41df-b220-fad5b04c1c38
+
+	measure '!dif Avg Ideb AF 23/21 Nac' =
+			
+			CALCULATE([!dif Ideb AF 23/21]
+			                , KEEPFILTERS(ISBLANK(dMunicipios[_MunicipioCliente]))
+			        )
+		formatString: #,0.00
+		lineageTag: 21efdd21-4f22-4d5d-8fd8-d415a2662665
+
+	measure '!dif Avg Ideb AF 23/21 Nac Total' =
+			
+			CALCULATE([!dif Ideb AF 23/21]
+			                , ALL(dClientes)
+			                , ALL(fIdebAFMunicipios[IdMunicipio])
+			        )
+		formatString: #,0.00
+		lineageTag: d575f8f4-493f-4990-90f7-74f2e0ca5681
+
+	measure '!dif Taxa Aprov AF 23/21' =
+			
+			[!avg Ideb Taxa Aprov AF 2023] - [!avg Ideb Taxa Aprov AF 2021]
+		formatString: #,0.00
+		lineageTag: 834abea7-9e91-4970-aa48-0d8e120e26c5
+
+	measure '!dif Ideb AF 23/21' =
+			
+			[!avg Ideb AF 2023] - [! Ideb AF Par Anos]
+		lineageTag: a12e9962-6cb8-43ef-928c-9beb9f8ff94f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '!avg Ideb AF 2021' =
+			
+			CALCULATE(AVERAGE(fIdebAFMunicipios[IDEB2021(NP)]))
+		formatString: #,0.00
+		lineageTag: 8c490399-b8b3-456f-bac4-297986c82678
+
+	measure '!avg Ideb AF 2023' =
+			
+			CALCULATE(AVERAGE(fIdebAFMunicipios[IDEB2023(NP)]))
+		formatString: #,0.00
+		lineageTag: 796dbed5-bd6e-49e6-8e12-6d6818019fd1
+
+	measure '# Clientes Ideb AF' =
+			
+			CALCULATE([# Municipios Ideb AF]
+			                , KEEPFILTERS(not ISBLANK(dClientes[IdClientes]))
+			        )
+		formatString: #,0
+		lineageTag: f227e615-9250-4efe-b209-a16d158e1df3
+
+	measure '# Municipios Ideb AF' =
+			
+			CALCULATE(DISTINCTCOUNTNOBLANK(fIdebAFMunicipios[IdMunicipio])
+			        )
+		formatString: #,0
+		lineageTag: c22c1c15-c731-47ba-b345-42a474a4b1c8
+
+	measure '!dif Avg Ideb AF 23/21 Client' =
+			
+			CALCULATE([!dif Ideb AF 23/21]
+			                , KEEPFILTERS(dMunicipios[_MunicipioCliente] = "Clientes")
+			    )
+		formatString: #,0.00
+		lineageTag: fa2bf4d2-6170-42a1-a278-91d33075b716
+
+	measure '%dif Ideb AF Client vs Nac' =
+			
+			DIVIDE([!dif Avg Ideb AF 23/21 Client], [!dif Avg Ideb AF 23/21 Nac Total])-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f00e8f1e-0c66-4546-99f4-0e16827a8c56
+
+	measure '%dif Ideb AF' =
+			
+			DIVIDE([!dif Ideb AF 23/21], [!avg Ideb AF 2021])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f7f42900-1021-411c-95ad-398317bc12fc
+
+	measure '!avg Ideb AF 2019' =
+			
+			CALCULATE(AVERAGE(fIdebAFMunicipios[IDEB2019(NP)]))
+		formatString: #,0.00
+		lineageTag: 33c38778-e01e-4a73-8b11-dba7ed5d2c51
+
+	measure '! Ideb AF Par Anos' =
+			
+			var vSelect = SELECTEDVALUE(zParIdebAF[zParIdebAF Fields])
+			
+			return
+			SWITCH(
+			    vSelect
+			    , "'_Medidas Ideb AF'[!avg Ideb AF 2021]", [!avg Ideb AF 2021]
+			    , "'_Medidas Ideb AF'[!avg Ideb AF 2019]", [!avg Ideb AF 2019]
+			)
+		lineageTag: 0ff40246-aed5-45b3-8a5a-e6bf2feeef40
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '# Clientes Ideb AF Total' =
+			
+			CALCULATE([# Clientes Ideb AF]
+			            , FILTER(fIdebAfMunicipios, [! Ideb AF Par Anos]))
+		formatString: #,0
+		lineageTag: 5122a246-c536-4604-8b09-2ffba2495eac
+
+	measure '# Clientes Ideb AF Posit' =
+			
+			CALCULATE(
+			    [# Clientes Ideb AF]
+			    , FILTER(fIdebAfMunicipios, [!dif Ideb AF 23/21] >= 0.01)
+			    , FILTER(fIdebAfMunicipios, [! Ideb AF Par Anos] >= 0.01)
+			)
+		formatString: #,0
+		lineageTag: 72c15292-cc45-4c6e-a87c-cd66ec987103
+
+	measure '%# Clientes Ideb AF Posit' =
+			
+			DIVIDE([# Clientes Ideb AF Posit], [# Clientes Ideb AF Total])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e015378b-532b-4048-af35-b21c5cf72584
+
+	measure '# Municipios Ideb AF Total' =
+			
+			CALCULATE([# Municipios Ideb AF Clientes Nao]
+			            , KEEPFILTERS(ISBLANK(dMunicipios[_MunicipioCliente]))
+			            , FILTER(fIdebAfMunicipios, [! Ideb AF Par Anos])
+			        )
+		formatString: #,0
+		lineageTag: 77608142-4aed-4a49-baf1-66281e42cc56
+
+	measure '# Municipios Ideb AF Posit' =
+			
+			CALCULATE(
+			    [# Municipios Ideb AF Clientes Nao]
+			    , FILTER(fIdebAfMunicipios, [!dif Ideb AF 23/21] >= 0.01)
+			    , FILTER(fIdebAfMunicipios, [! Ideb AF Par Anos] >= 0.01)
+			)
+		formatString: #,0
+		lineageTag: de139266-894e-454c-b8c9-7566a8df6910
+
+	measure '%# Municipios Ideb AF Posit' =
+			
+			DIVIDE([# Municipios Ideb AF Posit], [# Municipios Ideb AF Total])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: c9620a21-3ca4-41b1-bea3-bfc0438ec3f5
+
+	measure '# Municipios Ideb AF Clientes Nao' =
+			
+			CALCULATE([# Municipios Ideb AF]
+			            , KEEPFILTERS(ISBLANK(dMunicipios[_MunicipioCliente]))
+			        )
+		formatString: 0
+		lineageTag: b9662d15-1967-4bcd-a985-df122bbaae5e
+
+	column i
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 933c9dd3-7f00-422e-984a-468501b424c1
+		summarizeBy: sum
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [i]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '_Medidas Ideb AF' = calculated
+		mode: import
+		source = DATATABLE("i", INTEGER, {{}})
+
+	annotation PBI_Id = 788db825176f4011aa3605ea42eca713
+

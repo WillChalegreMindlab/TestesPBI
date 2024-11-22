@@ -1,0 +1,81 @@
+table dClientes
+	lineageTag: 3a31a459-f044-4352-95ed-3b6443a66131
+
+	column IdClientes
+		dataType: string
+		lineageTag: db2c8a9e-07b0-404d-8324-59c289b50d86
+		summarizeBy: none
+		sourceColumn: IdClientes
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cliente
+		dataType: string
+		lineageTag: 0978427a-f5ae-4d7f-99c0-0b94d0646fc5
+		summarizeBy: none
+		sourceColumn: Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column 2022
+		dataType: string
+		lineageTag: 54c761db-300d-470f-abd9-d08279953018
+		summarizeBy: none
+		sourceColumn: 2022
+
+		annotation SummarizationSetBy = Automatic
+
+	column 2023
+		dataType: string
+		lineageTag: f369e5e6-d686-48a0-bdcb-3365ce4096f5
+		summarizeBy: none
+		sourceColumn: 2023
+
+		annotation SummarizationSetBy = Automatic
+
+	column StatusAI
+		dataType: string
+		lineageTag: b4193fca-bb96-4799-9f9a-b6a3592869d0
+		summarizeBy: none
+		sourceColumn: StatusAI
+
+		annotation SummarizationSetBy = Automatic
+
+	column StatusAF
+		dataType: string
+		lineageTag: 826f6c21-94d7-42b5-8c37-f0ed8a1d17ac
+		summarizeBy: none
+		sourceColumn: StatusAF
+
+		annotation SummarizationSetBy = Automatic
+
+	column MunicipioUf
+		dataType: string
+		lineageTag: 5dffabc2-fbd3-4bfe-991b-943291cbbb80
+		summarizeBy: none
+		sourceColumn: MunicipioUf
+
+		annotation SummarizationSetBy = Automatic
+
+	column UF
+		dataType: string
+		lineageTag: 62f033ec-3936-4314-b197-d89f2736f3d5
+		summarizeBy: none
+		sourceColumn: UF
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dClientes = m
+		mode: import
+		queryGroup: Dim
+		source =
+				let
+				    Fonte = tClientes,
+				    #"Outras Colunas Removidas" = Table.SelectColumns(Fonte,{"IdClientes", "Cliente", "2022", "2023", "StatusAI", "StatusAF", "MunicipioUf", "UF"})
+				in
+				    #"Outras Colunas Removidas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

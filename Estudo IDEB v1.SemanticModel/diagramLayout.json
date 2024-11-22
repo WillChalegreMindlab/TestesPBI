@@ -1,0 +1,212 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 1307.5,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "dMunicipios",
+          "nodeLineageTag": "5b3ed23d-b34e-4e8d-bb32-156ae7ae74e7",
+          "size": {
+            "height": 241.5,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 472.05925785043087,
+            "y": 0
+          },
+          "nodeIndex": "dClientes",
+          "nodeLineageTag": "3a31a459-f044-4352-95ed-3b6443a66131",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 502.54138789074284
+          },
+          "nodeIndex": "fIdebAfMunicipios",
+          "nodeLineageTag": "8c286f3a-3599-4523-a455-9dae05368c64",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 919.5,
+            "y": 541.29138789074284
+          },
+          "nodeIndex": "fIdebAIMunicipios",
+          "nodeLineageTag": "b780af74-95e2-4c8d-a556-775b1f411753",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 1023.5,
+            "y": 128.77069394537142
+          },
+          "nodeIndex": "_Medidas Ideb AI",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1307.5,
+            "y": 320.64569394537142
+          },
+          "nodeIndex": "_Medidas Ideb AF",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1591.5,
+            "y": 320.64569394537142
+          },
+          "nodeIndex": "_Medidas Saeb AI",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1875.5,
+            "y": 344.64569394537142
+          },
+          "nodeIndex": "zParIdebAI",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2159.5,
+            "y": 344.64569394537142
+          },
+          "nodeIndex": "zParSaebMatAI",
+          "nodeLineageTag": "f400c7d1-7990-420a-9271-094e099e0563",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2443.5,
+            "y": 344.64569394537142
+          },
+          "nodeIndex": "zParSaebPortAI",
+          "nodeLineageTag": "ab8fb8a3-c409-4e2b-b386-de47b909b34a",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2727.5,
+            "y": 344.64569394537142
+          },
+          "nodeIndex": "zParIdebAIMeta",
+          "nodeLineageTag": "af7ab539-df95-42c8-a6c3-63c42a54a11e",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3011.5,
+            "y": 344.64569394537142
+          },
+          "nodeIndex": "zParIdebAF",
+          "nodeLineageTag": "b18ad16b-bb40-4440-9e34-65dbc61c7fa1",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3295.5,
+            "y": 320.64569394537142
+          },
+          "nodeIndex": "_Medidas Saeb AF",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3579.5,
+            "y": 344.64569394537142
+          },
+          "nodeIndex": "zParSaebPortAF",
+          "nodeLineageTag": "80c5e0b0-ef49-48a1-ba0c-fb887d4a190f",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3863.5,
+            "y": 344.64569394537142
+          },
+          "nodeIndex": "zParSaebMatAF",
+          "nodeLineageTag": "14a38505-f07e-4c55-bc2e-0783d2fc5fb3",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 63.642545630159844,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}

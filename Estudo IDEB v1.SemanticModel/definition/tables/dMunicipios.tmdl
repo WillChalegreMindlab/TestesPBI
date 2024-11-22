@@ -1,0 +1,196 @@
+table dMunicipios
+	lineageTag: 5b3ed23d-b34e-4e8d-bb32-156ae7ae74e7
+
+	column _MunicipioCliente = ```
+			
+			var vClientes = 
+			CALCULATE(MAX(dClientes[IdClientes])
+			                , FILTER(dClientes, dClientes[IdClientes] = [idMunicipio])
+			        )
+			
+			return
+			IF([idMunicipio] = vClientes, "Clientes")
+			```
+		dataType: string
+		lineageTag: b174c552-f29c-4318-a99f-c4e6791be22e
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_REGIAO
+		dataType: string
+		lineageTag: 562eeec7-b212-4398-a762-285098e95fb4
+		summarizeBy: none
+		sourceColumn: NO_REGIAO
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO_REGIAO
+		dataType: int64
+		formatString: 0
+		lineageTag: 4ef148a7-7de6-4f4f-8c75-82bf2a35840b
+		summarizeBy: sum
+		sourceColumn: CO_REGIAO
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_UF
+		dataType: string
+		lineageTag: 953a6061-d295-470e-a5e0-065b9f1ac3b0
+		summarizeBy: none
+		sourceColumn: NO_UF
+
+		annotation SummarizationSetBy = Automatic
+
+	column UF
+		dataType: string
+		lineageTag: 1e81d547-f825-417d-b1ec-4c50ed331487
+		summarizeBy: none
+		sourceColumn: UF
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO_UF
+		dataType: int64
+		formatString: 0
+		lineageTag: 740f2ec1-e66f-4034-91f1-fee490635d5d
+		summarizeBy: sum
+		sourceColumn: CO_UF
+
+		annotation SummarizationSetBy = Automatic
+
+	column nomeMunicipio
+		dataType: string
+		lineageTag: 5f1e0ef4-3959-421c-8ebc-20b4d032b2f8
+		summarizeBy: none
+		sourceColumn: nomeMunicipio
+
+		annotation SummarizationSetBy = Automatic
+
+	column idMunicipio
+		dataType: string
+		lineageTag: 34a0601a-d281-42cc-80ff-3558581be4da
+		summarizeBy: none
+		sourceColumn: idMunicipio
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_REGIAO_GEOG_INTERM
+		dataType: string
+		lineageTag: 39a76124-9452-4f2d-878b-a6a2e0a88c10
+		summarizeBy: none
+		sourceColumn: NO_REGIAO_GEOG_INTERM
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO_REGIAO_GEOG_INTERM
+		dataType: int64
+		formatString: 0
+		lineageTag: 7a68fca0-8c3a-4378-a0e8-ef45db1d55f8
+		summarizeBy: sum
+		sourceColumn: CO_REGIAO_GEOG_INTERM
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_REGIAO_GEOG_IMED
+		dataType: string
+		lineageTag: 516fb201-c2ac-483e-bd9e-01e75c3e4fab
+		summarizeBy: none
+		sourceColumn: NO_REGIAO_GEOG_IMED
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO_REGIAO_GEOG_IMED
+		dataType: int64
+		formatString: 0
+		lineageTag: 2dc43ee6-f7c3-4fd5-9359-820e096de97e
+		summarizeBy: sum
+		sourceColumn: CO_REGIAO_GEOG_IMED
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_MESORREGIAO
+		dataType: string
+		lineageTag: ab513773-1ebc-476d-abb6-15e33fb42f45
+		summarizeBy: none
+		sourceColumn: NO_MESORREGIAO
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO_MESORREGIAO
+		dataType: int64
+		formatString: 0
+		lineageTag: da01f5b7-af21-44e0-96ac-d7b7f0679970
+		summarizeBy: sum
+		sourceColumn: CO_MESORREGIAO
+
+		annotation SummarizationSetBy = Automatic
+
+	column NO_MICRORREGIAO
+		dataType: string
+		lineageTag: 6ae458cf-8e1a-432a-ac09-8ec8bf4690cd
+		summarizeBy: none
+		sourceColumn: NO_MICRORREGIAO
+
+		annotation SummarizationSetBy = Automatic
+
+	column CO_MICRORREGIAO
+		dataType: int64
+		formatString: 0
+		lineageTag: fb46f39f-5b98-4c94-a8c2-1fc7fb498850
+		summarizeBy: sum
+		sourceColumn: CO_MICRORREGIAO
+
+		annotation SummarizationSetBy = Automatic
+
+	column populacao
+		dataType: double
+		lineageTag: 8f2db60f-2b46-43dc-810b-75c96f3c57f3
+		summarizeBy: sum
+		sourceColumn: populacao
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MunicipioUf
+		dataType: string
+		lineageTag: a74f3a20-b19e-4b1f-8dc9-bf46af3ccbdb
+		summarizeBy: none
+		sourceColumn: MunicipioUf
+
+		annotation SummarizationSetBy = Automatic
+
+	column _PopulacaoRange =
+			
+			SWITCH(
+			    TRUE()
+			    , [populacao]<=20000, "Micro Porte"
+			    , [populacao]>=20001 && [populacao]<=50000, "Pequeno Porte"
+			    , [populacao]>=50001 && [populacao]<=100000, "Médio Porte"
+			    , [populacao]>=100001 && [populacao]<=500000, "Grande Porte"
+			    , [populacao]>=500001, "Metrópole"
+			)
+		dataType: string
+		lineageTag: 5c6db60c-2416-4626-915e-7e0d1057e99d
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dMunicipios = m
+		mode: import
+		queryGroup: Dim
+		source =
+				let
+				    Fonte = tIbgeCenso,
+				    #"Renamed Columns" = Table.RenameColumns(Fonte,{{"CO_MUNICIPIO", "idMunicipio"}, {"SG_UF", "UF"}, {"NO_MUNICIPIO", "nomeMunicipio"}}),
+				    #"Added Custom" = Table.AddColumn(#"Renamed Columns", "MunicipioUf", each [UF] & " - " & [nomeMunicipio])
+				in
+				    #"Added Custom"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

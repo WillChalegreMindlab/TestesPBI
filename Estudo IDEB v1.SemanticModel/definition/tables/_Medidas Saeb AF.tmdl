@@ -1,0 +1,278 @@
+table '_Medidas Saeb AF'
+	lineageTag: 757c19b0-57c9-417d-90df-118f28084c58
+
+	measure '!avg Saeb AF Mat 2019' =
+			
+			CALCULATE(AVERAGE(fIdebAFMunicipios[NotaSAEB2019_Matematica]))
+		lineageTag: feea1019-ee64-4e6f-960b-a6a52f897594
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '!avg Saeb AF Mat 2021' =
+			
+			CALCULATE(AVERAGE(fIdebAFMunicipios[NotaSAEB2021_Matematica]))
+		lineageTag: 3aa3bac9-d956-46be-804c-ff54547810c2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '!avg Saeb AF Mat 2023' =
+			
+			CALCULATE(AVERAGE(fIdebAFMunicipios[NotaSAEB2023_Matematica]))
+		lineageTag: 773fe265-7049-44d6-b70f-ea698760d5b2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '!avg Saeb AF Port 2019' =
+			
+			CALCULATE(AVERAGE(fIdebAFMunicipios[NotaSAEB2019_LinguaPortuguesa]))
+		lineageTag: 132bb98f-2b1e-494d-9836-4393baec5f1c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '!avg Saeb AF Port 2021' =
+			
+			CALCULATE(AVERAGE(fIdebAFMunicipios[NotaSAEB2021_LinguaPortuguesa]))
+		lineageTag: af8564d8-7c38-4774-946b-ffd388b5ec02
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '!avg Saeb AF Port 2023' =
+			
+			CALCULATE(AVERAGE(fIdebAFMunicipios[NotaSAEB2023_LinguaPortuguesa]))
+		lineageTag: c1bb564d-e650-4993-8909-63f0d5a5d715
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '!dif Avg Saeb AF Mat 23/21 Client' =
+			
+			CALCULATE([!dif Saeb AF Mat 23/21]
+			                , KEEPFILTERS(dMunicipios[_MunicipioCliente] = "Clientes")
+			    )
+		lineageTag: fe6906a3-761a-4d17-a342-8054cd559f5e
+
+	measure '!dif Avg Saeb AF Mat 23/21 Client - Nac' =
+			
+			[!dif Avg Saeb AF Mat 23/21 Client] - [!dif Avg Saeb AF Mat 23/21 Nac Total]
+		lineageTag: 4ebb45da-6cf4-4ec1-99f4-79ae66acef97
+
+	measure '!dif Avg Saeb AF Mat 23/21 Nac Total' =
+			
+			CALCULATE([!dif Saeb AF Mat 23/21]
+			                , ALL(dClientes)
+			                , ALL(fIdebAFMunicipios[IdMunicipio])
+			        )
+		lineageTag: 4378d425-71ea-49ab-b924-b7dfdcb910df
+
+	measure '!dif Avg Saeb AF Port 23/21 Client' =
+			
+			CALCULATE([!dif Saeb AF Port 23/21]
+			                , KEEPFILTERS(dMunicipios[_MunicipioCliente] = "Clientes")
+			    )
+		lineageTag: ac120d78-ff55-46e4-b776-458573e6789c
+
+	measure '!dif Avg Saeb AF Port 23/21 Client - Nac' =
+			
+			[!dif Avg Saeb AF Port 23/21 Client] - [!dif Avg Saeb AF Port 23/21 Nac Total]
+		lineageTag: ee1c4160-b0b0-4f6d-81ba-7ebe89c21f29
+
+	measure '!dif Avg Saeb AF Port 23/21 Nac Total' =
+			
+			CALCULATE([!dif Saeb AF Port 23/21]
+			                , ALL(dClientes)
+			                , ALL(fIdebAFMunicipios[IdMunicipio])
+			        )
+		lineageTag: 6721db83-a010-4c29-a1f8-2fa32440188c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '!dif Saeb AF Mat 23/21' =
+			
+			[!avg Saeb AF Mat 2023] - [! Saeb AF Mat Par Anos]
+		lineageTag: 2b193a29-9156-40d3-97fe-30be5d2ddf9f
+
+	measure '!dif Saeb AF Port 23/21' =
+			
+			[!avg Saeb AF Port 2023] - [! Saeb AF Port Par Anos]
+		lineageTag: 5f42b44c-f21d-41a5-bc80-96b455992439
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '%dif Saeb AF Mat Client vs Nac' =
+			
+			DIVIDE([!dif Avg Saeb AF Mat 23/21 Client], [!dif Avg Saeb AF Mat 23/21 Nac Total])-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 94dd1f63-1bfb-47e8-82e8-56a9a2470a56
+
+	measure '%dif Saeb AF Port Client vs Nac' =
+			
+			DIVIDE([!dif Avg Saeb AF Port 23/21 Client], [!dif Avg Saeb AF Port 23/21 Nac Total])-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 9b9cc908-19bb-4618-bb8d-97e31687ebef
+
+	measure '%dif Saeb AF Crescimento Mat' =
+			
+			DIVIDE([!avg Saeb AF Mat 2023], [! Saeb AF Mat Par Anos])-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 15826866-95af-4ce6-b673-35a8c8867288
+
+	measure '%dif Saeb AF Crescimento Port' =
+			
+			DIVIDE([!avg Saeb AF Port 2023], [! Saeb AF Port Par Anos])-1
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 0285cdb5-f3fa-4601-b1dc-324ae845a722
+
+	measure '! Saeb AF Port Par Anos' =
+			
+			var vSelect = SELECTEDVALUE(zParSaebPortAF[zParSaebPortAF Fields])
+			
+			return
+			SWITCH(
+			    vSelect
+			    , "'_Medidas Saeb AF'[!avg Saeb AF Port 2021]", [!avg Saeb AF Port 2021]
+			    , "'_Medidas Saeb AF'[!avg Saeb AF Port 2019]", [!avg Saeb AF Port 2019]
+			)
+		lineageTag: 2520a16e-b217-48d4-87c0-a663f06e5d32
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '! Saeb AF Mat Par Anos' =
+			
+			var vSelect = SELECTEDVALUE(zParSaebMatAF[zParSaebMatAF Fields])
+			
+			return
+			SWITCH(
+			    vSelect
+			    , "'_Medidas Saeb AF'[!avg Saeb AF Mat 2021]", [!avg Saeb AF Mat 2021]
+			    , "'_Medidas Saeb AF'[!avg Saeb AF Mat 2019]", [!avg Saeb AF Mat 2019]
+			)
+		lineageTag: e8831118-5400-44fb-91e4-2118a9de973e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '# Saeb AF Mat Clientes Posit' =
+			
+			CALCULATE(
+			    [# Clientes Ideb AF]
+			    , FILTER(fIdebAfMunicipios, [!dif Saeb AF Mat 23/21] > 0)
+			    , FILTER(fIdebAfMunicipios, [! Saeb AF Mat Par Anos] > 0)
+			)
+		formatString: #,0
+		lineageTag: 59fba3ec-33c6-4e3e-8c11-b360d38d3ffb
+
+	measure '# Saeb AF Mat Clientes Negat' =
+			
+			CALCULATE(
+			    [# Clientes Ideb AF]
+			    , FILTER(fIdebAfMunicipios, [!dif Saeb AF Mat 23/21] <= 0)
+			    , FILTER(fIdebAfMunicipios, [! Saeb AF Mat Par Anos] > 0)
+			)
+		formatString: 0
+		lineageTag: b524740e-163e-4b23-856b-137147f2a05c
+
+	measure '# Saeb AF Mat Municipios Negat' =
+			
+			CALCULATE(
+			    [# Municipios Ideb AF Clientes Nao]
+			    , FILTER(fIdebAfMunicipios, [!dif Saeb AF Mat 23/21] <= 0)
+			    , FILTER(fIdebAfMunicipios, [! Saeb AF Mat Par Anos] > 0)
+			)
+		formatString: 0
+		lineageTag: 218a6511-dbc5-4f25-965d-f3b2c7760f14
+
+	measure '# Saeb AF Mat Municipios Posit' =
+			
+			CALCULATE([# Municipios Ideb AF Clientes Nao]
+			            , FILTER(fIdebAfMunicipios, [!dif Saeb AF Mat 23/21] > 0)
+			            , FILTER(fIdebAfMunicipios, [! Saeb AF Mat Par Anos] > 0)
+			        )
+		formatString: #,0
+		lineageTag: e5fd209f-45a4-4fb6-87dd-4315406c4984
+
+	measure '%# Saeb AF Mat Clientes Posit' =
+			
+			DIVIDE([# Saeb AF Mat Clientes Posit], [# Saeb AF Mat Clientes Total])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 875c0f68-8be3-4aa7-a3ef-e8bff4d57fc2
+
+	measure '# Saeb AF Mat Clientes Total' =
+			
+			CALCULATE([# Clientes Ideb AF]
+			            , FILTER(fIdebAfMunicipios, [! Saeb AF Mat Par Anos]))
+		formatString: #,0
+		lineageTag: fcd120fa-cc20-4409-8568-da1c642502a0
+
+	measure '# Saeb AF Mat Municipios Total' =
+			
+			CALCULATE([# Municipios Ideb AF Clientes Nao]
+			            , FILTER(fIdebAfMunicipios, [! Saeb AF Mat Par Anos]))
+		formatString: #,0
+		lineageTag: 0969bc15-479c-479c-bd10-f88e65bd43da
+
+	measure '%# Saeb AF Mat Municipios Posit' =
+			
+			DIVIDE([# Saeb AF Mat Municipios Posit], [# Saeb AF Mat Municipios Total])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 42291c6b-9f19-4cc0-8f51-f8f87a258870
+
+	measure '# Saeb AF Port Clientes Posit' =
+			
+			CALCULATE(
+			    [# Clientes Ideb AF]
+			    , FILTER(fIdebAfMunicipios, [!dif Saeb AF Port 23/21] > 0)
+			    , FILTER(fIdebAfMunicipios, [! Saeb AF Port Par Anos] > 0)
+			)
+		formatString: #,0
+		lineageTag: 5be83a6c-33fd-4d3f-8cd7-7004fedb12b7
+
+	measure '# Saeb AF Port Clientes Total' =
+			
+			CALCULATE([# Clientes Ideb AF]
+			            , FILTER(fIdebAfMunicipios, [! Saeb AF Port Par Anos]))
+		formatString: #,0
+		lineageTag: 2127cae7-2f9d-4aa1-9f69-44edb5377536
+
+	measure '# Saeb AF Port Municipios Posit' =
+			
+			CALCULATE([# Municipios Ideb AF Clientes Nao]
+			            , FILTER(fIdebAfMunicipios, [!dif Saeb AF Port 23/21] > 0)
+			            , FILTER(fIdebAfMunicipios, [! Saeb AF Port Par Anos] > 0)
+			        )
+		formatString: #,0
+		lineageTag: ca97a841-f51d-44c5-b18c-390e9c56134e
+
+	measure '# Saeb AF Port Municipios Total' =
+			
+			CALCULATE([# Municipios Ideb AF Clientes Nao]
+			            , FILTER(ALL(fIdebAfMunicipios), [! Saeb AF Port Par Anos]))
+		formatString: #,0
+		lineageTag: e7ceff31-03b3-4b9f-b7cd-20a5475fb6a8
+
+	measure '%# Saeb AF Port Clientes Posit' =
+			
+			DIVIDE([# Saeb AF Port Clientes Posit], [# Saeb AF Port Clientes Total])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 4a68a2ad-de03-4c2f-81b7-be9d1cac8941
+
+	measure '%# Saeb AF Port Municipios Posit' =
+			
+			DIVIDE([# Saeb AF Port Municipios Posit], [# Saeb AF Port Municipios Total])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: c7284f45-9d46-4412-9ceb-d291ac1d254a
+
+	column i
+		dataType: int64
+		formatString: 0
+		lineageTag: 31b2d664-132d-4e05-b1a5-cde9cbd388c0
+		summarizeBy: sum
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [i]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '_Medidas Saeb AF' = calculated
+		mode: import
+		source = DATATABLE("i", INTEGER, {{}})
+
+	annotation PBI_Id = d50bdd03f36e49489a8ab2ed403ebf31
+

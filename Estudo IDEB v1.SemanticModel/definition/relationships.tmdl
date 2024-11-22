@@ -1,0 +1,16 @@
+relationship 37808255-7a4b-ef1f-af08-4df2b174c2ea
+	fromColumn: fIdebAfMunicipios.IdMunicipio
+	toColumn: dClientes.IdClientes
+
+relationship 194d1467-8a7a-e261-a50f-89311b595321
+	fromColumn: fIdebAIMunicipios.IdMunicipio
+	toColumn: dClientes.IdClientes
+
+relationship 194a716b-44d5-f361-2562-5515c2f5db54
+	fromColumn: fIdebAfMunicipios.IdMunicipio
+	toColumn: dMunicipios.idMunicipio
+
+relationship 22be01a0-1083-002f-b402-95feef2a91b3
+	fromColumn: fIdebAIMunicipios.IdMunicipio
+	toColumn: dMunicipios.idMunicipio
+
