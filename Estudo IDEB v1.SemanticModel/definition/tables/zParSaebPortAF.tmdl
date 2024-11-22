@@ -2,10 +2,8 @@ table zParSaebPortAF
 	lineageTag: 80c5e0b0-ef49-48a1-ba0c-fb887d4a190f
 
 	column Ano
-		dataType: string
 		lineageTag: ea04a59f-9e5f-4e4e-bf36-042aae6c7561
 		summarizeBy: none
-		isDataTypeInferred
 		sourceColumn: [Value1]
 		sortByColumn: 'zParSaebPortAF Order'
 
@@ -15,11 +13,9 @@ table zParSaebPortAF
 		annotation SummarizationSetBy = Automatic
 
 	column 'zParSaebPortAF Fields'
-		dataType: string
 		isHidden
 		lineageTag: 95fa55ba-34be-4125-a191-6569a0a25c46
 		summarizeBy: none
-		isDataTypeInferred
 		sourceColumn: [Value2]
 		sortByColumn: 'zParSaebPortAF Order'
 
@@ -32,12 +28,10 @@ table zParSaebPortAF
 		annotation SummarizationSetBy = Automatic
 
 	column 'zParSaebPortAF Order'
-		dataType: int64
 		isHidden
 		formatString: 0
 		lineageTag: 6fd2b6b7-f57f-47ec-a5a4-0b17b6297cb1
 		summarizeBy: sum
-		isDataTypeInferred
 		sourceColumn: [Value3]
 
 		annotation SummarizationSetBy = Automatic

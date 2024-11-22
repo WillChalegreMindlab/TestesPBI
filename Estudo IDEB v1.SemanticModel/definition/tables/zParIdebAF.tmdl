@@ -2,10 +2,8 @@ table zParIdebAF
 	lineageTag: b18ad16b-bb40-4440-9e34-65dbc61c7fa1
 
 	column Ano
-		dataType: string
 		lineageTag: 84badb30-bee0-4c1a-9c1d-138724a089ec
 		summarizeBy: none
-		isDataTypeInferred
 		sourceColumn: [Value1]
 		sortByColumn: 'zParIdebAF Order'
 
@@ -15,11 +13,9 @@ table zParIdebAF
 		annotation SummarizationSetBy = Automatic
 
 	column 'zParIdebAF Fields'
-		dataType: string
 		isHidden
 		lineageTag: ef6d632c-4dc1-4d21-85e9-a4b02bdf0b1d
 		summarizeBy: none
-		isDataTypeInferred
 		sourceColumn: [Value2]
 		sortByColumn: 'zParIdebAF Order'
 
@@ -32,12 +28,10 @@ table zParIdebAF
 		annotation SummarizationSetBy = Automatic
 
 	column 'zParIdebAF Order'
-		dataType: int64
 		isHidden
 		formatString: 0
 		lineageTag: b3240ca4-4df4-4a00-abe9-7af7937d6801
 		summarizeBy: sum
-		isDataTypeInferred
 		sourceColumn: [Value3]
 
 		annotation SummarizationSetBy = Automatic

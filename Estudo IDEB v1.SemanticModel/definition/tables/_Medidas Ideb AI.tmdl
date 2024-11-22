@@ -306,13 +306,11 @@ table '_Medidas Ideb AI'
 		lineageTag: 93085994-e9e8-4d73-9ecc-aac98220c8d2
 
 	column i
-		dataType: int64
 		isHidden
 		formatString: 0
 		lineageTag: 76417ab8-f8ef-42f1-a3d5-145fe5ce2c2b
 		summarizeBy: sum
 		isNameInferred
-		isDataTypeInferred
 		sourceColumn: [i]
 
 		annotation SummarizationSetBy = Automatic

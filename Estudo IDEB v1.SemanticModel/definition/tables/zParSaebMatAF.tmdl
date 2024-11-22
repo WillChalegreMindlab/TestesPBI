@@ -2,10 +2,8 @@ table zParSaebMatAF
 	lineageTag: 14a38505-f07e-4c55-bc2e-0783d2fc5fb3
 
 	column Ano
-		dataType: string
 		lineageTag: bf1da73c-4087-4ee5-8ea8-f5f8072ef484
 		summarizeBy: none
-		isDataTypeInferred
 		sourceColumn: [Value1]
 		sortByColumn: 'zParSaebMatAF Order'
 
@@ -15,11 +13,9 @@ table zParSaebMatAF
 		annotation SummarizationSetBy = Automatic
 
 	column 'zParSaebMatAF Fields'
-		dataType: string
 		isHidden
 		lineageTag: 72bff1db-0e6a-4dd2-8317-ad434e727162
 		summarizeBy: none
-		isDataTypeInferred
 		sourceColumn: [Value2]
 		sortByColumn: 'zParSaebMatAF Order'
 
@@ -32,12 +28,10 @@ table zParSaebMatAF
 		annotation SummarizationSetBy = Automatic
 
 	column 'zParSaebMatAF Order'
-		dataType: int64
 		isHidden
 		formatString: 0
 		lineageTag: 969216cf-9c03-4613-ae0f-534557142e54
 		summarizeBy: sum
-		isDataTypeInferred
 		sourceColumn: [Value3]
 
 		annotation SummarizationSetBy = Automatic

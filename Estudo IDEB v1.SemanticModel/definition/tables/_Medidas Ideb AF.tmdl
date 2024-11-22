@@ -1,10 +1,6 @@
 table '_Medidas Ideb AF'
 	lineageTag: e5454d2b-4b82-407d-b99c-418eb12eafbb
 
-	measure '! Teste TMDL ' =
-			
-			"Fazendo teste para versionamento"
-
 	measure '!avg Ideb Taxa Aprov AF 2021' =
 			
 			CALCULATE(AVERAGE(fIdebAFMunicipios[TaxaAprovacao2021_1a5Ano]))
@@ -185,14 +181,20 @@ table '_Medidas Ideb AF'
 		formatString: 0
 		lineageTag: b9662d15-1967-4bcd-a985-df122bbaae5e
 
+	measure '! Teste TMDL ' =
+			
+			"Fazendo teste para versionamento"
+		lineageTag: ce5b4885-5aa9-44ba-b6ab-cc5bc654030d
+
+	measure '! Teste Drive' = "Teste Versionamento Drive"
+		lineageTag: 7d05b521-3422-4941-8867-15152fb30474
+
 	column i
-		dataType: int64
 		isHidden
 		formatString: 0
 		lineageTag: 933c9dd3-7f00-422e-984a-468501b424c1
 		summarizeBy: sum
 		isNameInferred
-		isDataTypeInferred
 		sourceColumn: [i]
 
 		annotation SummarizationSetBy = Automatic

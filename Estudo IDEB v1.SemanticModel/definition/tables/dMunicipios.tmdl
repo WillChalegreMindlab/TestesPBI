@@ -11,10 +11,8 @@ table dMunicipios
 			return
 			IF([idMunicipio] = vClientes, "Clientes")
 			```
-		dataType: string
 		lineageTag: b174c552-f29c-4318-a99f-c4e6791be22e
 		summarizeBy: none
-		isDataTypeInferred
 
 		annotation SummarizationSetBy = Automatic
 
@@ -172,10 +170,8 @@ table dMunicipios
 			    , [populacao]>=100001 && [populacao]<=500000, "Grande Porte"
 			    , [populacao]>=500001, "Metrópole"
 			)
-		dataType: string
 		lineageTag: 5c6db60c-2416-4626-915e-7e0d1057e99d
 		summarizeBy: none
-		isDataTypeInferred
 
 		annotation SummarizationSetBy = Automatic
 

@@ -2,10 +2,8 @@ table zParIdebAIMeta
 	lineageTag: af7ab539-df95-42c8-a6c3-63c42a54a11e
 
 	column Ano
-		dataType: string
 		lineageTag: 38a9d37a-bc32-451f-b896-0f6c3bb7949e
 		summarizeBy: none
-		isDataTypeInferred
 		sourceColumn: [Value1]
 		sortByColumn: 'zParIdebAIMeta Order'
 
@@ -15,11 +13,9 @@ table zParIdebAIMeta
 		annotation SummarizationSetBy = Automatic
 
 	column 'zParIdebAIMeta Fields'
-		dataType: string
 		isHidden
 		lineageTag: c894ff53-a5a9-49a5-b35d-ec21a7cbfda4
 		summarizeBy: none
-		isDataTypeInferred
 		sourceColumn: [Value2]
 		sortByColumn: 'zParIdebAIMeta Order'
 
@@ -32,12 +28,10 @@ table zParIdebAIMeta
 		annotation SummarizationSetBy = Automatic
 
 	column 'zParIdebAIMeta Order'
-		dataType: int64
 		isHidden
 		formatString: 0
 		lineageTag: 4e03ec06-725f-4ae6-9f61-edf5525d8d89
 		summarizeBy: sum
-		isDataTypeInferred
 		sourceColumn: [Value3]
 
 		annotation SummarizationSetBy = Automatic

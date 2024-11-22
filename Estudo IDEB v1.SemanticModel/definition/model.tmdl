@@ -22,7 +22,7 @@ annotation PBI_QueryOrder = ["Municípios Brasileiros","Municípios Paulistas","
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBIDesktopVersion = 2.137.1102.0 (24.10)
+annotation PBIDesktopVersion = 2.138.1004.0 (24.11)
 
 annotation PBI_ProTooling = ["DevMode","TMDL-Extension"]
 

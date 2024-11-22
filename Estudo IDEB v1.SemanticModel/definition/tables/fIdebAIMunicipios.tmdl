@@ -1569,10 +1569,8 @@ table fIdebAIMunicipios
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column _MetasIdeb2023 = [Metas do 1º ciclo do Ideb3,4 (2007-2021) - 2021]+0.3
-		dataType: double
 		lineageTag: 6eb26fc8-95b6-4b37-8d2e-49a337eb6ed7
 		summarizeBy: sum
-		isDataTypeInferred
 
 		annotation SummarizationSetBy = Automatic
 

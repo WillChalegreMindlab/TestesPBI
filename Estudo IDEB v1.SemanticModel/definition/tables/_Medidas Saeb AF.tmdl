@@ -260,12 +260,10 @@ table '_Medidas Saeb AF'
 		lineageTag: c7284f45-9d46-4412-9ceb-d291ac1d254a
 
 	column i
-		dataType: int64
 		formatString: 0
 		lineageTag: 31b2d664-132d-4e05-b1a5-cde9cbd388c0
 		summarizeBy: sum
 		isNameInferred
-		isDataTypeInferred
 		sourceColumn: [i]
 
 		annotation SummarizationSetBy = Automatic

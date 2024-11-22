@@ -258,13 +258,11 @@ table '_Medidas Saeb AI'
 		lineageTag: 2db51295-2b1b-4b9c-95f0-80186d0c5260
 
 	column i
-		dataType: int64
 		isHidden
 		formatString: 0
 		lineageTag: d5f493e7-229d-4220-92be-a04af41cfb32
 		summarizeBy: sum
 		isNameInferred
-		isDataTypeInferred
 		sourceColumn: [i]
 
 		annotation SummarizationSetBy = Automatic
