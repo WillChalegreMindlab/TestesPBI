@@ -3,7 +3,7 @@ table '_Medidas Ideb AF'
 
 	measure '! Teste TMDL ' =
 			
-			"Testando o TMDL"
+			"Fazendo teste para versionamento"
 
 	measure '!avg Ideb Taxa Aprov AF 2021' =
 			
