@@ -1,0 +1,265 @@
+table dNPS
+	lineageTag: 61b5f9ae-adbc-4135-8550-859a2b0a67b8
+
+	column Nome
+		dataType: string
+		lineageTag: 409d61af-e2e0-4f23-932e-5c5a6ab7d4b4
+		summarizeBy: none
+		sourceColumn: Nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column Login
+		dataType: string
+		lineageTag: 6afcbb10-269e-4773-ad82-324261b69c58
+		summarizeBy: none
+		sourceColumn: Login
+
+		annotation SummarizationSetBy = Automatic
+
+	column Pergunta
+		dataType: string
+		lineageTag: 70d12aa7-4bf0-4660-8b50-f443e35186c3
+		summarizeBy: none
+		sourceColumn: Pergunta
+
+		annotation SummarizationSetBy = Automatic
+
+	column Resposta
+		dataType: int64
+		formatString: 0
+		lineageTag: cf594094-8492-47bd-bded-82748f473a04
+		summarizeBy: sum
+		sourceColumn: Resposta
+
+		annotation SummarizationSetBy = Automatic
+
+	column CPF
+		dataType: string
+		lineageTag: 2b743740-1ffe-4fea-9730-0a422686dbc7
+		summarizeBy: none
+		sourceColumn: CPF
+
+		annotation SummarizationSetBy = Automatic
+
+	column E-mail
+		dataType: string
+		lineageTag: b2356169-7622-4957-a8b7-5c11c5187034
+		summarizeBy: none
+		sourceColumn: E-mail
+
+		annotation SummarizationSetBy = Automatic
+
+	column Celular
+		dataType: string
+		lineageTag: f30ff445-fe28-4d5e-b731-8bdda08fc550
+		summarizeBy: none
+		sourceColumn: Celular
+
+		annotation SummarizationSetBy = Automatic
+
+	column Lição
+		dataType: string
+		lineageTag: 38483263-6005-4d7e-99c2-238f1531f0d1
+		summarizeBy: none
+		sourceColumn: Lição
+
+		annotation SummarizationSetBy = Automatic
+
+	column Turma
+		dataType: string
+		lineageTag: 9598de68-619b-40b6-a48e-7e0ee64e0384
+		summarizeBy: none
+		sourceColumn: Turma
+
+		annotation SummarizationSetBy = Automatic
+
+	column Campanha
+		dataType: string
+		lineageTag: 1b8752b0-b4e4-49db-884b-fe9bd384ecbe
+		summarizeBy: none
+		sourceColumn: Campanha
+
+		annotation SummarizationSetBy = Automatic
+
+	column Justificativa
+		dataType: string
+		lineageTag: 2bae68bf-d02e-4ed6-9789-dfe9d9b0eb4c
+		summarizeBy: none
+		sourceColumn: Justificativa
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Data de resposta'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 840bbb1c-866f-4f17-90b8-6037e536aee4
+		summarizeBy: none
+		sourceColumn: Data de resposta
+
+		variation Variation
+			isDefault
+			relationship: cb62aa7c-f272-47da-92cb-a468bfa0560e
+			defaultHierarchy: LocalDateTable_06484c59-03a1-4a1e-85ae-e85862ba1dbd.'Hierarquia de datas'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Departamento 1'
+		dataType: string
+		lineageTag: 5deb4b07-b836-4285-b953-3b19237e6166
+		summarizeBy: none
+		sourceColumn: Departamento 1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Departamento 2'
+		dataType: string
+		lineageTag: 95aba3f3-5401-45a3-88d3-d72d1160ee91
+		summarizeBy: none
+		sourceColumn: Departamento 2
+
+		annotation SummarizationSetBy = Automatic
+
+	column Matrícula
+		dataType: string
+		lineageTag: 5c549a34-d87e-4e46-b878-b05df5e4e6cd
+		summarizeBy: none
+		sourceColumn: Matrícula
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Agrupamento de pergunta'
+		dataType: string
+		lineageTag: fc118d57-c91c-4eec-853a-f7552ab3d93f
+		summarizeBy: none
+		sourceColumn: Agrupamento de pergunta
+
+		annotation SummarizationSetBy = Automatic
+
+	column Instituição
+		dataType: string
+		lineageTag: 0e331165-3da4-4825-b714-60848169f943
+		summarizeBy: none
+		sourceColumn: Instituição
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome da Origem'
+		dataType: string
+		lineageTag: 2da77e7d-fc5d-430d-898b-62025bc3f4dd
+		summarizeBy: none
+		sourceColumn: Nome da Origem
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nível 3'
+		dataType: string
+		lineageTag: d05780b0-3eba-4397-834c-58ea5f680c67
+		summarizeBy: none
+		sourceColumn: Nível 3
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nível 4'
+		dataType: string
+		lineageTag: 731a995a-860b-4002-98b4-f354c3b62170
+		summarizeBy: none
+		sourceColumn: Nível 4
+
+		annotation SummarizationSetBy = Automatic
+
+	column Funções =
+			
+			CONCATENATEX(
+			    FILTER(dRelatoriodeUsuarios, dRelatoriodeUsuarios[Login] = dNPS[Login]),
+			    dRelatoriodeUsuarios[Função],
+			    ", "
+			)
+		lineageTag: 280a8054-9259-415e-ab91-59cdea163c0b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gestor =
+			
+			IF(
+			    OR(
+			        CONTAINSSTRING([Funções], "Coordenador(a)/Supervisor(a)/Assessor(a)"),
+			        OR(
+			            CONTAINSSTRING([Funções], "Diretor(a)"),
+			            CONTAINSSTRING([Funções], "Gestor")
+			        )
+			    ),
+			    "Sim",
+			    "Não"
+			)
+		lineageTag: 52fc4300-d749-4229-ae19-a8e259422d7e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Instituições =
+			
+			CONCATENATEX(
+			    DISTINCT(
+			        SELECTCOLUMNS(
+			            FILTER(
+			                dRelatoriodeUsuarios,
+			                dRelatoriodeUsuarios[Login] = dNPS[Login]
+			            ),
+			            "Instituição", dRelatoriodeUsuarios[Instituição]
+			        )
+			    ),
+			    [Instituição],
+			    ", "
+			)
+		lineageTag: 3c19eb92-880b-491b-b64c-6153400dafbb
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Funções.2' =
+			
+			CONCATENATEX(
+			    FILTER(dRelatoriodeUsuarios, dRelatoriodeUsuarios[Login] = dNPS[Login]),
+			    dRelatoriodeUsuarios[Função.2],
+			    ", "
+			)
+		lineageTag: c67f9300-bbdb-4ee3-ba04-204e393a7b49
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dNPS-1ec3d66b-3e28-448d-9bf2-91912904e97f = m
+		mode: import
+		queryGroup: Relatórios
+		source =
+				let
+				    timestamp_now = DateTime.From(DateTimeZone.ToText(DateTimeZone.UtcNow())) - #duration(0, 3, 0, 0),
+				    #"Data Extraída" = Date.From(timestamp_now),
+				    date_text = Date.ToText(#"Data Extraída", "yyyy-MM-dd"),
+				    string = date_text & KEY,
+				    senha_codificada = codificacao(string),
+				    Fonte = Json.Document(Web.Contents(LINK_FUNCAO, [Query=[senha=senha_codificada]])),
+				    link = Fonte[link_nps],
+				    path = Text.Split(link, "/"){5},
+				    arquivo = Csv.Document(Web.Contents(CAMINHO_BUCKET & "/nps", [RelativePath=path])),
+				    arquivo_cabecalho = Table.PromoteHeaders(arquivo, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(arquivo_cabecalho,{{"Resposta", Int64.Type}}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Tipo Alterado",{{"Nível 0", "Instituição"}, {"Nível 1", "Departamento 1"}, {"Nível 2", "Departamento 2"}, {"NPS", "Nome da Origem"}}),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Colunas Renomeadas","1","NPS 1",Replacer.ReplaceText,{"Nome da Origem"}),
+				    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído","2","NPS 2",Replacer.ReplaceText,{"Nome da Origem"}),
+				    #"Valor Substituído2" = Table.ReplaceValue(#"Valor Substituído1","3","NPS 3",Replacer.ReplaceText,{"Nome da Origem"}),
+				    #"Valor Substituído3" = Table.ReplaceValue(#"Valor Substituído2","4","NPS 4",Replacer.ReplaceText,{"Nome da Origem"}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Valor Substituído3", each true),
+				    #"Linhas Filtradas1" = Table.SelectRows(#"Linhas Filtradas", each [Turma] = "" or Text.Contains([Turma], "2024")),
+				    #"Linhas Filtradas2" = Table.SelectRows(#"Linhas Filtradas1", each not Text.Contains([Turma], "Maceió"))
+				in
+				    #"Linhas Filtradas2"
+
+	annotation PBI_ResultType = Table
+

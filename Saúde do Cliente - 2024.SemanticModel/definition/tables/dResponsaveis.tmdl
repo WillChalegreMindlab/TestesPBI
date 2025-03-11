@@ -1,0 +1,120 @@
+table dResponsaveis
+	lineageTag: 28c94d7a-6a4f-4a56-a79d-234d703d3035
+
+	measure 'Última Tutoria' = ```
+			
+			
+			VAR Resultado = 
+			CALCULATE(
+			    SELECTEDVALUE(dResponsaveis[Última tutoria finalizada],
+			    "Não é possível identificar"
+			    ),     
+			    ALL(dRelatoriodeUsuarios[Função])
+			)
+			
+			VAR Resultado_Final = 
+			    SWITCH(
+			        TRUE(),
+			        ISBLANK(Resultado),"Sem Tutoria Finalizada",
+			        Resultado="Não é possível identificar","",
+			        Resultado 
+			    )
+			
+			RETURN Resultado_Final  
+			```
+		lineageTag: f33e5da2-baed-4574-848b-9e6aecbce26f
+
+	column Cliente
+		dataType: string
+		lineageTag: 74576654-dea4-4c5f-b1cd-ff5f0eee4806
+		summarizeBy: none
+		sourceColumn: Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cupom
+		dataType: string
+		lineageTag: f80deab5-d73a-4f1b-87cc-d93d9744968a
+		summarizeBy: none
+		sourceColumn: Cupom
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Rep. Comercial'
+		dataType: string
+		lineageTag: b2a6cacc-8772-4d4f-ac7e-a3d7f3f56968
+		summarizeBy: none
+		sourceColumn: Rep. Comercial
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Op. Responsável'
+		dataType: string
+		lineageTag: 4b346eae-5932-4e76-aaf3-278713ae90b9
+		summarizeBy: none
+		sourceColumn: Op. Responsável
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Última tutoria finalizada'
+		dataType: string
+		lineageTag: 305e910f-ac80-4f99-b2ef-e365ec9bd28b
+		summarizeBy: none
+		sourceColumn: Última tutoria finalizada
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Início estimado das aulas'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b3178742-d98c-400f-8da8-8eb08fe6cc3d
+		summarizeBy: none
+		sourceColumn: Início estimado das aulas
+
+		variation Variation
+			isDefault
+			relationship: 92774a46-9e7c-43fb-9cb8-11d31646f566
+			defaultHierarchy: LocalDateTable_afb24a74-f83f-4312-badc-c7f05c49518e.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Tipo de contrato'
+		dataType: string
+		lineageTag: f4e5ddc5-8345-4227-b463-fc1bf9d75859
+		summarizeBy: none
+		sourceColumn: Tipo de contrato
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dResponsaveis-346f6899-136d-4b38-a2ee-dc397012d3e8 = m
+		mode: import
+		queryGroup: 'Consultas sheets'
+		source =
+				let
+				    Fonte = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/1aOUbXyxFR-Q3ft7sEd15LLCL7z3T8vnvEujxvk-TBXo/edit#gid=1048253771"),
+				    Público_Table = Fonte{[name="Público",ItemKind="Table"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Público_Table, [PromoteAllScalars=true]),
+				    #"Linhas em Branco Removidas" = Table.SelectRows(#"Cabeçalhos Promovidos", each not List.IsEmpty(List.RemoveMatchingItems(Record.FieldValues(_), {"", null}))),
+				    #"Colunas Renomeadas3" = Table.RenameColumns(#"Linhas em Branco Removidas",{{"Comercial", "Representante comercial"}, {"Operações", "Operações responsável"}}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Colunas Renomeadas3",{{"Representante comercial", "Rep. Comercial"}, {"Operações responsável", "Op. Responsável"}}),
+				    #"Dividir Coluna por Delimitador" = Table.SplitColumn(#"Colunas Renomeadas", "Link para cadastro na Plataforma", Splitter.SplitTextByEachDelimiter({"="}, QuoteStyle.Csv, true), {"Link para cadastro na Plataforma.1", "Link para cadastro na Plataforma.2"}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Dividir Coluna por Delimitador",{{"Link para cadastro na Plataforma.1", type text}, {"Link para cadastro na Plataforma.2", type text}}),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Tipo Alterado1",{{"Link para cadastro na Plataforma.2", "CUPOM"}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Colunas Renomeadas1",{"Link para cadastro na Plataforma.1"}),
+				    #"Outras Colunas Removidas" = Table.SelectColumns(#"Colunas Removidas",{"Cliente", "CUPOM", "Rep. Comercial", "Op. Responsável", "Tipo de contrato"}),
+				    #"Colunas Renomeadas2" = Table.RenameColumns(#"Outras Colunas Removidas",{{"CUPOM", "Cupom"}}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Colunas Renomeadas2", each true),
+				    #"Consultas Mescladas" = Table.NestedJoin(#"Linhas Filtradas", {"Cliente"}, dTutorias, {"Cliente"}, "dTutorias", JoinKind.LeftOuter),
+				    #"dTutorias Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas", "dTutorias", {"Última tutoria finalizada", "1ª TUTORIA_1"}, {"Última tutoria finalizada", "1ª TUTORIA_1"}),
+				    #"Linhas em Branco Removidas1" = Table.SelectRows(#"dTutorias Expandido", each not List.IsEmpty(List.RemoveMatchingItems(Record.FieldValues(_), {"", null}))),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Linhas em Branco Removidas1",{{"1ª TUTORIA_1", type date}}),
+				    #"Colunas Renomeadas4" = Table.RenameColumns(#"Tipo Alterado",{{"1ª TUTORIA_1", "Início estimado das aulas"}})
+				in
+				    #"Colunas Renomeadas4"
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navegação
+

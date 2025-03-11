@@ -1,0 +1,145 @@
+table 'Material Completo'
+	lineageTag: d6c5d407-5837-4d79-bb0c-1884838023fa
+
+	column 'Tipo de Pergunta'
+		lineageTag: 57161536-3844-4a57-8d9f-50cc42b8e66b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dEntregaMateriais[Tipo de Pergunta]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Resposta2
+		lineageTag: 9abeeed6-96c5-4edc-9149-48c5980b08f5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dEntregaMateriais[Resposta2]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Respondeu a primeira vez?'
+		lineageTag: 901d6c25-9059-4b9c-9a79-04146b5b09e2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dEntregaMateriais[Respondeu a primeira vez?]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Usuário
+		lineageTag: 15cfdbf5-4950-4178-b790-f94a5f44fd93
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dEntregaMateriais[Usuário]
+
+		annotation SummarizationSetBy = Automatic
+
+	column CPF
+		lineageTag: bbdaceea-dae7-4c89-94cd-324148685eb3
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dEntregaMateriais[CPF]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Login
+		lineageTag: 39b20678-77a4-4701-abe3-e1b475ca9f4f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dEntregaMateriais[Login]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Email
+		lineageTag: 210cbec9-e99c-47c6-bc68-85d723e9b365
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dEntregaMateriais[Email]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Perfil
+		lineageTag: 6007c71a-0581-4dd5-8b3e-ea804224d4ac
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dEntregaMateriais[Perfil]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Empresa
+		lineageTag: d9afb8b6-5662-42f1-933d-77c848c37750
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dEntregaMateriais[Empresa]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Departamento 1'
+		lineageTag: a01fc19f-4c93-4858-af41-cf451431226e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dEntregaMateriais[Departamento 1]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Departamento 2'
+		lineageTag: 49f9a47b-c4d1-44b3-b5ef-84f7e79de190
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dEntregaMateriais[Departamento 2]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Departamento 3'
+		lineageTag: 8596ca5c-2c38-4b22-a8fd-0988c6974f68
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dEntregaMateriais[Departamento 3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Pergunta
+		lineageTag: f7ef70d1-5d6f-4efe-ae6a-da25dcef2207
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dEntregaMateriais[Pergunta]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Resposta Completa'
+		lineageTag: e3543494-e953-4468-9a90-0e8ad4ed6495
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dEntregaMateriais[Resposta Completa]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Resposta
+		lineageTag: c8425093-942c-4f17-a120-d227c5d4fbad
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dEntregaMateriais[Resposta]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Departamento 4'
+		lineageTag: 6b2ed4bb-366d-41fe-97bc-fb4896a08a34
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dEntregaMateriais[Departamento 4]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Material Completo' = calculated
+		mode: import
+		source =
+				
+				VAR Material = CALCULATETABLE(dEntregaMateriais)
+				
+				VAR Material_Partes = CALCULATETABLE(dEntregaMateriaisPartes,dEntregaMateriaisPartes[Respondeu a primeira vez?]=FALSE)
+				
+				Return UNION(Material, Material_Partes)
+				
+				--Return Material
+
+	annotation PBI_Id = 0dc4b37b9348405383b078d16a5c0d14
+

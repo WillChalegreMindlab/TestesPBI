@@ -1,0 +1,34 @@
+table ProfessoresAgendaAulaDada
+	lineageTag: dac0d78d-d859-4bae-8ae9-b27c894c1ce8
+
+	measure 'Contagem Professores Aula Dada' = COUNTA(ProfessoresAgendaAulaDada[CPF do Professor])
+		formatString: 0
+		lineageTag: 4521113e-d136-4cc8-9dc8-52b1ded6fd81
+
+	measure '% Professores aula dada' = [Contagem Professores Aula Dada]/[ID Cadastrados (prof)]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 490f009d-d3fe-4703-93aa-ae3a2aca9147
+
+	column 'CPF do Professor'
+		dataType: string
+		lineageTag: d07eb5b3-4cb8-4d1c-8963-a442d6106db9
+		summarizeBy: none
+		sourceColumn: CPF do Professor
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ProfessoresAgendaAulaDada = m
+		mode: import
+		queryGroup: API
+		source =
+				let
+				    Fonte = Excel.Workbook(Web.Contents("https://metabase.mindzup.com.br/api/public/card/cb706b28-5fab-4d96-bd1a-4c858ce2ed3c/query/xlsx?parameters=%5B%7B%22type%22%3A%22category%22%2C%22target%22%3A%5B%22variable%22%2C%5B%22template-tag%22%2C%22dada%22%5D%5D%2C%22value%22%3A%221%22%7D%5D"), null, false),
+				    #"Query result_sheet" = Fonte{[Item="Query result",Kind="Sheet"]}[Data],
+				    FilterNullAndWhitespace = each List.Select(_, each _ <> null and (not (_ is text) or Text.Trim(_) <> "")),
+				    #"Outras Colunas Removidas" = Table.SelectColumns(#"Query result_sheet", List.Select(Table.ColumnNames(#"Query result_sheet"), each try not List.IsEmpty(FilterNullAndWhitespace(Table.Column(#"Query result_sheet", _))) otherwise true)),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(#"Outras Colunas Removidas", [PromoteAllScalars=true])
+				in
+				    #"Cabeçalhos Promovidos"
+
+	annotation PBI_ResultType = Table
+

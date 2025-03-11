@@ -1,0 +1,182 @@
+table AgendaMenteInovadora
+	lineageTag: 6dfb6210-f6f3-46a5-b4ff-408d7df13429
+
+	measure 'PERCENTUAL AULAS AGENDADAS' = ```
+			
+			VAR total_aulas = sum(AgendaMenteInovadora[TOTAL AULAS A SEREM DADAS])
+			
+			VAR aulas_agendadas = sum(AgendaMenteInovadora[AULAS AGENDADAS])
+			
+			VAR Percentual = aulas_agendadas/total_aulas
+			
+			RETURN Percentual
+			
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 94d09b9a-b56f-4e46-abd0-42df709804b4
+
+	measure 'PERCENTUAL AULAS DADAS' =
+			
+			VAR total_aulas = sum(AgendaMenteInovadora[TOTAL AULAS A SEREM DADAS])
+			
+			VAR aulas_dadas = sum(AgendaMenteInovadora[AULAS DADAS])
+			
+			VAR Percentual = aulas_dadas/total_aulas
+			
+			RETURN Percentual
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: a5daeff5-1e2c-4c09-8ec8-b839e6192a2f
+
+	measure 'Usando agenda' =
+			calculate(
+			    DISTINCTCOUNT(AgendaMenteInovadora[CPF]),
+			    AgendaMenteInovadora[AULAS AGENDADAS]>0)
+		formatString: 0
+		lineageTag: b819defb-26f3-47f8-b51b-d852a9b4bffb
+
+	measure 'Professores Aula dada' =
+			calculate(
+			    DISTINCTCOUNT(AgendaMenteInovadora[CPF]),
+			    AgendaMenteInovadora[AULAS DADAS]>0)
+		formatString: 0
+		lineageTag: 30dde304-9eaa-4ee3-a2b0-6534c11a5b4d
+
+	measure 'Validação usando agenda' = AgendaMenteInovadora[Usando agenda]=ProfessoresUsandoAgenda[Contagem Professores Agenda]
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ae34086c-03e8-4006-b35b-dca942635510
+
+	column 'ID DA REDE'
+		dataType: string
+		lineageTag: ac03a5da-9ab3-4365-a7e4-817f08714ed8
+		summarizeBy: none
+		sourceColumn: ID DA REDE
+
+		annotation SummarizationSetBy = Automatic
+
+	column REDE
+		dataType: string
+		lineageTag: 90f4fa65-92f5-48c8-bcf5-7fce18cdefbb
+		summarizeBy: none
+		sourceColumn: REDE
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ID DA UNIDADE'
+		dataType: string
+		lineageTag: 25aa1a56-af2e-45a6-95ee-b77b1c55f78c
+		summarizeBy: none
+		sourceColumn: ID DA UNIDADE
+
+		annotation SummarizationSetBy = Automatic
+
+	column UNIDADE
+		dataType: string
+		lineageTag: 3e98bce7-09a5-4047-b166-d26f0d59eff4
+		summarizeBy: none
+		sourceColumn: UNIDADE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CPF
+		dataType: string
+		lineageTag: 270227c5-f5f7-4e15-bb80-f8014fc58d5a
+		summarizeBy: none
+		sourceColumn: CPF
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NOME COMPLETO'
+		dataType: string
+		lineageTag: d0d431e6-6726-4a50-88c8-da17babb03f9
+		summarizeBy: none
+		sourceColumn: NOME COMPLETO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ANO ESCOLAR'
+		dataType: string
+		lineageTag: c4ce42aa-7625-47c7-8eb6-39e70514b15c
+		summarizeBy: none
+		sourceColumn: ANO ESCOLAR
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'TOTAL AULAS A SEREM DADAS'
+		dataType: int64
+		formatString: 0
+		lineageTag: cf081e34-8f9c-4cf1-b926-7aa82b215cf7
+		summarizeBy: sum
+		sourceColumn: TOTAL AULAS A SEREM DADAS
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AULAS AGENDADAS'
+		dataType: int64
+		formatString: 0
+		lineageTag: a6521db5-181a-4cd5-9bc0-2650fe363d2d
+		summarizeBy: sum
+		sourceColumn: AULAS AGENDADAS
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AULAS DADAS'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6dcc7310-4ed6-4ee3-a175-03e212a0a948
+		summarizeBy: sum
+		sourceColumn: AULAS DADAS
+
+		annotation SummarizationSetBy = Automatic
+
+	column '% AULAS AGENDADAS'
+		dataType: double
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: e958f7b6-9924-4ca1-a445-638426aae6d3
+		summarizeBy: none
+		sourceColumn: % AULAS AGENDADAS
+
+		annotation SummarizationSetBy = User
+
+	column '% AULAS DADAS'
+		dataType: double
+		lineageTag: d6712aa1-3bca-4acc-8be5-2331d2315dd4
+		summarizeBy: sum
+		sourceColumn: % AULAS DADAS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Network_ID
+		dataType: string
+		lineageTag: c6a8df6d-808e-4be6-9e60-bbc4d26f8df3
+		summarizeBy: none
+		sourceColumn: Network_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mesclado
+		dataType: string
+		lineageTag: c82e9b33-2285-4c60-a7eb-97b3fd488bae
+		summarizeBy: none
+		sourceColumn: Mesclado
+
+		annotation SummarizationSetBy = Automatic
+
+	partition AgendaMenteInovadora = m
+		mode: import
+		queryGroup: API
+		source =
+				let
+				    Fonte = Csv.Document(Web.Contents("https://metabase.mindzup.com.br/api/public/card/8751b942-42cd-4ebe-87db-65f378ff76b9/query/csv"),[Delimiter=","]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Cabeçalhos Promovidos",".",",",Replacer.ReplaceText,{"% AULAS AGENDADAS", "% AULAS DADAS"}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Valor Substituído",{{"TOTAL AULAS A SEREM DADAS", Int64.Type}, {"AULAS AGENDADAS", Int64.Type}, {"AULAS DADAS", Int64.Type}, {"% AULAS AGENDADAS", Percentage.Type}, {"% AULAS DADAS", Percentage.Type}}),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(#"Tipo Alterado", "Mesclado", each Text.Combine({"N", [ID DA REDE]}), type text),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Coluna Mesclada Inserida",{{"Mesclado", "Network_ID"}}),
+				    #"Coluna Mesclada Inserida1" = Table.AddColumn(#"Colunas Renomeadas", "Mesclado", each Text.Combine({"S", [ID DA UNIDADE]}), type text)
+				in
+				    #"Coluna Mesclada Inserida1"
+
+	annotation PBI_ResultType = Table
+

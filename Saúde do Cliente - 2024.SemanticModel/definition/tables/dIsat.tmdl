@@ -1,0 +1,141 @@
+table dIsat
+	lineageTag: be9bacee-43ec-45e9-b114-7a0ccd292bff
+
+	column 'AditionalInformation.ClientUniqueIdentifier'
+		dataType: string
+		lineageTag: d83f9899-7397-46b0-946a-29a6a214f286
+		summarizeBy: none
+		sourceColumn: AditionalInformation.ClientUniqueIdentifier
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AditionalInformation.FullName'
+		dataType: string
+		lineageTag: 8d3837e1-dda9-4738-a25f-96cc1ef9aa3b
+		summarizeBy: none
+		sourceColumn: AditionalInformation.FullName
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AditionalInformation.Login'
+		dataType: string
+		lineageTag: e097f107-f57a-48ca-95c2-b47b882476b7
+		summarizeBy: none
+		sourceColumn: AditionalInformation.Login
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AditionalInformation.CPF'
+		dataType: string
+		lineageTag: 809d891b-8bfe-461f-970b-f6ad3205113f
+		summarizeBy: none
+		sourceColumn: AditionalInformation.CPF
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AditionalInformation.CreatedDate'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: eb9e366e-4113-4691-9611-7dcbf3ac11e1
+		summarizeBy: none
+		sourceColumn: AditionalInformation.CreatedDate
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'AditionalInformation.NeoludeID'
+		dataType: int64
+		formatString: 0
+		lineageTag: c1f2beba-3e03-4981-8110-8477e0b7b8ee
+		summarizeBy: count
+		sourceColumn: AditionalInformation.NeoludeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AditionalInformation.Name'
+		dataType: string
+		lineageTag: b899d39b-954a-4bf2-83b8-d7279cfb09c0
+		summarizeBy: none
+		sourceColumn: AditionalInformation.Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AditionalInformation.LastName'
+		dataType: string
+		lineageTag: 7d5d466a-73c3-446a-8581-b12274eab9e1
+		summarizeBy: none
+		sourceColumn: AditionalInformation.LastName
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AditionalInformation.Email'
+		dataType: string
+		lineageTag: 0c4de3c2-96ac-437a-9c2c-25ed726d663f
+		summarizeBy: none
+		sourceColumn: AditionalInformation.Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AditionalInformation.RG'
+		dataType: int64
+		formatString: 0
+		lineageTag: 820f025e-2ef5-4074-b970-e5aaf7e02071
+		summarizeBy: sum
+		sourceColumn: AditionalInformation.RG
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AditionalInformation.BirthDate'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2ffcc023-51f7-4d80-9c76-44f5c53275df
+		summarizeBy: none
+		sourceColumn: AditionalInformation.BirthDate
+
+		variation Variation
+			isDefault
+			relationship: 65d3d8b8-730d-44da-adfd-a969e4cf5cd2
+			defaultHierarchy: LocalDateTable_1a38f17e-6272-43b5-bcff-3983e28ab1f3.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'dRelatoriodeUsuarios.Status'
+		dataType: string
+		lineageTag: 8a9fa877-2ec4-4d61-a934-7706939b976a
+		summarizeBy: none
+		sourceColumn: dRelatoriodeUsuarios.Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Validação = if(dIsat[AditionalInformation.ClientUniqueIdentifier]<>dIsat[AditionalInformation.Login],"erro","ok")
+		lineageTag: 06c17b62-daf2-4d36-ac15-fd5502b644c7
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dIsat-cd554421-f346-4cda-ae19-e63bc6e4acff = m
+		mode: import
+		queryGroup: API
+		source =
+				let
+				    Fonte = Json.Document(Web.Contents("https://professor.mindlab.net/api/integration/UserIntegration/GetAll?clientIdentifier=mindlab&ticks=1639623949&token=9bdrjuNPbtPbgCw5IOjnB68FArPFD8ZecWarTm0eUVQ%3D")),
+				    #"Convertido para Tabela" = Table.FromRecords({Fonte}),
+				    #"AditionalInformation Expandido" = Table.ExpandListColumn(#"Convertido para Tabela", "AditionalInformation"),
+				    #"AditionalInformation Expandido1" = Table.ExpandRecordColumn(#"AditionalInformation Expandido", "AditionalInformation", {"ClientUniqueIdentifier", "NeoludeID", "Name", "LastName", "FullName", "Login", "Email", "CPF", "RG", "BirthDate", "CreatedDate"}, {"AditionalInformation.ClientUniqueIdentifier", "AditionalInformation.NeoludeID", "AditionalInformation.Name", "AditionalInformation.LastName", "AditionalInformation.FullName", "AditionalInformation.Login", "AditionalInformation.Email", "AditionalInformation.CPF", "AditionalInformation.RG", "AditionalInformation.BirthDate", "AditionalInformation.CreatedDate"}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"AditionalInformation Expandido1",{{"ResultCode", Int64.Type}, {"Message", type text}, {"AditionalInformation.ClientUniqueIdentifier", type text}, {"AditionalInformation.NeoludeID", Int64.Type}, {"AditionalInformation.Name", type text}, {"AditionalInformation.LastName", type text}, {"AditionalInformation.FullName", type text}, {"AditionalInformation.Login", type text}, {"AditionalInformation.Email", type text}, {"AditionalInformation.CPF", type text}, {"AditionalInformation.RG", Int64.Type}, {"AditionalInformation.BirthDate", type datetime}, {"AditionalInformation.CreatedDate", type datetime}}),
+				    #"Tipo Alterado2" = Table.TransformColumnTypes(#"Tipo Alterado",{{"AditionalInformation.CreatedDate", type date}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado2",{"ResultCode", "Message"}),
+				    #"Colocar Cada Palavra Em Maiúscula" = Table.TransformColumns(#"Colunas Removidas",{{"AditionalInformation.FullName", Text.Proper, type text}}),
+				    #"Consultas Mescladas" = Table.NestedJoin(#"Colocar Cada Palavra Em Maiúscula", {"AditionalInformation.Login"}, dRelatoriodeUsuarios, {"Login"}, "dRelatoriodeUsuarios", JoinKind.LeftOuter),
+				    #"dRelatoriodeUsuarios Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas", "dRelatoriodeUsuarios", {"Status do cadastro"}, {"dRelatoriodeUsuarios.Status"}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"dRelatoriodeUsuarios Expandido", each ([dRelatoriodeUsuarios.Status] = "Ativo"))
+				in
+				    #"Linhas Filtradas"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

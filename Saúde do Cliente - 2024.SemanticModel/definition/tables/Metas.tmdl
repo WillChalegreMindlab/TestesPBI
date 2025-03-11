@@ -1,0 +1,141 @@
+table Metas
+	lineageTag: 174c1fe5-fe1b-4052-b2a6-63f86f0fd440
+
+	measure 'Meta MHS' = ```
+			
+			    CALCULATE(MAX(Metas[Meta]),Metas[Indicador]="MHS")
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 4b6dc73f-923e-454e-9056-8bf3c4886cb9
+
+	measure 'Diferença Meta MHS' = ```
+			
+			        [MHS Público]-[Meta MHS]
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 478ae06d-18f3-47e3-86b0-35db41b8d7dc
+
+	measure 'Meta Reputação' = ```
+			
+			    CALCULATE(MAX(Metas[Meta]),Metas[Indicador]="Indicador de reputação online")
+			```
+		formatString: 0
+		lineageTag: 2998f103-2000-4693-b28a-8f140d99a1b0
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Diferença Meta Reputação' = ```
+			
+			        [Indicador de reputação online]-[Meta Reputação]
+			```
+		formatString: 0
+		lineageTag: ce90a28c-638e-4c89-b0f1-f0e954d606ae
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Meta Matérias' = ```
+			
+			    CALCULATE(MAX(Metas[Meta]),Metas[Indicador]="Média de matérias positivas")
+			```
+		formatString: 0
+		lineageTag: f12d8880-3337-4503-8276-0e33754b59bc
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Meta Participação' = ```
+			
+			    CALCULATE(MAX(Metas[Meta]),Metas[Indicador]="Presença Média Tutorias")
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: c501cb42-ca2f-4f11-81fd-2178870d1e72
+
+	measure 'Diferença Participação' = ```
+			
+			        [Percentual médio de presença]-[Meta Participação]
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 3fe3a53b-601d-4e9d-bab0-a013a1e53ec1
+
+	measure 'Diferença Matérias' = ```
+			
+			        [Indicador Matérias]-[Meta Matérias]
+			```
+		lineageTag: 0e839fd8-2e44-4ba0-8121-049c5f9bc271
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Percentual médio de presença' = ```
+			
+			VAR Lista_Instituicoes = SUMMARIZECOLUMNS(fBUNivel0[Instituição],FILTER(fBUNivel0,fBUNivel0[Área]="Público"))
+			
+			VAR Tabela_Medias = 
+			    ADDCOLUMNS(
+			        Lista_Instituicoes,
+			        "Participação",--[Média Participação Tutorias]
+			        IF(
+			            ISNUMBER([Média Participação Tutorias]),
+			            VALUE([Média Participação Tutorias]),
+			            BLANK()
+			        )
+			    )
+			
+			VAR Media_Final = AVERAGEX(Tabela_Medias,[Participação])        
+			
+			RETURN Media_Final
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 1cc724fd-da70-44f7-bd44-90d27963c334
+
+	measure 'Meta NPS Gestor' = 75
+		formatString: 0
+		lineageTag: b8cd6d25-a18e-493d-a462-43283390fe4e
+
+	measure 'Diferença Meta NPS' = ```
+			
+			        [NPS Gestor]-[Meta NPS Gestor]
+			```
+		lineageTag: ddd2a463-c09c-41b7-a633-6ad6323dbc4c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Meta Satisfação Formação' = 9
+		formatString: 0.00
+		lineageTag: a77b4042-6a18-4d5a-aed2-465381a54a75
+
+	measure 'Diferença Meta Satisfação' = ```
+			
+			        [Média Avaliação Tutoria prof]-[Meta Satisfação Formação]
+			```
+		lineageTag: 498a31f3-feef-49db-a678-053b6cb3102f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Indicador
+		dataType: string
+		lineageTag: a9f608c9-df73-4a36-ba5d-2dbcd6e77e46
+		summarizeBy: none
+		sourceColumn: Indicador
+
+		annotation SummarizationSetBy = Automatic
+
+	column Meta
+		dataType: double
+		lineageTag: 926011e7-e41c-47a3-9dc5-e96fa075d0d0
+		summarizeBy: sum
+		sourceColumn: Meta
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Metas = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45W8vUIVtJRMjFQVYrViVYKKEotTs07vDxRwffwypTMRIWQ0pL8oszEYqAaU6gaqExKqkJuYsnhlSBZhYL84sySzDIgC6jQHKzMMy8lMzkxJb8IpLIotaC0JPHw8sOL8xXy83Iy81KB6gyNlGJjAQ==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Indicador = _t, Meta = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Indicador", type text}, {"Meta", type number}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+

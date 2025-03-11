@@ -1,0 +1,223 @@
+table dAvalieasAulasPVML
+	lineageTag: cb32ef3c-261e-4a5f-8d52-7d297291be54
+
+	column Nome
+		dataType: string
+		lineageTag: 2074c7c8-88c5-4156-8e39-92e4e1d0cb92
+		summarizeBy: none
+		sourceColumn: Nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column CPF
+		dataType: string
+		lineageTag: 320f9350-4398-4152-90f6-dd36484e5aef
+		summarizeBy: none
+		sourceColumn: CPF
+
+		annotation SummarizationSetBy = Automatic
+
+	column Login
+		dataType: string
+		lineageTag: 8c48887d-8a54-4333-86f7-1bef118ca63e
+		summarizeBy: none
+		sourceColumn: Login
+
+		annotation SummarizationSetBy = Automatic
+
+	column E-mail
+		dataType: string
+		lineageTag: a470f446-2901-44bb-9845-134ea3a4b4fc
+		summarizeBy: none
+		sourceColumn: E-mail
+
+		annotation SummarizationSetBy = Automatic
+
+	column Celular
+		dataType: string
+		lineageTag: ec9efdaf-ce6c-467c-8d80-fe54450451d5
+		summarizeBy: none
+		sourceColumn: Celular
+
+		annotation SummarizationSetBy = Automatic
+
+	column Matrícula
+		dataType: string
+		lineageTag: f524bfa1-735b-403d-981e-288470606fb0
+		summarizeBy: none
+		sourceColumn: Matrícula
+
+		annotation SummarizationSetBy = Automatic
+
+	column Lição
+		dataType: string
+		lineageTag: b313acd5-957d-4be8-a2bd-40d82914fa9c
+		summarizeBy: none
+		sourceColumn: Lição
+
+		annotation SummarizationSetBy = Automatic
+
+	column Turma
+		dataType: string
+		lineageTag: 1beda662-a3bb-4371-93a0-49449108cca1
+		summarizeBy: none
+		sourceColumn: Turma
+
+		annotation SummarizationSetBy = Automatic
+
+	column Campanha
+		dataType: string
+		lineageTag: 39a4f998-102d-4df1-9cb1-37aa5099c957
+		summarizeBy: none
+		sourceColumn: Campanha
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Agrupamento de pergunta'
+		dataType: string
+		lineageTag: 11d51a97-f148-4a4f-81b8-f1249431bed0
+		summarizeBy: none
+		sourceColumn: Agrupamento de pergunta
+
+		annotation SummarizationSetBy = Automatic
+
+	column Pergunta
+		dataType: string
+		lineageTag: 4d04a796-e3c3-4a39-acb3-7058fbd8b1f5
+		summarizeBy: none
+		sourceColumn: Pergunta
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Resposta - Data'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ee793447-3935-44c9-b961-4172ff30cdd6
+		summarizeBy: none
+		sourceColumn: Resposta - Data
+
+		variation Variation
+			isDefault
+			relationship: c336c95c-e95a-4f8e-8ad8-e8f72ddc010e
+			defaultHierarchy: LocalDateTable_d6d6323f-301e-4b35-99b5-9b787319589c.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Justificativa
+		dataType: string
+		lineageTag: 376ad7a7-4e99-4c14-ba17-abb5787b1fe9
+		summarizeBy: none
+		sourceColumn: Justificativa
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Data de resposta'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6e28d082-8765-4ed5-89a5-8398a2c4df65
+		summarizeBy: none
+		sourceColumn: Data de resposta
+
+		variation Variation
+			isDefault
+			relationship: cba49290-bc6e-4a1c-82ad-ab4db475a400
+			defaultHierarchy: LocalDateTable_aa5ccf21-6eed-4dff-a0c0-9e83e7935981.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Nível 0'
+		dataType: string
+		lineageTag: f3869f8c-9494-4ab9-a608-ab25e7e8c540
+		summarizeBy: none
+		sourceColumn: Nível 0
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nível 1'
+		dataType: string
+		lineageTag: b2c60f16-d6e1-4a46-8bc6-12728f8c8cf5
+		summarizeBy: none
+		sourceColumn: Nível 1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Resposta - Nota'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2dba4c6e-412e-483d-b1ef-15e8fbfaa4e2
+		summarizeBy: sum
+		sourceColumn: Resposta - Nota
+
+		annotation SummarizationSetBy = Automatic
+
+	column Personalizar
+		dataType: string
+		lineageTag: 40d4e562-df3d-4888-8d84-46c76f7ee60b
+		summarizeBy: none
+		sourceColumn: Personalizar
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nível 2'
+		dataType: string
+		lineageTag: abb18240-ea75-4953-a880-b2e9da4f294f
+		summarizeBy: none
+		sourceColumn: Nível 2
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nível 3'
+		dataType: string
+		lineageTag: 36fb76b8-9824-4bfc-9666-d2fc947de7f0
+		summarizeBy: none
+		sourceColumn: Nível 3
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nível 4'
+		dataType: string
+		lineageTag: c953a2e8-3fab-40e5-8886-d21c906fa8bc
+		summarizeBy: none
+		sourceColumn: Nível 4
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dAvalieasAulasPVML-1b784615-132c-4c0b-9c16-c2bb66ede1d9 = m
+		mode: import
+		queryGroup: Relatórios
+		source =
+				let
+				    timestamp_now = DateTime.From(DateTimeZone.ToText(DateTimeZone.UtcNow())) - #duration(0, 3, 0, 0),
+				    #"Data Extraída" = Date.From(timestamp_now),
+				    date_text = Date.ToText(#"Data Extraída", "yyyy-MM-dd"),
+				    string = date_text & KEY,
+				    senha_codificada = codificacao(string),
+				    Fonte = Json.Document(Web.Contents(LINK_FUNCAO, [Query=[senha=senha_codificada]])),
+				    link = Fonte[link_avalie_aulas_PVML],
+				    path = Text.Split(link, "/"){5},
+				    arquivo = Csv.Document(Web.Contents(CAMINHO_BUCKET & "/avalie_aulas_PVML", [RelativePath=path])),
+				    arquivo_cabecalho = Table.PromoteHeaders(arquivo, [PromoteAllScalars=true]),
+				    #"Valor Substituído" = Table.ReplaceValue(arquivo_cabecalho,"Formato: dd/mm/aaaa","",Replacer.ReplaceText,{"Pergunta"}),
+				    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído","Exemplo: 02/03/2022","",Replacer.ReplaceText,{"Pergunta"}),
+				    #"Texto Aparado" = Table.TransformColumns(#"Valor Substituído1",{{"Pergunta", Text.Trim, type text}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Texto Aparado",{""}),
+				    #"Linhas Filtradas2" = Table.SelectRows(#"Colunas Removidas", each ([Pergunta] = "Em uma escala de 0 a 10, como você avalia os vídeos das aulas que você assistiu?" or [Pergunta] = "Qual a data que você finalizou a aplicação dessas aulas com seus alunos?")),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Linhas Filtradas2", "Resposta", "Resposta - Copiar"),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Coluna Duplicada",{{"Resposta", "Resposta - Data"}, {"Resposta - Copiar", "Resposta - Nota"}}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Colunas Renomeadas1",{{"Resposta - Nota", Int64.Type}}),
+				    #"Erros Substituídos" = Table.ReplaceErrorValues(#"Tipo Alterado", {{"Resposta - Nota", 1000}}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Erros Substituídos",{{"Resposta - Data", type date}}),
+				    #"Erros Substituídos1" = Table.ReplaceErrorValues(#"Tipo Alterado1", {{"Resposta - Data", #date(1899, 1, 1)}}),
+				    #"Tipo Alterado2" = Table.TransformColumnTypes(#"Erros Substituídos1",{{"Data de resposta", type date}}),
+				    #"Linhas Filtradas1" = Table.SelectRows(#"Tipo Alterado2", each Text.Contains([Turma], "2024")),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Linhas Filtradas1", each true),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Linhas Filtradas", "Personalizar", each "PVML")
+				in
+				    #"Personalização Adicionada"
+
+	annotation PBI_ResultType = Table
+

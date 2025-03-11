@@ -1,0 +1,212 @@
+table dTutorias
+	lineageTag: 5a180612-5217-49f5-a26e-8f11f5307ce1
+
+	column Cliente
+		dataType: string
+		lineageTag: bfad96b5-0767-4338-803a-2317c3aa8917
+		summarizeBy: none
+		sourceColumn: Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Última tutoria finalizada'
+		dataType: string
+		lineageTag: 5e996458-fa75-4ed7-87fc-8c38f6a5abb4
+		summarizeBy: none
+		sourceColumn: Última tutoria finalizada
+
+		annotation SummarizationSetBy = Automatic
+
+	column '1ª TUTORIA_1'
+		dataType: string
+		lineageTag: ebca4a46-da06-4d56-8cec-bca7f7b523d4
+		summarizeBy: none
+		sourceColumn: 1ª TUTORIA_1
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column1
+		dataType: string
+		lineageTag: 123b2d24-d792-4a03-8303-71bf3454b6c0
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	column _20
+		dataType: string
+		lineageTag: 8f10b48f-af81-459e-a862-c8cf8a4f9a3c
+		summarizeBy: none
+		sourceColumn: _20
+
+		annotation SummarizationSetBy = Automatic
+
+	column _21
+		dataType: string
+		lineageTag: 5e7db4ec-eff4-49a4-a448-72f27dcbc9ea
+		summarizeBy: none
+		sourceColumn: _21
+
+		annotation SummarizationSetBy = Automatic
+
+	column _22
+		dataType: string
+		lineageTag: 47cdc300-feb3-4eed-9d98-64135d565f6a
+		summarizeBy: none
+		sourceColumn: _22
+
+		annotation SummarizationSetBy = Automatic
+
+	column _23
+		dataType: string
+		lineageTag: de60bde0-8269-4018-91e6-3cdcbb6f7fb0
+		summarizeBy: none
+		sourceColumn: _23
+
+		annotation SummarizationSetBy = Automatic
+
+	column _24
+		dataType: string
+		lineageTag: 26bbdcd9-0e27-4507-91a7-d8f40c190449
+		summarizeBy: none
+		sourceColumn: _24
+
+		annotation SummarizationSetBy = Automatic
+
+	column _25
+		dataType: string
+		lineageTag: 09491946-5bc7-439c-8eca-fe9c395084da
+		summarizeBy: none
+		sourceColumn: _25
+
+		annotation SummarizationSetBy = Automatic
+
+	column _26
+		dataType: string
+		lineageTag: 00dcf02c-e883-40e9-beea-696e5a3a4bfb
+		summarizeBy: none
+		sourceColumn: _26
+
+		annotation SummarizationSetBy = Automatic
+
+	column _27
+		dataType: string
+		lineageTag: 1b610ec3-3e0a-4afd-995f-606beb2c06a4
+		summarizeBy: none
+		sourceColumn: _27
+
+		annotation SummarizationSetBy = Automatic
+
+	column _28
+		dataType: string
+		lineageTag: da39390e-3710-41a1-8caf-887030fcbbb8
+		summarizeBy: none
+		sourceColumn: _28
+
+		annotation SummarizationSetBy = Automatic
+
+	column _29
+		dataType: string
+		lineageTag: 48f374b7-be09-4cd4-8378-b231862caf8a
+		summarizeBy: none
+		sourceColumn: _29
+
+		annotation SummarizationSetBy = Automatic
+
+	column '1ª TUTORIA_10'
+		dataType: string
+		lineageTag: 3ede811a-9082-4e0c-8d45-905a80dc43b9
+		summarizeBy: none
+		sourceColumn: 1ª TUTORIA_10
+
+		annotation SummarizationSetBy = Automatic
+
+	column '2ª TUTORIA_11'
+		dataType: string
+		lineageTag: 2beaf999-843e-4ce6-b687-463b1828a74e
+		summarizeBy: none
+		sourceColumn: 2ª TUTORIA_11
+
+		annotation SummarizationSetBy = Automatic
+
+	column '3ª TUTORIA_12'
+		dataType: string
+		lineageTag: 06dc8d83-08a1-4ccc-a920-c08de75b19bf
+		summarizeBy: none
+		sourceColumn: 3ª TUTORIA_12
+
+		annotation SummarizationSetBy = Automatic
+
+	column '4ª TUTORIA_13'
+		dataType: string
+		lineageTag: 6a602c30-596d-4638-8632-7ae8d2524404
+		summarizeBy: none
+		sourceColumn: 4ª TUTORIA_13
+
+		annotation SummarizationSetBy = Automatic
+
+	column '5ª TUTORIA_14'
+		dataType: string
+		lineageTag: 33531642-71fc-4c8e-b9c5-0c6ff57953bb
+		summarizeBy: none
+		sourceColumn: 5ª TUTORIA_14
+
+		annotation SummarizationSetBy = Automatic
+
+	column '6ª TUTORIA_15'
+		dataType: string
+		lineageTag: ce1c8f9d-4368-4870-bf39-f2306fc02490
+		summarizeBy: none
+		sourceColumn: 6ª TUTORIA_15
+
+		annotation SummarizationSetBy = Automatic
+
+	column '7ª TUTORIA_16'
+		dataType: string
+		lineageTag: 06cf95ac-0def-4e44-8786-c98f4441414f
+		summarizeBy: none
+		sourceColumn: 7ª TUTORIA_16
+
+		annotation SummarizationSetBy = Automatic
+
+	column '8ª TUTORIA_17'
+		dataType: string
+		lineageTag: e65262ee-430b-4c66-bed0-f2e81b70a031
+		summarizeBy: none
+		sourceColumn: 8ª TUTORIA_17
+
+		annotation SummarizationSetBy = Automatic
+
+	column '9ª TUTORIA_18'
+		dataType: string
+		lineageTag: c35363e4-1fee-4327-934c-eed9a07d6fec
+		summarizeBy: none
+		sourceColumn: 9ª TUTORIA_18
+
+		annotation SummarizationSetBy = Automatic
+
+	column _19
+		dataType: string
+		lineageTag: 2e8307d4-fad9-4e5d-a2f9-5da1ddba4282
+		summarizeBy: none
+		sourceColumn: _19
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dTutorias = m
+		mode: import
+		queryGroup: 'Consultas sheets'
+		source =
+				let
+				    Fonte = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/1aOUbXyxFR-Q3ft7sEd15LLCL7z3T8vnvEujxvk-TBXo"),
+				    Público_Table = Fonte{[name="Formações",ItemKind="Table"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Público_Table, [PromoteAllScalars=true]),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Cabeçalhos Promovidos",{"Formação Inicial", "1ª TUTORIA", "2ª TUTORIA", "3ª TUTORIA", "4ª TUTORIA", "5ª TUTORIA", "6ª TUTORIA", "7ª TUTORIA", "8ª TUTORIA", "9ª TUTORIA", "2ª TUTORIA_2", "3ª TUTORIA_3", "4ª TUTORIA_4", "5ª TUTORIA_5", "6ª TUTORIA_6", "7ª TUTORIA_7", "8ª TUTORIA_8", "9ª TUTORIA_9"}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Colunas Removidas", each ([Cliente] <> ""))
+				in
+				    #"Linhas Filtradas"
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

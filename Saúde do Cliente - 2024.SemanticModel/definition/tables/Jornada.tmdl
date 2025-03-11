@@ -1,0 +1,186 @@
+table Jornada
+	lineageTag: 15d31d84-677b-45b4-aeba-1da9562a5061
+
+	column 'Número da Etapa'
+		dataType: int64
+		formatString: 0
+		lineageTag: b077618c-40de-49ed-b292-bec354dd6ac4
+		summarizeBy: none
+		sourceColumn: Número da Etapa
+
+		annotation SummarizationSetBy = User
+
+	column 'Nome da Etapa'
+		dataType: string
+		lineageTag: fa739884-2666-4c79-ae16-7530cdda570f
+		summarizeBy: none
+		sourceColumn: Nome da Etapa
+		sortByColumn: 'Número da Etapa'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Número do Passo'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7a0822fb-3fc9-4842-a85c-e5b64589e581
+		summarizeBy: none
+		sourceColumn: Número do Passo
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = User
+
+	column 'Nome do Passo'
+		dataType: string
+		lineageTag: 2667b06e-5f74-4a0f-9d26-99826ae88f8b
+		summarizeBy: none
+		sourceColumn: Nome do Passo
+		sortByColumn: Ordem
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordem
+		dataType: int64
+		formatString: 0
+		lineageTag: a794bc03-9392-404f-ab8e-bf49cbe2c429
+		summarizeBy: none
+		sourceColumn: Ordem
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chave
+		dataType: string
+		lineageTag: 2db8b992-9154-4d5b-ad25-c9b7d26a339f
+		summarizeBy: none
+		sourceColumn: Chave
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome completo Etapa'
+		dataType: string
+		lineageTag: d1ceefce-cfb3-47fb-91c4-7c341efd460a
+		summarizeBy: none
+		sourceColumn: Nome completo Etapa
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome completo do Passo'
+		dataType: string
+		lineageTag: 2173e0be-efde-4979-b441-07d393f32857
+		summarizeBy: none
+		sourceColumn: Nome completo do Passo
+		sortByColumn: Ordem
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Descritivo do Passo'
+		dataType: string
+		lineageTag: 88b09f61-93b6-41e2-85da-64fecd97a0fa
+		summarizeBy: none
+		sourceColumn: Descritivo do Passo
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Objetivo do passo'
+		dataType: string
+		lineageTag: bf84f1a0-8f3c-40f7-8599-045cc3b14ca8
+		summarizeBy: none
+		sourceColumn: Objetivo do passo
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ação Gerada'
+		dataType: string
+		lineageTag: 065da474-7e2d-436b-ac63-d64b8685b75f
+		summarizeBy: none
+		sourceColumn: Ação Gerada
+
+		annotation SummarizationSetBy = Automatic
+
+	column Responsável
+		dataType: string
+		lineageTag: 9aaa6ea6-5896-4a96-bcda-34d72e9d3d55
+		summarizeBy: none
+		sourceColumn: Responsável
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sugestão de indicador de sucesso/dado'
+		dataType: string
+		lineageTag: eefd01ae-340a-414e-b05b-24cfc6edc088
+		summarizeBy: none
+		sourceColumn: Sugestão de indicador de sucesso/dado
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Palavra da Etapa'
+		dataType: string
+		lineageTag: 323a29c1-166e-4d58-a887-0a14d0313ff6
+		summarizeBy: none
+		sourceColumn: Palavra da Etapa
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Palavra do Passo'
+		dataType: string
+		lineageTag: ade68273-aa55-4c5e-a794-0b6a5830ad06
+		summarizeBy: none
+		sourceColumn: Palavra do Passo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Local
+		dataType: string
+		lineageTag: c5c1f42b-f122-4ed0-9138-b0ff02457e79
+		summarizeBy: none
+		sourceColumn: Local
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'à resolver'
+		dataType: string
+		lineageTag: 9dd21e6b-a7ad-4199-a463-56b53ce3fffd
+		summarizeBy: none
+		sourceColumn: à resolver
+
+		annotation SummarizationSetBy = Automatic
+
+	column Observação
+		dataType: string
+		lineageTag: 3c1743f7-4938-443f-9dce-99eb3a547081
+		summarizeBy: none
+		sourceColumn: Observação
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sugestão
+		dataType: string
+		lineageTag: a5631492-0f0c-4d65-9077-e276e775b1c6
+		summarizeBy: none
+		sourceColumn: Sugestão
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Jornada = m
+		mode: import
+		source =
+				let
+				    Fonte = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/10d6EInQ2CRwUEX5azb6mcZbRb7FB1773Z_I8DQJKebw"),
+				    #"Detalhamento da Jornada_Table" = Fonte{[name="Detalhamento da Jornada",ItemKind="Table"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(#"Detalhamento da Jornada_Table", [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Chave", type text}, {"Ordem", Int64.Type}, {"Número da Etapa", Int64.Type}, {"Nome da Etapa", type text}, {"Nome completo Etapa", type text}, {"Número do Passo", Int64.Type}, {"Nome do Passo", type text}, {"Nome completo do Passo", type text}, {"Descritivo do Passo", type text}, {"Objetivo do passo", type text}, {"Ação Gerada", type text}, {"Responsável", type text}, {"Sugestão de indicador de sucesso/dado", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,53 @@
+table 'Jornada - (Informações Clientes)'
+	lineageTag: cc71c613-1bf2-48dc-aead-eac30f82b4fa
+
+	column Rede
+		dataType: string
+		lineageTag: 29a11cae-5169-4423-92f8-b9f7a0509f91
+		summarizeBy: none
+		sourceColumn: Rede
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chave
+		dataType: string
+		lineageTag: 8a3d115e-b607-4122-bd00-4fa8046955c8
+		summarizeBy: none
+		sourceColumn: Chave
+
+		annotation SummarizationSetBy = Automatic
+
+	column Valor
+		dataType: int64
+		formatString: 0%;-0%;0%
+		lineageTag: 737b5831-c8a0-4006-b899-f3b175315fd0
+		summarizeBy: sum
+		sourceColumn: Valor
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Jornada - (Informações Clientes)' = m
+		mode: import
+		queryGroup: 'Consultas sheets'
+		source =
+				let
+				    Fonte = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/10d6EInQ2CRwUEX5azb6mcZbRb7FB1773Z_I8DQJKebw"),
+				    Query_Table = Fonte{[name="Query",ItemKind="Table"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Query_Table, [PromoteAllScalars=true]),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Cabeçalhos Promovidos",{"Chave"}),
+				    #"Colunas Não Dinâmicas" = Table.UnpivotOtherColumns(#"Colunas Removidas", {"Rede"}, "Atributo", "Valor"),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Colunas Não Dinâmicas",{{"Atributo", "Chave"}}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Colunas Renomeadas",{{"Valor", type text}}),
+				    #"Valor Substituído2" = Table.ReplaceValue(#"Tipo Alterado1","","false",Replacer.ReplaceValue,{"Valor"}),
+				    #"Valor Substituído3" = Table.ReplaceValue(#"Valor Substituído2","Feito","true",Replacer.ReplaceText,{"Valor"}),
+				    #"Valor Substituído4" = Table.ReplaceValue(#"Valor Substituído3","Não se Aplica","true",Replacer.ReplaceText,{"Valor"}),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Valor Substituído4","false","0",Replacer.ReplaceText,{"Valor"}),
+				    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído","true","1",Replacer.ReplaceText,{"Valor"}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Valor Substituído1",{{"Valor", Int64.Type}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

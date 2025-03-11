@@ -1,0 +1,32 @@
+table 'Funil Agenda'
+	lineageTag: 5a1c51a9-4e94-43d1-949d-8f2b8fcefed4
+
+	column Etapa
+		lineageTag: 07038f63-1da8-4cb8-9d55-9f4b60351d2d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Etapa]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Valor
+		formatString: 0
+		lineageTag: b84b69b0-81f6-4a75-acd2-d89ea2dbdef2
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Valor]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Funil Agenda' = calculated
+		mode: import
+		source =
+				UNION(
+				                ROW("Etapa","Quantidade de Professores","Valor",[ID Cadastrados Prof Pub]),
+				                ROW("Etapa","Professores data aplicação","Valor",[Contagem Professores Agenda]),
+				                ROW("Etapa","Professores aulas realizadas","Valor",[Contagem Professores Aula Dada]),
+				                ROW("Etapa","Professores cronograma","Valor",20)
+				        )
+
+	annotation PBI_Id = 511c9c3585004c8db9faf5e14eb70c01
+
