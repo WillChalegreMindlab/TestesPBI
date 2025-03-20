@@ -1,0 +1,52 @@
+table dCupons
+	lineageTag: 8d567fef-9314-4a70-8399-98e948422604
+
+	column Área
+		dataType: string
+		lineageTag: 82e1ea11-3c90-4952-a513-581d2ef66a54
+		summarizeBy: none
+		sourceColumn: Área
+
+		annotation SummarizationSetBy = Automatic
+
+	column Instituição
+		dataType: string
+		lineageTag: 73dd9a65-672a-4144-a6bc-7a410d34d236
+		summarizeBy: none
+		sourceColumn: Instituição
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cupom
+		dataType: string
+		lineageTag: 55a97dd1-c2dc-4f01-84bc-96bdfca2c697
+		summarizeBy: none
+		sourceColumn: Cupom
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClientUniqueIdentifier
+		dataType: string
+		lineageTag: 98700219-0893-401e-8ff6-8f2ada439c04
+		summarizeBy: none
+		sourceColumn: ClientUniqueIdentifier
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dCupons-f85c929f-ec05-4305-96f0-f82c35be7beb = m
+		mode: import
+		queryGroup: 'Consultas sheets'
+		source =
+				let
+				    Fonte = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/16E32t-YvoFjvkkiW2fxw3leh6z-98SiviXJNqoqGHYU/edit#gid=460851864"),
+				    #"Cupom - 2023_Table" = Fonte{[name="Cupom - 2024",ItemKind="Table"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(#"Cupom - 2023_Table", [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Área", type text}, {"Cupom", type text}, {"Instituição", type text}}),
+				    #"Texto em Maiúscula" = Table.TransformColumns(#"Tipo Alterado",{{"Instituição", Text.Upper, type text}})
+				in
+				    #"Texto em Maiúscula"
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

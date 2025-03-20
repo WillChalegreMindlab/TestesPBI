@@ -1,0 +1,228 @@
+table dNotícias
+	excludeFromModelRefresh
+	lineageTag: 54a89283-eb46-4624-b802-1aa0cf898d9e
+
+	column Cliente
+		dataType: string
+		lineageTag: b13ef2d4-c01a-47d7-a255-31a943f3de6b
+		summarizeBy: none
+		sourceColumn: Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mês
+		dataType: string
+		lineageTag: 5af3bb6e-5fcb-4c5a-9d59-1d5436f228e8
+		summarizeBy: none
+		sourceColumn: Mês
+
+		annotation SummarizationSetBy = Automatic
+
+	column Marca
+		dataType: string
+		lineageTag: a14075ab-64fe-4128-91ab-7c11f4221c56
+		summarizeBy: none
+		sourceColumn: Marca
+
+		annotation SummarizationSetBy = Automatic
+
+	column PUBLICACAO
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 580fc9cc-43c8-485c-b125-bea6ce986df5
+		summarizeBy: none
+		sourceColumn: PUBLICACAO
+
+		variation Variation
+			isDefault
+			relationship: 9af5a969-f143-4e4f-b92c-100916ab6b0e
+			defaultHierarchy: LocalDateTable_310dc37a-34f1-4126-82c0-58945133f7b5.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column TITULO
+		dataType: string
+		lineageTag: 81716510-857c-4c20-bc03-a9429478a060
+		summarizeBy: none
+		sourceColumn: TITULO
+
+		annotation SummarizationSetBy = Automatic
+
+	column VEICULO
+		dataType: string
+		lineageTag: b7e31510-8446-4ab8-bed6-1f6146630ea1
+		summarizeBy: none
+		sourceColumn: VEICULO
+
+		annotation SummarizationSetBy = Automatic
+
+	column UF
+		dataType: string
+		lineageTag: 4a92e003-d8af-47ec-b8da-e3f5513a2969
+		summarizeBy: none
+		sourceColumn: UF
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'LINK da notícia'
+		dataType: string
+		lineageTag: b5ad85ae-670d-42f1-88d3-e3586bb9e0f0
+		dataCategory: WebUrl
+		summarizeBy: none
+		sourceColumn: LINK da notícia
+
+		annotation SummarizationSetBy = Automatic
+
+	column CM2
+		dataType: string
+		lineageTag: 6e4e5c57-dfa4-4fa2-bc7b-68cc2badcbb3
+		summarizeBy: none
+		sourceColumn: CM2
+
+		annotation SummarizationSetBy = Automatic
+
+	column VALORACAO
+		dataType: string
+		lineageTag: bd15ea64-2792-445a-9e5a-a5ad76dc392b
+		summarizeBy: none
+		sourceColumn: VALORACAO
+
+		annotation SummarizationSetBy = Automatic
+
+	column SENTIMENTO
+		dataType: string
+		lineageTag: d9a022ca-49d3-4010-bc9e-e3a8172549c3
+		summarizeBy: none
+		sourceColumn: SENTIMENTO
+
+		annotation SummarizationSetBy = Automatic
+
+	column TIRAGEM
+		dataType: string
+		lineageTag: 8b81d9c5-d24a-47ba-81d7-3c52207c47cf
+		summarizeBy: none
+		sourceColumn: TIRAGEM
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PÚBLICO POTENCIAL'
+		dataType: string
+		lineageTag: a8bca28f-8938-4242-abc8-eb4f2357dd13
+		summarizeBy: none
+		sourceColumn: PÚBLICO POTENCIAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOM
+		dataType: string
+		lineageTag: c58673b7-47b2-4764-a9df-a5d897c19f64
+		summarizeBy: none
+		sourceColumn: TOM
+
+		annotation SummarizationSetBy = Automatic
+
+	column TIER
+		dataType: string
+		lineageTag: 5b1f7204-4fdd-49fa-8be9-8a7771d2205c
+		summarizeBy: none
+		sourceColumn: TIER
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'TIPO DE AÇÃO'
+		dataType: string
+		lineageTag: 0ef4920b-30f7-4908-93fa-2d277c06ebe9
+		summarizeBy: none
+		sourceColumn: TIPO DE AÇÃO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'TIPO DE PUBLICAÇÃO'
+		dataType: string
+		lineageTag: e4b7ed3b-1e84-4469-9b05-b036e7ac5297
+		summarizeBy: none
+		sourceColumn: TIPO DE PUBLICAÇÃO
+
+		annotation SummarizationSetBy = Automatic
+
+	column MÍDIA
+		dataType: string
+		lineageTag: 4cf998f3-d71a-4fc4-afb1-2f73ad2aa4a0
+		summarizeBy: none
+		sourceColumn: MÍDIA
+
+		annotation SummarizationSetBy = Automatic
+
+	column MINUTAGEM
+		dataType: string
+		lineageTag: e4d8d1a7-5f18-4e00-94cd-85c0d0a79922
+		summarizeBy: none
+		sourceColumn: MINUTAGEM
+
+		annotation SummarizationSetBy = Automatic
+
+	column Código
+		dataType: string
+		lineageTag: 69f7a51a-a039-449b-a53b-e9e1798f3041
+		summarizeBy: none
+		sourceColumn: Código
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'TEMA/PAUTA.2'
+		dataType: string
+		lineageTag: 53a5345d-4f44-4353-89cc-109f9bbd0999
+		summarizeBy: none
+		sourceColumn: TEMA/PAUTA.2
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Códigos.ID_REDE'
+		dataType: string
+		lineageTag: e4dd28ef-bc7f-45c5-bff2-82e6d6717b67
+		summarizeBy: none
+		sourceColumn: Códigos.ID_REDE
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Códigos.É cliente público em operação na plataforma 2024?'
+		dataType: string
+		lineageTag: 7a351205-c6e9-45bc-94bb-a21a7fdcfb72
+		summarizeBy: none
+		sourceColumn: Códigos.É cliente público em operação na plataforma 2024?
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rede
+		dataType: string
+		lineageTag: 45320271-5a01-4d5c-9029-e4d678e132d3
+		summarizeBy: none
+		sourceColumn: Rede
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dNotícias = m
+		mode: import
+		queryGroup: 'Consultas sheets'
+		source =
+				let
+				    Fonte = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/1oxWnwXoojvSDSqd8U9a4bbblxeKUsyLBr_k_lYzhT_I"),
+				    #"Clientes Publico_Sheet" = Fonte{[name="TOTAL (Imprensa e Social)",ItemKind="Table"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(#"Clientes Publico_Sheet", [PromoteAllScalars=true]),
+				    #"Linhas em Branco Removidas" = Table.SelectRows(#"Cabeçalhos Promovidos", each not List.IsEmpty(List.RemoveMatchingItems(Record.FieldValues(_), {"", null}))),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Linhas em Branco Removidas",{{"PUBLICACAO", type date}}),
+				    #"Dividir Coluna por Delimitador" = Table.SplitColumn(#"Tipo Alterado", "TEMA/PAUTA", Splitter.SplitTextByDelimiter("$%|%$", QuoteStyle.Csv), {"TEMA/PAUTA.1", "TEMA/PAUTA.2"}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Dividir Coluna por Delimitador",{{"TEMA/PAUTA.1", type text}, {"TEMA/PAUTA.2", type text}}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Tipo Alterado1",{{"TEMA/PAUTA.1", "Código"}}),
+				    #"Consultas Mescladas" = Table.NestedJoin(#"Colunas Renomeadas", {"Cliente"}, Códigos, {"Nome Final"}, "Códigos", JoinKind.LeftOuter),
+				    #"Códigos Expandido1" = Table.ExpandTableColumn(#"Consultas Mescladas", "Códigos", {"É cliente público em operação na plataforma 2024?", "ID_REDE"}, {"Códigos.É cliente público em operação na plataforma 2024?", "Códigos.ID_REDE"}),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(#"Códigos Expandido1", "Rede", each Text.Combine({"N", Text.From([Códigos.ID_REDE], "pt-BR")}), type text)
+				in
+				    #"Coluna Mesclada Inserida"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

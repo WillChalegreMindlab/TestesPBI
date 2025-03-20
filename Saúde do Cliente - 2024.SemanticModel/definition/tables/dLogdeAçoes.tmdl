@@ -1,0 +1,304 @@
+table dLogdeAçoes
+	lineageTag: 69212eae-ca1f-46fe-ad4e-0b3089247502
+
+	measure 'Contagem Tipo' = ```
+			
+			    COUNT('dLogdeAçoes'[Tipo de acesso])
+			```
+		formatString: 0
+		lineageTag: fa588143-841b-4e22-9c4f-efab783dfbdb
+
+	measure 'Contagem Total Síncrono' = ```
+			
+			VAR contagem = 
+			    CALCULATE(
+			        DISTINCTCOUNT('dLogdeAçoes'[Login]),'dLogdeAçoes'[Tipo de acesso2]="Síncrono")
+			return contagem        
+			```
+		formatString: 0
+		lineageTag: ce6fb05b-9172-49a6-bc1b-918f5a121f45
+
+	measure 'Contagem Total Assíncrono' = ```
+			
+			VAR contagem = 
+			    CALCULATE(
+			        DISTINCTCOUNT('dLogdeAçoes'[Login]),'dLogdeAçoes'[Tipo de acesso2]="Assíncrono")
+			return contagem
+			```
+		formatString: 0
+		lineageTag: 2ed8baaf-cfc7-49d9-955a-186307927bbe
+
+	measure 'Contagem Assíncrono' = ```
+			
+			VAR contagem = 
+			    CALCULATE(
+			        DISTINCTCOUNT('dLogdeAçoes'[Login]),'dLogdeAçoes'[Tipo de acesso]="Assíncrono")
+			return contagem
+			```
+		formatString: 0
+		lineageTag: 8117a042-a763-4055-a6eb-ae48048a977d
+
+	measure 'Contagem Recursos' = ```
+			
+			VAR contagem = 
+			    CALCULATE(
+			        DISTINCTCOUNT('dLogdeAçoes'[Login]),'dLogdeAçoes'[Tipo de acesso]="Recursos")
+			return contagem
+			```
+		formatString: 0
+		lineageTag: 5c13b855-657d-4ebf-a723-15c1b7c26f7b
+
+	measure 'Contagem Formação Inicial' = ```
+			
+			VAR contagem = 
+			    CALCULATE(
+			        DISTINCTCOUNT('dLogdeAçoes'[Login]),'dLogdeAçoes'[Tipo de acesso]="Formação Inicial")
+			return contagem
+			```
+		formatString: 0
+		lineageTag: 88226066-5005-4c2b-b01a-5c067e312f27
+
+	measure 'Contagem Outros Conteúdos' = ```
+			
+			VAR contagem = 
+			    CALCULATE(
+			        DISTINCTCOUNT('dLogdeAçoes'[Login]),'dLogdeAçoes'[Tipo de acesso]="Outros conteúdos")
+			return contagem
+			```
+		formatString: 0
+		lineageTag: 92ed1eda-88e1-4740-b9ce-a4e5c6985bdd
+
+	measure 'Contagem Síncrono' = ```
+			
+			VAR contagem = 
+			    CALCULATE(
+			        DISTINCTCOUNT('dLogdeAçoes'[Login]),'dLogdeAçoes'[Tipo de acesso1]="Síncrono")
+			return contagem
+			```
+		formatString: 0
+		lineageTag: c38642de-7fc6-4aeb-b438-91fe64adf551
+
+	measure 'Contagem Gravação' = ```
+			
+			VAR contagem = 
+			    CALCULATE(
+			        DISTINCTCOUNT('dLogdeAçoes'[Login]),'dLogdeAçoes'[Tipo de acesso1]="Gravação")
+			return contagem
+			```
+		formatString: 0
+		lineageTag: fb5d60d3-fba6-409b-8ac1-4f5fe7911adc
+
+	measure 'Contagem Total Cliques Assíncrono' = ```
+			
+			VAR contagem = 
+			    CALCULATE(
+			        COUNT('dLogdeAçoes'[Login]),'dLogdeAçoes'[Tipo de acesso2]="Assíncrono")
+			return contagem
+			```
+		formatString: 0
+		lineageTag: 86fcdd80-89f3-48ef-970a-d7fc0d5e0022
+
+	measure 'Contagem Total Cliques Síncrono' = ```
+			
+			VAR contagem = 
+			    CALCULATE(
+			        COUNT('dLogdeAçoes'[Login]),'dLogdeAçoes'[Tipo de acesso2]="Síncrono")
+			return contagem  
+			```
+		formatString: 0
+		lineageTag: 4ed31d85-15ed-475b-a60f-1cc9ad9dc91c
+
+	column Data
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 0cd975ff-fcff-4768-9a43-cb573b1962f0
+		summarizeBy: none
+		sourceColumn: Data
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Hora
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 03713093-af33-4f36-b395-523de16ab112
+		summarizeBy: none
+		sourceColumn: Hora
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column Aluno
+		dataType: string
+		lineageTag: fc5b9df4-e764-4f5f-9c93-22890741f88d
+		summarizeBy: none
+		sourceColumn: Aluno
+
+		annotation SummarizationSetBy = Automatic
+
+	column CPF
+		dataType: string
+		lineageTag: df78e0f0-f785-4551-882b-50f309533015
+		summarizeBy: none
+		sourceColumn: CPF
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tipo
+		dataType: string
+		lineageTag: 7f62eee5-5502-4552-9b11-6429c6c67eea
+		summarizeBy: none
+		sourceColumn: Tipo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: 2578d5db-1f0b-4b76-83c9-b141143e1f13
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Conteúdo
+		dataType: string
+		lineageTag: 45521771-d753-4be5-a541-ecc890495eab
+		summarizeBy: none
+		sourceColumn: Conteúdo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Turma
+		dataType: string
+		lineageTag: 08af651b-181e-4d15-b84b-4eb6644a867d
+		summarizeBy: none
+		sourceColumn: Turma
+
+		annotation SummarizationSetBy = Automatic
+
+	column Lição
+		dataType: string
+		lineageTag: d46642c0-b759-4c2c-ace6-c31d86f1ea99
+		summarizeBy: none
+		sourceColumn: Lição
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Departamento 1'
+		dataType: string
+		lineageTag: 69559b1e-997c-48a0-88e2-5ec83badddd3
+		summarizeBy: none
+		sourceColumn: Departamento 1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipo 2' =
+			
+			SWITCH(
+			    'dLogdeAçoes'[Tipo],
+			    "CORE", "Não",
+			    "TermsOfUse", "Não",
+			    "Sim")
+		lineageTag: 2022d38a-4afe-444a-9a5e-92ebb2598116
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mesclado.1' = 'dLogdeAçoes'[Tipo]&'dLogdeAçoes'[Status]&'dLogdeAçoes'[Conteúdo]&'dLogdeAçoes'[Turma]&'dLogdeAçoes'[Lição]
+		lineageTag: b0056a43-91b1-47d9-aacc-cc72b1777041
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Instituição
+		dataType: string
+		lineageTag: 9aca58ed-f19a-49d5-beab-6e10894c218b
+		summarizeBy: none
+		sourceColumn: Instituição
+
+		annotation SummarizationSetBy = Automatic
+
+	column Login
+		dataType: string
+		lineageTag: 0e91c8e9-4020-4803-94be-b1e239279d30
+		summarizeBy: none
+		sourceColumn: Login
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipo de acesso' = LOOKUPVALUE('Lições'[Tipo],'Lições'[Curso],'dLogdeAçoes'[Lição])
+		lineageTag: ff2dfedb-fa07-4a7b-a266-1bec0d9a1126
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipo de acesso1' =
+			IF(AND('dLogdeAçoes'[Tipo de acesso]="Síncrono",LEFT('dLogdeAçoes'[Conteúdo],8)="Gravação"),"Gravação",
+			                    if('dLogdeAçoes'[Tipo de acesso]="Síncrono","Síncrono","Assíncrono"))
+		lineageTag: 319c69c1-7a77-499b-9060-a5985348f489
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipo de acesso2' = if(or('dLogdeAçoes'[Tipo de acesso1]="Gravação",'dLogdeAçoes'[Tipo de acesso1]="Assíncrono"),"Assíncrono","Síncrono")
+		lineageTag: c46e11a6-7c48-4597-a98e-3ecd78385eaa
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Departamento 2'
+		dataType: string
+		lineageTag: 3a32b65f-0c4c-48c9-88b0-9b73c1430357
+		summarizeBy: none
+		sourceColumn: Departamento 2
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Departamento 3'
+		dataType: string
+		lineageTag: c95cd99b-1cb1-4944-a06b-2aefcbdb0128
+		summarizeBy: none
+		sourceColumn: Departamento 3
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Departamento 4'
+		dataType: string
+		lineageTag: 1f37fedb-2b91-4df0-89e0-8ff95623dec5
+		summarizeBy: none
+		sourceColumn: Departamento 4
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dLogdeAçoes-431f90e7-8a37-4f13-82b5-73df4e978776 = m
+		mode: import
+		queryGroup: Relatórios
+		source =
+				let
+				    timestamp_now = DateTime.From(DateTimeZone.ToText(DateTimeZone.UtcNow())) - #duration(0, 3, 0, 0),
+				    #"Data Extraída" = Date.From(timestamp_now),
+				    date_text = Date.ToText(#"Data Extraída", "yyyy-MM-dd"),
+				    string = date_text & KEY,
+				    senha_codificada = codificacao(string),
+				    Fonte = Json.Document(Web.Contents(LINK_FUNCAO, [Query=[senha=senha_codificada]])),
+				    link = Fonte[link_log],
+				    path = Text.Split(link, "/"){5},
+				    arquivo = Csv.Document(Web.Contents(CAMINHO_BUCKET & "/log", [RelativePath=path])),
+				    arquivo_cabecalho = Table.PromoteHeaders(arquivo, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(arquivo_cabecalho,{{"Data", type date}, {"Hora", type time}}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Tipo Alterado",{{"Departamento", "Departamento 1"}, {"Departamento.1", "Departamento 2"}, {"Departamento.2", "Departamento 3"}, {"Departamento.3", "Departamento 4"}}),
+				    #"Texto em Maiúscula" = Table.TransformColumns(#"Colunas Renomeadas",{{"Departamento 3", Text.Upper, type text}, {"Departamento 2", Text.Upper, type text}, {"Departamento 1", Text.Upper, type text}, {"Instituição", Text.Upper, type text}}),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Texto em Maiúscula", "Personalizar", each try Text.PadStart(Number.ToText(Number.FromText([Login])), 11, "0") otherwise [Login]),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Personalização Adicionada",{"Login"}),
+				    #"Colunas Reordenadas" = Table.ReorderColumns(#"Colunas Removidas",{"Data", "Hora", "Aluno", "CPF", "Tipo", "Status", "Conteúdo", "Turma", "Lição", "Instituição", "Departamento 1", "Departamento 2", "Departamento 3"}),
+				    #"Colunas Renomeadas2" = Table.RenameColumns(#"Colunas Reordenadas",{{"Personalizar", "Login"}}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Colunas Renomeadas2",{{"Login", type text}})
+				in
+				    #"Tipo Alterado1"
+
+	annotation PBI_ResultType = Table
+

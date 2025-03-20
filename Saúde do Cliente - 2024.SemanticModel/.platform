@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Saúde do Cliente - 2024"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d713518a-65f2-4690-98e3-3cd26e447e38"
+  }
+}

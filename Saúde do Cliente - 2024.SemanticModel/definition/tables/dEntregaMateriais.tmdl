@@ -1,0 +1,1295 @@
+table dEntregaMateriais
+	lineageTag: 5a38124d-33cc-406e-a151-fa44fad82311
+
+	measure 'Quant SIM (escola)' = ```
+			
+			VAR subtotal = 
+			    CALCULATE(
+			        [CONTAGEM ESCOLA],
+			        'Material Completo'[Resposta2]="Sim"
+			        )
+			
+			VAR total = 
+			    IF(ISBLANK(subtotal),0,subtotal)
+			    
+			RETURN subtotal 
+			```
+		formatString: 0
+		lineageTag: a505d2af-e925-4030-a381-464a91541e8a
+
+	measure 'Quant NÃO (escola)' = ```
+			
+			VAR subtotal = 
+			    CALCULATE(
+			        [CONTAGEM ESCOLA],
+			        'Material Completo'[Resposta2]="Não"
+			        )
+			
+			VAR total = 
+			    IF(ISBLANK(subtotal),0,subtotal)
+			    
+			RETURN subtotal 
+			```
+		formatString: 0
+		lineageTag: fcc13136-8e14-4412-a176-1ca950411622
+
+	measure 'Quant Não sei responder (escola)' = ```
+			
+			VAR subtotal = 
+			    CALCULATE(
+			        [CONTAGEM ESCOLA],
+			        'Material Completo'[Resposta2]="Não sei responder"
+			        )
+			
+			VAR total = 
+			    IF(ISBLANK(subtotal),0,subtotal)
+			    
+			RETURN subtotal 
+			```
+		formatString: 0
+		lineageTag: beb5912f-8c30-4daf-b353-18d077a28f19
+
+	measure 'Quant SIM (prof)' = ```
+			
+			VAR subtotal = 
+			    CALCULATE(
+			        [CONTAGEM PROF],
+			        'Material Completo'[Resposta2]="Sim"
+			        )    
+			
+			VAR total = 
+			    IF(ISBLANK(subtotal),0,subtotal)
+			    
+			RETURN subtotal 
+			```
+		formatString: 0
+		lineageTag: 5f1d8d9f-88af-48ba-a4c7-3c87710fbeb7
+
+	measure 'Quant NÃO (prof)' = ```
+			
+			VAR subtotal = 
+			    CALCULATE(
+			        [CONTAGEM PROF],
+			        'Material Completo'[Resposta2]="Não"
+			        )   
+			
+			VAR total = 
+			    IF(ISBLANK(subtotal),0,subtotal)
+			
+			RETURN subtotal 
+			```
+		formatString: 0
+		lineageTag: a19bd108-eec1-4cdd-ad5f-af6d8497013d
+
+	measure 'Quant SIM (aluno)' = ```
+			
+			VAR subtotal = 
+			    CALCULATE(
+			        [CONTAGEM ALUNO],
+			        'Material Completo'[Resposta2]="Sim"
+			        )
+			
+			VAR total = 
+			    IF(ISBLANK(subtotal),0,subtotal)
+			    
+			RETURN subtotal 
+			```
+		formatString: 0
+		lineageTag: b0084a76-0b74-4314-b0a2-c89a70fdf90f
+
+	measure 'Quant NÃO (aluno)' = ```
+			
+			VAR subtotal = 
+			    CALCULATE(
+			        [CONTAGEM ALUNO],
+			        'Material Completo'[Resposta2]="Não"
+			        )
+			
+			VAR total = 
+			    IF(ISBLANK(subtotal),0,subtotal)
+			    
+			RETURN subtotal 
+			```
+		formatString: 0
+		lineageTag: e14c0f00-7537-4d03-8e64-33da2395904a
+
+	measure 'Quant entregue (ML)' = ```
+			
+			VAR subtotal = 
+			    CALCULATE(
+			        SUM(dReceita[Quantidade Entregue]),
+			        ALLEXCEPT(dRelatoriodeUsuarios,dRelatoriodeUsuarios[Instituição])
+			    )
+			VAR total = 
+			    IF(ISBLANK(subtotal),0,subtotal)
+			RETURN subtotal 
+			```
+		formatString: 0
+		lineageTag: c9db9f54-60a3-4177-8b3b-2b55ca75e964
+
+	measure 'CONTAGEM ENTREGA' = ```
+			
+			VAR QUANTIDADE_DE_RESPOSTAS =   
+			    CALCULATE(
+			        SUM(dReceita[Quantidade Total]),
+			        ALLEXCEPT(dRelatoriodeUsuarios,dRelatoriodeUsuarios[Instituição])
+			    )
+			VAR REGISTRO =
+			    IF(QUANTIDADE_DE_RESPOSTAS=1,"Sim","Não")
+			RETURN
+			    QUANTIDADE_DE_RESPOSTAS
+			```
+		formatString: 0
+		lineageTag: 913f3b61-8e1e-45a1-bb49-eda4104db089
+
+	measure 'Quant NÃO entregue (ML)' = ```
+			
+			VAR subtotal = 
+			    [CONTAGEM ENTREGA]-[Quant entregue (ML)]
+			VAR total = 
+			    IF(ISBLANK(subtotal),0,subtotal)
+			RETURN subtotal 
+			```
+		formatString: 0
+		lineageTag: 5d008994-e561-47e6-8839-f667151a5632
+
+	measure 'Quant CONFLITO entregue (ML)' = ```
+			
+			VAR subtotal = 
+			    CALCULATE(
+			        COUNTROWS(dReceita),
+			        CONTAINSSTRING('dReceita'[Previsão de Entrega],", ENTREGUE")||CONTAINSSTRING('dReceita'[Previsão de Entrega],"ENTREGUE,"))
+			VAR total = 
+			    IF(ISBLANK(subtotal),0,subtotal)
+			RETURN subtotal 
+			```
+		formatString: 0
+		lineageTag: 04b5e8c9-4711-47bd-9d01-6aa6104d283f
+
+	measure 'CONTAGEM PROF' =
+			
+			CALCULATE(
+			        [Contagem Resposta Materiais],
+			        'Material Completo'[Tipo de Pergunta]="Professor",
+			        dRelatoriodeUsuarios[Função]="Professor(a)"
+			        )
+		formatString: 0
+		lineageTag: cb5a3dd7-2c04-4e59-9f27-952e0572e73e
+
+	measure 'CONTAGEM ALUNO' =
+			
+			CALCULATE(
+			        [Contagem Resposta Materiais],
+			        'Material Completo'[Tipo de Pergunta]="Aluno"
+			        )
+		formatString: 0
+		lineageTag: a1564c9f-5dac-4e35-b889-3cd5fac63b9a
+
+	measure 'CONTAGEM ESCOLA' =
+			
+			CALCULATE(
+			        [Contagem Resposta Materiais],
+			        'Material Completo'[Tipo de Pergunta]="Escola"
+			        )
+		formatString: 0
+		lineageTag: 55ec5b1d-6fea-4de2-b4ca-e7c5fb55542c
+
+	measure 'Quant SIM (prof) (%)' = ```
+			
+			    VAR Quant_Total = [CONTAGEM PROF]
+			
+			    VAR Quant_Sim = [Quant SIM (prof)]
+			
+			    VAR Resultado =
+			        IF(
+			            Quant_Sim=0&&Quant_Total<>0,
+			            0,
+			            DIVIDE(Quant_Sim,Quant_Total,0)
+			        )
+			
+			    RETURN
+			        Resultado
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f5604bd4-9d4b-4810-b045-64bafd5407cd
+
+	measure 'Quant SIM (escola) (%)' = ```
+			
+			    VAR Quant_Total = [CONTAGEM ESCOLA]
+			
+			    VAR Quant_Sim = [Quant SIM (escola)]
+			
+			    VAR Resultado =
+			        IF(
+			            Quant_Sim=0&&Quant_Total<>0,
+			            0,
+			            DIVIDE(Quant_Sim,Quant_Total,0)
+			        )
+			
+			    RETURN
+			        Resultado
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: ae49680d-92d6-4a28-b107-a50065d26bdc
+
+	measure 'Quant SIM (aluno) (%)' = ```
+			
+			    VAR Quant_Total = [CONTAGEM ALUNO]
+			
+			    VAR Quant_Sim = [Quant SIM (aluno)]
+			
+			    VAR Resultado =
+			        IF(
+			            Quant_Sim=0&&Quant_Total<>0,
+			            0,
+			            DIVIDE(Quant_Sim,Quant_Total,0)
+			        )
+			
+			    RETURN
+			        Resultado
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 9d63946b-7bdc-4820-8b49-5c133146a294
+
+	measure 'Quant Não sei responder (escola) (%)' = ```
+			
+			    VAR Quant_Total = [CONTAGEM ESCOLA]
+			
+			    VAR Quant_Nao_Sei = [Quant Não sei responder (escola)]
+			
+			    VAR Resultado =
+			        IF(
+			            Quant_Nao_Sei=0&&Quant_Total<>0,
+			            0,
+			            DIVIDE(Quant_Nao_Sei,Quant_Total,0)
+			        )
+			
+			    RETURN
+			        Resultado
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: df221c01-067e-4b5b-9ab6-cdad7138e738
+
+	measure 'Quant NÃO (prof) (%)' = ```
+			
+			    VAR Quant_Total = [CONTAGEM PROF]
+			
+			    VAR Quant_Nao = [Quant NÃO (prof)]
+			
+			    VAR Resultado =
+			        IF(
+			            Quant_Nao=0&&Quant_Total<>0,
+			            0,
+			            DIVIDE(Quant_Nao,Quant_Total,0)
+			        )
+			
+			    RETURN
+			        Resultado
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 47f480e5-c731-4e06-ab03-0ba6b3f1199a
+
+	measure 'Quant NÃO (escola) (%)' = ```
+			
+			    VAR Quant_Total = [CONTAGEM ESCOLA]
+			
+			    VAR Quant_Nao = [Quant NÃO (escola)]
+			
+			    VAR Resultado =
+			        IF(
+			            Quant_Nao=0&&Quant_Total<>0,
+			            0,
+			            DIVIDE(Quant_Nao,Quant_Total,0)
+			        )
+			
+			    RETURN
+			        Resultado
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: c627166e-8224-4887-b5cb-972cb28bac9c
+
+	measure 'Quant NÃO (aluno) (%)' = ```
+			
+			    VAR Quant_Total = [CONTAGEM ALUNO]
+			
+			    VAR Quant_Nao = [Quant NÃO (aluno)]
+			
+			    VAR Resultado =
+			        IF(
+			            Quant_Nao=0&&Quant_Total<>0,
+			            0,
+			            DIVIDE(Quant_Nao,Quant_Total,0)
+			        )
+			
+			    RETURN
+			        Resultado
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: ed396e5d-a7f8-4810-8222-41ce148e6f32
+
+	measure 'Quant entregue (ML) (%)' = ```
+			
+			    DIVIDE([Quant entregue (ML)], [CONTAGEM ENTREGA])
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f2ccd03d-0c0a-4694-9421-75fec47b5cc5
+
+	measure 'Quant NÃO entregue (ML) (%)' = ```
+			
+			        IF(
+			    DIVIDE([Quant NÃO entregue (ML)], [CONTAGEM ENTREGA], 0) = 0,
+			    BLANK(),
+			    DIVIDE([Quant NÃO entregue (ML)], [CONTAGEM ENTREGA])
+			)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 0e8ac2a0-51be-4991-bd23-adb19054dabe
+
+	measure 'Há CONFLITO entregue (ML)?' = ```
+			
+			    if([Quant CONFLITO entregue (ML)]>0,"Sim","")
+			```
+		lineageTag: 877ccef2-6755-4a79-bb90-ee26e73534c5
+
+	measure 'Há informação comercial?' = ```
+			
+			VAR REGISTRO =
+			        IF(
+			            SELECTEDVALUE(dReceita[Cliente aparece na planilha comercial?]) ="TRUE",
+			            "Sim",
+			            IF(
+			                ISBLANK(SELECTEDVALUE(dReceita[Cliente aparece na planilha comercial?])),
+			                "",
+			                "Não"
+			            )
+			        ) 
+			RETURN
+			    REGISTRO
+			```
+		lineageTag: 1f47a028-3485-4572-934e-97e854ac9124
+
+	measure 'Alerta Comercial' = ```
+			
+			        if([Quant entregue (ML) (%)]<>1,"Alerta","")
+			```
+		lineageTag: 387869d5-4894-43fc-8b54-fc79b1eb4ecc
+
+	measure 'Alerta Escola' = ```
+			
+			        --if([Quant SIM (escola) (%)]<>1,"Alerta","")
+			        if([Quant alerta (escola)]<>0,"Alerta","")
+			```
+		lineageTag: 98b94c31-7523-4aba-a115-32a2f195266b
+
+	measure 'Alerta Professor' = ```
+			
+			        --if([Quant SIM (prof) (%)]<>1,"Alerta","")
+			        if([Quant alerta (prof)]<>0,"Alerta","")
+			```
+		lineageTag: dda2fb9d-d04a-4cdc-b63a-b859fda66d9c
+
+	measure 'Alerta Aluno' = ```
+			
+			        --if([Quant SIM (aluno) (%)]<>1,"Alerta","")
+			        if([Quant alerta (aluno)]<>0,"Alerta","")
+			```
+		lineageTag: 6c32d3d0-c12a-4d5f-90fd-f1fe9a23cab2
+
+	measure 'Alerta final' = ```
+			
+			VAR ALERTA =
+			    [Alerta Aluno]="Alerta"||
+			    [Alerta Escola]="Alerta"||
+			    [Alerta Professor]="Alerta"||
+			    [Alerta Comercial]="Alerta"
+			Return
+			    if(ALERTA,"Alerta","")
+			
+			
+			```
+		lineageTag: 78cbb912-f4f2-40a1-a8b8-a8058d1a574f
+
+	measure 'Quant alerta (prof)' = ```
+			
+			    VAR Tabela_Filtrada = 
+			        SELECTCOLUMNS(
+			            CALCULATETABLE(
+			                            fBUNivel0,
+			                            fBUNivel0[Departamento 1]<>"" 
+			            ),
+			            "Instituição",fBUNivel0[Instituição],
+			            "Departamento 1",fBUNivel0[Departamento 1],
+			            "Departamento 2",fBUNivel0[Departamento 2],
+			            "Departamento 3",fBUNivel0[Departamento 3],
+			            "Mesclado",fBUNivel0[Mesclado]
+			            )
+			
+			    VAR Tabela_Com_Percentual =
+			        ADDCOLUMNS(
+			            Tabela_Filtrada,
+			            "Quant SIM prof %",
+			                    CALCULATE(
+			                        [Quant SIM (prof) (%)],
+			                        USERELATIONSHIP('Material Completo'[Login],dRelatoriodeUsuarios[Login]),
+			                        USERELATIONSHIP(fBUNivel0[Mesclado],dRelatoriodeUsuarios[Mesclado])
+			                    )
+			            )
+			    
+			    VAR Tabela_Com_Percentual_filtrada =
+			        FILTER(
+			            Tabela_Com_Percentual,
+			            [Quant SIM prof %]<>1
+			        )
+			    
+			    VAR ContagemLinhas =
+			        COUNTROWS(
+			                Tabela_Com_Percentual_filtrada           
+			            )
+			
+			    RETURN
+			        ContagemLinhas        
+			```
+		formatString: 0
+		lineageTag: 60d81aa4-4293-4164-8230-4b837499e7c4
+
+	measure 'Quant total (prof)' = ```
+			
+			    VAR Tabela_Filtrada = 
+			        SELECTCOLUMNS(
+			            CALCULATETABLE(
+			                            fBUNivel0,
+			                            fBUNivel0[Departamento 1]<>"" 
+			            ),
+			            "Instituição",fBUNivel0[Instituição],
+			            "Departamento 1",fBUNivel0[Departamento 1],
+			            "Departamento 2",fBUNivel0[Departamento 2],
+			            "Departamento 3",fBUNivel0[Departamento 3],
+			            "Mesclado",fBUNivel0[Mesclado]
+			            )
+			
+			    VAR Tabela_Com_Percentual =
+			        ADDCOLUMNS(
+			            Tabela_Filtrada,
+			            "Quant SIM prof %",
+			                    CALCULATE(
+			                        [Quant SIM (prof) (%)],
+			                        USERELATIONSHIP('Material Completo'[Login],dRelatoriodeUsuarios[Login]),
+			                        USERELATIONSHIP(fBUNivel0[Mesclado],dRelatoriodeUsuarios[Mesclado])
+			                    )
+			            )
+			    
+			    VAR Tabela_Com_Percentual_filtrada =
+			        FILTER(
+			            Tabela_Com_Percentual,
+			            [Quant SIM prof %]<>1
+			        )
+			    
+			    VAR ContagemLinhas =
+			        COUNTROWS(
+			                Tabela_Com_Percentual           
+			            )
+			
+			    RETURN
+			        ContagemLinhas
+			```
+		formatString: 0
+		lineageTag: 300fffd0-4f85-4725-a363-17c966f95430
+
+	measure 'Quant alerta (prof) não null' = ```
+			
+			    VAR Tabela_Filtrada = 
+			        SELECTCOLUMNS(
+			            CALCULATETABLE(
+			                            fBUNivel0,
+			                            fBUNivel0[Departamento 1]<>"" 
+			            ),
+			            "Instituição",fBUNivel0[Instituição],
+			            "Departamento 1",fBUNivel0[Departamento 1],
+			            "Departamento 2",fBUNivel0[Departamento 2],
+			            "Departamento 3",fBUNivel0[Departamento 3],
+			            "Mesclado",fBUNivel0[Mesclado]
+			            )
+			
+			    VAR Tabela_Com_Percentual =
+			        ADDCOLUMNS(
+			            Tabela_Filtrada,
+			            "Quant SIM prof %",
+			                    CALCULATE(
+			                        [Quant SIM (prof) (%)],
+			                        USERELATIONSHIP('Material Completo'[Login],dRelatoriodeUsuarios[Login]),
+			                        USERELATIONSHIP(fBUNivel0[Mesclado],dRelatoriodeUsuarios[Mesclado])
+			                    )
+			            )
+			    
+			    VAR Tabela_Com_Percentual_filtrada =
+			        FILTER(
+			            Tabela_Com_Percentual,
+			            [Quant SIM prof %]<>1&&NOT(ISBLANK([Quant SIM prof %])) 
+			        )
+			    
+			    VAR ContagemLinhas =
+			        COUNTROWS(
+			                Tabela_Com_Percentual_filtrada           
+			            )
+			
+			    RETURN
+			        ContagemLinhas
+			```
+		formatString: 0
+		lineageTag: a7b983bc-8ce7-4104-a98b-893154a267af
+
+	measure 'Quant alerta (prof) IS null' = ```
+			
+			    VAR Tabela_Filtrada = 
+			        SELECTCOLUMNS(
+			            CALCULATETABLE(
+			                            fBUNivel0,
+			                            fBUNivel0[Departamento 1]<>"" 
+			            ),
+			            "Instituição",fBUNivel0[Instituição],
+			            "Departamento 1",fBUNivel0[Departamento 1],
+			            "Departamento 2",fBUNivel0[Departamento 2],
+			            "Departamento 3",fBUNivel0[Departamento 3],
+			            "Mesclado",fBUNivel0[Mesclado]
+			            )
+			
+			    VAR Tabela_Com_Percentual =
+			        ADDCOLUMNS(
+			            Tabela_Filtrada,
+			            "Quant SIM prof %",
+			                    CALCULATE(
+			                        [Quant SIM (prof) (%)],
+			                        USERELATIONSHIP('Material Completo'[Login],dRelatoriodeUsuarios[Login]),
+			                        USERELATIONSHIP(fBUNivel0[Mesclado],dRelatoriodeUsuarios[Mesclado])
+			                    )
+			            )
+			    
+			    VAR Tabela_Com_Percentual_filtrada =
+			        FILTER(
+			            Tabela_Com_Percentual,
+			            ISBLANK([Quant SIM prof %]) 
+			        )
+			    
+			    VAR ContagemLinhas =
+			        COUNTROWS(
+			                Tabela_Com_Percentual_filtrada           
+			            )
+			
+			    RETURN
+			        ContagemLinhas
+			```
+		formatString: 0
+		lineageTag: 61264325-0ed0-40af-9de9-45f069579e59
+
+	measure 'Quant alerta (prof) 100' = ```
+			
+			    VAR Tabela_Filtrada = 
+			        SELECTCOLUMNS(
+			            CALCULATETABLE(
+			                            fBUNivel0,
+			                            fBUNivel0[Departamento 1]<>"" 
+			            ),
+			            "Instituição",fBUNivel0[Instituição],
+			            "Departamento 1",fBUNivel0[Departamento 1],
+			            "Departamento 2",fBUNivel0[Departamento 2],
+			            "Departamento 3",fBUNivel0[Departamento 3],
+			            "Mesclado",fBUNivel0[Mesclado]
+			            )
+			
+			    VAR Tabela_Com_Percentual =
+			        ADDCOLUMNS(
+			            Tabela_Filtrada,
+			            "Quant SIM prof %",
+			                    CALCULATE(
+			                        [Quant SIM (prof) (%)],
+			                        USERELATIONSHIP('Material Completo'[Login],dRelatoriodeUsuarios[Login]),
+			                        USERELATIONSHIP(fBUNivel0[Mesclado],dRelatoriodeUsuarios[Mesclado])
+			                    )
+			            )
+			    
+			    VAR Tabela_Com_Percentual_filtrada =
+			        FILTER(
+			            Tabela_Com_Percentual,
+			            [Quant SIM prof %]=1 
+			        )
+			    
+			    VAR ContagemLinhas =
+			        COUNTROWS(
+			                Tabela_Com_Percentual_filtrada           
+			            )
+			
+			    RETURN
+			        ContagemLinhas
+			```
+		formatString: 0
+		lineageTag: f7c15b0a-edca-4af9-a41f-7b323da6662c
+
+	measure 'Quant alerta (aluno)' = ```
+			
+			    VAR Tabela_Filtrada = 
+			        SELECTCOLUMNS(
+			            CALCULATETABLE(
+			                            fBUNivel0,
+			                            fBUNivel0[Departamento 1]<>"" 
+			            ),
+			            "Instituição",fBUNivel0[Instituição],
+			            "Departamento 1",fBUNivel0[Departamento 1],
+			            "Departamento 2",fBUNivel0[Departamento 2],
+			            "Departamento 3",fBUNivel0[Departamento 3],
+			            "Mesclado",fBUNivel0[Mesclado]
+			            )
+			
+			    VAR Tabela_Com_Percentual =
+			        ADDCOLUMNS(
+			            Tabela_Filtrada,
+			            "Quant SIM aluno %",
+			                    CALCULATE(
+			                        [Quant SIM (aluno) (%)],
+			                        USERELATIONSHIP('Material Completo'[Login],dRelatoriodeUsuarios[Login]),
+			                        USERELATIONSHIP(fBUNivel0[Mesclado],dRelatoriodeUsuarios[Mesclado])
+			                    )
+			            )
+			    
+			    VAR Tabela_Com_Percentual_filtrada =
+			        FILTER(
+			            Tabela_Com_Percentual,
+			            [Quant SIM aluno %]<>1
+			        )
+			    
+			    VAR ContagemLinhas =
+			        COUNTROWS(
+			                Tabela_Com_Percentual_filtrada           
+			            )
+			
+			    RETURN
+			        ContagemLinhas
+			```
+		formatString: 0
+		lineageTag: 9a78ff21-2016-4265-9d54-2fc064547a2e
+
+	measure 'Quant alerta (escola)' = ```
+			
+			    VAR Tabela_Filtrada = 
+			        SELECTCOLUMNS(
+			            CALCULATETABLE(
+			                fBUNivel0,
+			                fBUNivel0[Departamento 1]<>""
+			            ),
+			            "Instituição",fBUNivel0[Instituição],
+			            "Departamento 1",fBUNivel0[Departamento 1],
+			            "Departamento 2",fBUNivel0[Departamento 2],
+			            "Departamento 3",fBUNivel0[Departamento 3],
+			            "Mesclado",fBUNivel0[Mesclado]
+			            )
+			
+			    VAR Tabela_Com_Percentual =
+			        ADDCOLUMNS(
+			            Tabela_Filtrada,
+			            "Quant SIM escola %",
+			            CALCULATE(
+			                [Quant SIM (escola) (%)],
+			                USERELATIONSHIP('Material Completo'[Login],dRelatoriodeUsuarios[Login]),
+			                USERELATIONSHIP(fBUNivel0[Mesclado],dRelatoriodeUsuarios[Mesclado])
+			            ),
+			            "Quant NÃO escola %",
+			            CALCULATE(
+			                [Quant NÃO (escola) (%)],
+			                USERELATIONSHIP('Material Completo'[Login],dRelatoriodeUsuarios[Login]),
+			                USERELATIONSHIP(fBUNivel0[Mesclado],dRelatoriodeUsuarios[Mesclado])
+			            )
+			        )
+			    
+			    VAR Tabela_Com_Percentual_filtrada =
+			        FILTER(
+			            Tabela_Com_Percentual,
+			            [Quant NÃO (escola) (%)]>0||[Quant SIM (escola) (%)]=0
+			        )
+			    
+			    VAR ContagemLinhas =
+			        COUNTROWS(
+			                Tabela_Com_Percentual_filtrada           
+			            )
+			
+			    RETURN
+			        ContagemLinhas
+			```
+		formatString: 0
+		lineageTag: 00c645e6-2cff-43a0-975e-5618e567f25d
+
+	measure 'Indicador Entrega' = ```
+			
+			
+			VAR PESO_COMERCIAL = 1
+			VAR PESO_ESCOLA = 1
+			VAR PESO_PROF = 1
+			VAR PESO_ALUNO = 1
+			
+			VAR PESO_X_PERCENTUAIS =
+			    IF(dEntregaMateriais[Alerta Comercial]="Alerta",0,1)*PESO_COMERCIAL+
+			    IF(dEntregaMateriais[Alerta Escola]="Alerta",0,1)*PESO_ESCOLA+
+			    IF(dEntregaMateriais[Alerta Professor]="Alerta",0,1)*PESO_PROF+
+			    IF(dEntregaMateriais[Alerta Aluno]="Alerta",0,1)*PESO_ALUNO
+			
+			VAR SOMA_PESOS = 
+			    PESO_COMERCIAL+
+			    PESO_ESCOLA+
+			    PESO_PROF+
+			    PESO_ALUNO
+			
+			VAR RESULTADO = 
+			    DIVIDE(PESO_X_PERCENTUAIS,SOMA_PESOS)
+			
+			RETURN RESULTADO
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 9b4d9df7-90c5-4261-a137-ddf4f3e22700
+
+	measure 'Quant alerta (aluno) 100' = ```
+			
+			    VAR Tabela_Filtrada = 
+			        SELECTCOLUMNS(
+			            CALCULATETABLE(
+			                            fBUNivel0,
+			                            fBUNivel0[Departamento 1]<>"" 
+			            ),
+			            "Instituição",fBUNivel0[Instituição],
+			            "Departamento 1",fBUNivel0[Departamento 1],
+			            "Departamento 2",fBUNivel0[Departamento 2],
+			            "Departamento 3",fBUNivel0[Departamento 3],
+			            "Mesclado",fBUNivel0[Mesclado]
+			            )
+			
+			    VAR Tabela_Com_Percentual =
+			        ADDCOLUMNS(
+			            Tabela_Filtrada,
+			            "Quant SIM aluno %",
+			                    CALCULATE(
+			                        [Quant SIM (aluno) (%)],
+			                        USERELATIONSHIP('Material Completo'[Login],dRelatoriodeUsuarios[Login]),
+			                        USERELATIONSHIP(fBUNivel0[Mesclado],dRelatoriodeUsuarios[Mesclado])
+			                    )
+			            )
+			    
+			    VAR Tabela_Com_Percentual_filtrada =
+			        FILTER(
+			            Tabela_Com_Percentual,
+			            [Quant SIM aluno %]=1 
+			        )
+			    
+			    VAR ContagemLinhas =
+			        COUNTROWS(
+			                Tabela_Com_Percentual_filtrada           
+			            )
+			
+			    RETURN
+			        ContagemLinhas
+			```
+		formatString: 0
+		lineageTag: d491a852-1677-4853-b5aa-5cdb71dc655f
+
+	measure 'Quant alerta (escola) 100' = ```
+			
+			    VAR Tabela_Filtrada = 
+			        SELECTCOLUMNS(
+			            CALCULATETABLE(
+			                            fBUNivel0,
+			                            fBUNivel0[Departamento 1]<>"" 
+			            ),
+			            "Instituição",fBUNivel0[Instituição],
+			            "Departamento 1",fBUNivel0[Departamento 1],
+			            "Departamento 2",fBUNivel0[Departamento 2],
+			            "Departamento 3",fBUNivel0[Departamento 3],
+			            "Mesclado",fBUNivel0[Mesclado]
+			            )
+			
+			    VAR Tabela_Com_Percentual =
+			        ADDCOLUMNS(
+			            Tabela_Filtrada,
+			            "Quant SIM escola %",
+			                    CALCULATE(
+			                        [Quant SIM (escola) (%)],
+			                        USERELATIONSHIP('Material Completo'[Login],dRelatoriodeUsuarios[Login]),
+			                        USERELATIONSHIP(fBUNivel0[Mesclado],dRelatoriodeUsuarios[Mesclado])
+			                    )
+			            )
+			    
+			    VAR Tabela_Com_Percentual_filtrada =
+			        FILTER(
+			            Tabela_Com_Percentual,
+			            [Quant SIM escola %]=1 
+			        )
+			    
+			    VAR ContagemLinhas =
+			        COUNTROWS(
+			                Tabela_Com_Percentual_filtrada           
+			            )
+			
+			    RETURN
+			        ContagemLinhas
+			```
+		formatString: 0
+		lineageTag: a5ea959f-e55d-434c-b8ba-ab3851b7ae3c
+
+	measure 'Quant alerta (aluno) IS null' = ```
+			
+			    VAR Tabela_Filtrada = 
+			        SELECTCOLUMNS(
+			            CALCULATETABLE(
+			                            fBUNivel0,
+			                            fBUNivel0[Departamento 1]<>"" 
+			            ),
+			            "Instituição",fBUNivel0[Instituição],
+			            "Departamento 1",fBUNivel0[Departamento 1],
+			            "Departamento 2",fBUNivel0[Departamento 2],
+			            "Departamento 3",fBUNivel0[Departamento 3],
+			            "Mesclado",fBUNivel0[Mesclado]
+			            )
+			
+			    VAR Tabela_Com_Percentual =
+			        ADDCOLUMNS(
+			            Tabela_Filtrada,
+			            "Quant SIM aluno %",
+			                    CALCULATE(
+			                        [Quant SIM (aluno) (%)],
+			                        USERELATIONSHIP('Material Completo'[Login],dRelatoriodeUsuarios[Login]),
+			                        USERELATIONSHIP(fBUNivel0[Mesclado],dRelatoriodeUsuarios[Mesclado])
+			                    )
+			            )
+			    
+			    VAR Tabela_Com_Percentual_filtrada =
+			        FILTER(
+			            Tabela_Com_Percentual,
+			            ISBLANK([Quant SIM aluno %]) 
+			        )
+			    
+			    VAR ContagemLinhas =
+			        COUNTROWS(
+			                Tabela_Com_Percentual_filtrada           
+			            )
+			
+			    RETURN
+			        ContagemLinhas
+			```
+		formatString: 0
+		lineageTag: d82a5f80-4230-4b3b-a1a3-94baf802fa9f
+
+	measure 'Quant alerta (escola) IS null' = ```
+			
+			    VAR Tabela_Filtrada = 
+			        SELECTCOLUMNS(
+			            CALCULATETABLE(
+			                            fBUNivel0,
+			                            fBUNivel0[Departamento 1]<>"" 
+			            ),
+			            "Instituição",fBUNivel0[Instituição],
+			            "Departamento 1",fBUNivel0[Departamento 1],
+			            "Departamento 2",fBUNivel0[Departamento 2],
+			            "Departamento 3",fBUNivel0[Departamento 3],
+			            "Mesclado",fBUNivel0[Mesclado]
+			            )
+			
+			    VAR Tabela_Com_Percentual =
+			        ADDCOLUMNS(
+			            Tabela_Filtrada,
+			            "Quant SIM escola %",
+			                    CALCULATE(
+			                        [Quant SIM (escola) (%)],
+			                        USERELATIONSHIP('Material Completo'[Login],dRelatoriodeUsuarios[Login]),
+			                        USERELATIONSHIP(fBUNivel0[Mesclado],dRelatoriodeUsuarios[Mesclado])
+			                    )
+			            )
+			    
+			    VAR Tabela_Com_Percentual_filtrada =
+			        FILTER(
+			            Tabela_Com_Percentual,
+			            ISBLANK([Quant SIM escola %]) 
+			        )
+			    
+			    VAR ContagemLinhas =
+			        COUNTROWS(
+			                Tabela_Com_Percentual_filtrada           
+			            )
+			
+			    RETURN
+			        ContagemLinhas
+			```
+		formatString: 0
+		lineageTag: b489567c-9d1d-44d1-83e2-0903165605c1
+
+	measure 'Quant alerta (aluno) não null' = ```
+			
+			    VAR Tabela_Filtrada = 
+			        SELECTCOLUMNS(
+			            CALCULATETABLE(
+			                            fBUNivel0,
+			                            fBUNivel0[Departamento 1]<>"" 
+			            ),
+			            "Instituição",fBUNivel0[Instituição],
+			            "Departamento 1",fBUNivel0[Departamento 1],
+			            "Departamento 2",fBUNivel0[Departamento 2],
+			            "Departamento 3",fBUNivel0[Departamento 3],
+			            "Mesclado",fBUNivel0[Mesclado]
+			            )
+			
+			    VAR Tabela_Com_Percentual =
+			        ADDCOLUMNS(
+			            Tabela_Filtrada,
+			            "Quant SIM aluno %",
+			                    CALCULATE(
+			                        [Quant SIM (aluno) (%)],
+			                        USERELATIONSHIP('Material Completo'[Login],dRelatoriodeUsuarios[Login]),
+			                        USERELATIONSHIP(fBUNivel0[Mesclado],dRelatoriodeUsuarios[Mesclado])
+			                    )
+			            )
+			    
+			    VAR Tabela_Com_Percentual_filtrada =
+			        FILTER(
+			            Tabela_Com_Percentual,
+			            [Quant SIM aluno %]<>1&&NOT(ISBLANK([Quant SIM aluno %])) 
+			        )
+			    
+			    VAR ContagemLinhas =
+			        COUNTROWS(
+			                Tabela_Com_Percentual_filtrada           
+			            )
+			
+			    RETURN
+			        ContagemLinhas
+			```
+		formatString: 0
+		lineageTag: a43180cb-375b-4367-b113-f7f74cbb26da
+
+	measure 'Quant alerta (escola) não null' = ```
+			
+			    VAR Tabela_Filtrada = 
+			        SELECTCOLUMNS(
+			            CALCULATETABLE(
+			                            fBUNivel0,
+			                            fBUNivel0[Departamento 1]<>"" 
+			            ),
+			            "Instituição",fBUNivel0[Instituição],
+			            "Departamento 1",fBUNivel0[Departamento 1],
+			            "Departamento 2",fBUNivel0[Departamento 2],
+			            "Departamento 3",fBUNivel0[Departamento 3],
+			            "Mesclado",fBUNivel0[Mesclado]
+			            )
+			
+			    VAR Tabela_Com_Percentual =
+			        ADDCOLUMNS(
+			            Tabela_Filtrada,
+			            "Quant SIM escola %",
+			                    CALCULATE(
+			                        [Quant SIM (escola) (%)],
+			                        USERELATIONSHIP('Material Completo'[Login],dRelatoriodeUsuarios[Login]),
+			                        USERELATIONSHIP(fBUNivel0[Mesclado],dRelatoriodeUsuarios[Mesclado])
+			                    )
+			            )
+			    
+			    VAR Tabela_Com_Percentual_filtrada =
+			        FILTER(
+			            Tabela_Com_Percentual,
+			            [Quant SIM escola %]<>1&&NOT(ISBLANK([Quant SIM escola %])) 
+			        )
+			    
+			    VAR ContagemLinhas =
+			        COUNTROWS(
+			                Tabela_Com_Percentual_filtrada           
+			            )
+			
+			    RETURN
+			        ContagemLinhas
+			```
+		formatString: 0
+		lineageTag: 7a50bd34-4119-41fa-bd62-7a013a9a2c87
+
+	measure 'Quant total (aluno)' = ```
+			
+			    VAR Tabela_Filtrada = 
+			        SELECTCOLUMNS(
+			            CALCULATETABLE(
+			                            fBUNivel0,
+			                            fBUNivel0[Departamento 1]<>"" 
+			            ),
+			            "Instituição",fBUNivel0[Instituição],
+			            "Departamento 1",fBUNivel0[Departamento 1],
+			            "Departamento 2",fBUNivel0[Departamento 2],
+			            "Departamento 3",fBUNivel0[Departamento 3],
+			            "Mesclado",fBUNivel0[Mesclado]
+			            )
+			
+			    VAR Tabela_Com_Percentual =
+			        ADDCOLUMNS(
+			            Tabela_Filtrada,
+			            "Quant SIM aluno %",
+			                    CALCULATE(
+			                        [Quant SIM (aluno) (%)],
+			                        USERELATIONSHIP('Material Completo'[Login],dRelatoriodeUsuarios[Login]),
+			                        USERELATIONSHIP(fBUNivel0[Mesclado],dRelatoriodeUsuarios[Mesclado])
+			                    )
+			            )
+			    
+			    VAR Tabela_Com_Percentual_filtrada =
+			        FILTER(
+			            Tabela_Com_Percentual,
+			            [Quant SIM aluno %]<>1
+			        )
+			    
+			    VAR ContagemLinhas =
+			        COUNTROWS(
+			                Tabela_Com_Percentual           
+			            )
+			
+			    RETURN
+			        ContagemLinhas
+			```
+		formatString: 0
+		lineageTag: 69fffe4b-879b-415a-b2ba-00be4f0a7998
+
+	measure 'Quant total (escola)' = ```
+			
+			    VAR Tabela_Filtrada = 
+			        SELECTCOLUMNS(
+			            CALCULATETABLE(
+			                            fBUNivel0,
+			                            fBUNivel0[Departamento 1]<>"" 
+			            ),
+			            "Instituição",fBUNivel0[Instituição],
+			            "Departamento 1",fBUNivel0[Departamento 1],
+			            "Departamento 2",fBUNivel0[Departamento 2],
+			            "Departamento 3",fBUNivel0[Departamento 3],
+			            "Mesclado",fBUNivel0[Mesclado]
+			            )
+			
+			    VAR Tabela_Com_Percentual =
+			        ADDCOLUMNS(
+			            Tabela_Filtrada,
+			            "Quant SIM escola %",
+			                    CALCULATE(
+			                        [Quant SIM (escola) (%)],
+			                        USERELATIONSHIP('Material Completo'[Login],dRelatoriodeUsuarios[Login]),
+			                        USERELATIONSHIP(fBUNivel0[Mesclado],dRelatoriodeUsuarios[Mesclado])
+			                    )
+			            )
+			    
+			    VAR Tabela_Com_Percentual_filtrada =
+			        FILTER(
+			            Tabela_Com_Percentual,
+			            [Quant SIM escola %]<>1
+			        )
+			    
+			    VAR ContagemLinhas =
+			        COUNTROWS(
+			                Tabela_Com_Percentual           
+			            )
+			
+			    RETURN
+			        ContagemLinhas
+			```
+		formatString: 0
+		lineageTag: 66ade489-3567-4b24-927f-73e7484edb78
+
+	measure 'Contagem Resposta Materiais' = COUNTA('Material Completo'[Resposta2])
+		formatString: 0
+		lineageTag: 0e643f8b-b658-4204-9694-1d5fa4fd3b01
+
+	column 'Tipo de Pergunta'
+		dataType: string
+		lineageTag: 719853b9-13e2-4965-9628-8254f4bb6e5d
+		summarizeBy: none
+		sourceColumn: Tipo de Pergunta
+
+		annotation SummarizationSetBy = Automatic
+
+	column Resposta2 = ```
+			
+			VAR Tipo_Pergunta = dEntregaMateriais[Tipo de Pergunta]
+			        
+			VAR Resposta = 
+			        LOOKUPVALUE(
+			                    dEntregaMateriaisPartes[Resposta],
+			                    dEntregaMateriaisPartes[Login],dEntregaMateriais[Login],
+			                    dEntregaMateriaisPartes[Tipo de Pergunta],dEntregaMateriais[Tipo de Pergunta],
+			                    "não encontrado"
+			                    )
+			
+			VAR Resposta2 = 
+			        SWITCH(
+			            TRUE(),
+			            Resposta="não encontrado",dEntregaMateriais[Resposta],
+			            Tipo_Pergunta="Escola",Resposta,
+			            Tipo_Pergunta="Professor"&&Resposta="Sim, tenho um só pra mim","Sim",
+			            Tipo_Pergunta="Professor"&&Resposta="Sim, tenho um de uso compartilhado","Sim",
+			            Tipo_Pergunta="Professor"&&Resposta="Não, a escola recebeu e ainda não entregou pra mim","Não",
+			            Tipo_Pergunta="Professor"&&Resposta="Não, a escola não recebeu esse material","Não",
+			            Tipo_Pergunta="Aluno"&&Resposta="Sim, todos os alunos possuem","Sim",
+			            Tipo_Pergunta="Aluno"&&Resposta="Sim, parte dos alunos possui pois não temos mais materiais para entregar","Sim",
+			            Tipo_Pergunta="Aluno"&&Resposta="Sim, parte dos alunos possui pois, apesar de termos os materiais, ainda não entregamos para todos os alunos","Sim",
+			            Tipo_Pergunta="Aluno"&&Resposta="Não, a escola recebeu e ainda não entregou","Não",
+			            Tipo_Pergunta="Aluno"&&Resposta="Não, a escola não recebeu esse material","Não"
+			        )
+			Return Resposta2            
+			```
+		lineageTag: 1566faad-b6ea-456a-8bab-69b649b4b9d6
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Respondeu a primeira vez?' = ""
+		lineageTag: dfb92c3b-2d98-445f-974d-59a8ce96c71b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Usuário
+		dataType: string
+		lineageTag: de558df1-e1c9-49dd-aa76-1584031cb4bb
+		summarizeBy: none
+		sourceColumn: Usuário
+
+		annotation SummarizationSetBy = Automatic
+
+	column CPF
+		dataType: string
+		lineageTag: b469b962-fd98-4ca1-8e25-e146b4c21d43
+		summarizeBy: none
+		sourceColumn: CPF
+
+		annotation SummarizationSetBy = Automatic
+
+	column Login
+		dataType: string
+		lineageTag: bec9b93f-38c6-4de9-b606-b05577771479
+		summarizeBy: none
+		sourceColumn: Login
+
+		annotation SummarizationSetBy = Automatic
+
+	column Email
+		dataType: string
+		lineageTag: d316ae0f-2c26-4dc5-9095-3d1dd97be660
+		summarizeBy: none
+		sourceColumn: Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column Perfil
+		dataType: string
+		lineageTag: 5a735b48-2cdc-4466-acd7-505fe1c073d1
+		summarizeBy: none
+		sourceColumn: Perfil
+
+		annotation SummarizationSetBy = Automatic
+
+	column Empresa
+		dataType: string
+		lineageTag: 59e57b5b-1b61-4717-9f81-fb205bbbb447
+		summarizeBy: none
+		sourceColumn: Empresa
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Departamento 1'
+		dataType: string
+		lineageTag: 1eda6b2e-86e9-4987-9838-d72918368728
+		summarizeBy: none
+		sourceColumn: Departamento 1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Departamento 2'
+		dataType: string
+		lineageTag: 03d2f8f4-e214-42d3-bac3-88ae4233fdd3
+		summarizeBy: none
+		sourceColumn: Departamento 2
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Departamento 3'
+		dataType: string
+		lineageTag: 083db4f3-d363-4faa-a675-9a37fdc32969
+		summarizeBy: none
+		sourceColumn: Departamento 3
+
+		annotation SummarizationSetBy = Automatic
+
+	column Pergunta
+		dataType: string
+		lineageTag: 80851650-d7ce-4f93-bf3c-851b80bbd60d
+		summarizeBy: none
+		sourceColumn: Pergunta
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Resposta Completa'
+		dataType: string
+		lineageTag: bc832e8c-5d98-41aa-bd75-d06a9b11ddaa
+		summarizeBy: none
+		sourceColumn: Resposta Completa
+
+		annotation SummarizationSetBy = Automatic
+
+	column Resposta = ```
+			
+			
+			VAR Resposta = dEntregaMateriais[Resposta Completa]
+			
+			VAR Tipo_Pergunta = dEntregaMateriais[Tipo de Pergunta]
+			
+			VAR Resposta1 = 
+			        SWITCH(
+			            TRUE(),
+			            Resposta="não encontrado",dEntregaMateriais[Resposta Completa],
+			            Tipo_Pergunta="Escola"&&Resposta="Sim, tenho fácil acesso","Sim",
+			            Tipo_Pergunta="Escola"&&Resposta="Sim, mas gostaria que o acesso fosse mais facilitado","Sim",
+			            Tipo_Pergunta="Escola"&&Resposta="Não, a escola recebeu, mas ainda não disponibilizou o material","Não",
+			            Tipo_Pergunta="Escola"&&Resposta="Não, a escola não recebeu esse material","Não",            
+			            Tipo_Pergunta="Professor"&&Resposta="Sim, tenho um só pra mim","Sim",
+			            Tipo_Pergunta="Professor"&&Resposta="Sim, tenho um de uso compartilhado","Sim",
+			            Tipo_Pergunta="Professor"&&Resposta="Não, a escola recebeu e ainda não entregou pra mim","Não",
+			            Tipo_Pergunta="Professor"&&Resposta="Não, a escola não recebeu esse material","Não",
+			            Tipo_Pergunta="Aluno"&&Resposta="Sim, todos os alunos possuem","Sim",
+			            Tipo_Pergunta="Aluno"&&Resposta="Sim, parte dos alunos possui pois não temos mais materiais para entregar","Sim",
+			            Tipo_Pergunta="Aluno"&&Resposta="Sim, parte dos alunos possui pois, apesar de termos os materiais, ainda não entregamos para todos os alunos","Não",
+			            Tipo_Pergunta="Aluno"&&Resposta="Não, a escola recebeu e ainda não entregou","Não",
+			            Tipo_Pergunta="Aluno"&&Resposta="Não, a escola não recebeu esse material","Não"
+			        )
+			        
+			Return Resposta1        
+			```
+		lineageTag: d09f2f97-6ebb-4ffa-bd58-41bee19a8ec6
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Departamento 4'
+		dataType: string
+		lineageTag: 9e655a2b-1416-4d2d-a0b0-24fa64a2832c
+		summarizeBy: none
+		sourceColumn: Departamento 4
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dEntregaMateriais-6e120d86-0dcb-4b92-8e9f-3343430d4bc9 = m
+		mode: import
+		queryGroup: Relatórios
+		source =
+				let
+				    timestamp_now = DateTime.From(DateTimeZone.ToText(DateTimeZone.UtcNow())) - #duration(0, 3, 0, 0),
+				    #"Data Extraída" = Date.From(timestamp_now),
+				    date_text = Date.ToText(#"Data Extraída", "yyyy-MM-dd"),
+				    string = date_text & KEY,
+				    senha_codificada = codificacao(string),
+				    Fonte = Json.Document(Web.Contents(LINK_FUNCAO, [Query=[senha=senha_codificada]])),
+				    link = Fonte[link_materiais_partes],
+				    path = Text.Split(link, "/"){5},
+				    arquivo = Csv.Document(Web.Contents(CAMINHO_BUCKET & "/materiais", [RelativePath=path])),
+				    arquivo_cabecalho = Table.PromoteHeaders(arquivo, [PromoteAllScalars=true]),
+				    #"Coluna Condicional Adicionada" = Table.AddColumn(arquivo_cabecalho, "Tipo de Pergunta", each if [Pergunta] = "Você tem acesso ao Laboratório de Jogos para utilização em sala de aula?" then "Escola" else if [Pergunta] = "Você já tem acesso ao material físico de professor (Livros do Professor)?" then "Professor" else if [Pergunta] = "O material do Aluno já foi distribuído?" then "Aluno" else "Erro"),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Coluna Condicional Adicionada",{{"Resposta", "Resposta Completa"}})
+				in
+				    #"Colunas Renomeadas"
+
+	annotation PBI_ResultType = Table
+

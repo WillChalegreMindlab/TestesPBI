@@ -1,0 +1,35 @@
+table Lições
+	excludeFromModelRefresh
+	lineageTag: 8316972b-6818-499f-a332-0052a1e0309d
+
+	column Curso
+		dataType: string
+		lineageTag: 547cb475-45b6-4f13-a2df-c06949d6923e
+		summarizeBy: none
+		sourceColumn: Curso
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tipo
+		dataType: string
+		lineageTag: 8ba27466-62a2-4c02-bbab-f1fd277d0542
+		summarizeBy: none
+		sourceColumn: Tipo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Lições-345045e5-be87-4964-a8d2-c44ddb5c363a = m
+		mode: import
+		queryGroup: 'Consultas sheets'
+		source =
+				let
+				    Fonte = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/16E32t-YvoFjvkkiW2fxw3leh6z-98SiviXJNqoqGHYU/edit#gid=460851864"),
+				    Lições_Table = Fonte{[name="Lições",ItemKind="Table"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(#"Lições_Table", [PromoteAllScalars=true])
+				in
+				    #"Cabeçalhos Promovidos"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

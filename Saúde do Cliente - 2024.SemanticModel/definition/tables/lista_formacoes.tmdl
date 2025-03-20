@@ -1,0 +1,94 @@
+table lista_formacoes
+	lineageTag: a657513d-2a38-478d-ab0a-ad253bb3601a
+
+	column ID_formacao
+		dataType: int64
+		formatString: 0
+		lineageTag: 9797bac7-c995-4c88-925a-40cfbcff475a
+		summarizeBy: none
+		sourceColumn: ID_formacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrackCourseID
+		dataType: int64
+		formatString: 0
+		lineageTag: 1295611b-885b-4d21-b83e-f369881fd652
+		summarizeBy: count
+		sourceColumn: TrackCourseID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CourseID
+		dataType: int64
+		formatString: 0
+		lineageTag: d5481f29-f30c-418d-8800-defab4ca4981
+		summarizeBy: count
+		sourceColumn: CourseID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CourseName
+		dataType: string
+		lineageTag: 7ec84787-2144-4dcd-ade8-4d685d577437
+		summarizeBy: none
+		sourceColumn: CourseName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: fc9a4efe-6bd2-412e-8981-9c31b9bb5833
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column CourseModeIdentifier
+		dataType: string
+		lineageTag: ad22b26f-a8b2-4b62-9d0f-92d0af07a09d
+		summarizeBy: none
+		sourceColumn: CourseModeIdentifier
+
+		annotation SummarizationSetBy = Automatic
+
+	column CourseMode
+		dataType: string
+		lineageTag: 222c9cce-a9f0-4ab1-9fde-294038d9d463
+		summarizeBy: none
+		sourceColumn: CourseMode
+
+		annotation SummarizationSetBy = Automatic
+
+	column Order
+		dataType: int64
+		formatString: 0
+		lineageTag: 55bc3b5e-9daa-472b-a2c4-f40c91dcb7be
+		summarizeBy: sum
+		sourceColumn: Order
+
+		annotation SummarizationSetBy = Automatic
+
+	partition lista_formacoes = m
+		mode: import
+		queryGroup: Relatórios
+		source =
+				let
+				    timestamp_now = DateTime.From(DateTimeZone.ToText(DateTimeZone.UtcNow())) - #duration(0, 3, 0, 0),
+				    #"Data Extraída" = Date.From(timestamp_now),
+				    date_text = Date.ToText(#"Data Extraída", "yyyy-MM-dd"),
+				    string = date_text & KEY,
+				    senha_codificada = codificacao(string),
+				    Fonte = Json.Document(Web.Contents(LINK_FUNCAO, [Query=[senha=senha_codificada]])),
+				    link = Fonte[link_lista_formacoes],
+				    path = Text.Split(link, "/"){5},
+				    arquivo = Csv.Document(Web.Contents(CAMINHO_BUCKET & "/lista_formacoes", [RelativePath=path])),
+				    arquivo_cabecalho = Table.PromoteHeaders(arquivo, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(arquivo_cabecalho,{{"Order", Int64.Type}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{""}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Colunas Removidas",{{"ID_formacao", Int64.Type}, {"TrackCourseID", Int64.Type}, {"CourseID", Int64.Type}})
+				in
+				    #"Tipo Alterado1"
+
+	annotation PBI_ResultType = Table
+

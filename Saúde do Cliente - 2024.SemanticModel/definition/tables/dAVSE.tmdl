@@ -1,0 +1,134 @@
+table dAVSE
+	lineageTag: 4177a10e-1a50-41ef-97d7-c1de1b5de7ff
+
+	measure 'Avaliações Socioemocionais' = sum(dAVSE[count])
+		formatString: 0
+		lineageTag: df17121e-9416-4601-a9ea-1e1d827d0cc6
+
+	measure 'Avaliações Socioemocionais - Aluno' = ```
+			
+			    CALCULATE(
+			        [Avaliações Socioemocionais],
+			        KEEPFILTERS(not ISBLANK(fBUNivel0[Departamento 2]))
+			    )
+			```
+		formatString: 0
+		lineageTag: f2065ac1-29c3-4d2c-817a-49722c9a22e0
+
+	measure 'Contagem Usuários com Avaliação SE' = sum(dAVSE[qtd_alunos])
+		formatString: 0
+		lineageTag: 649263d3-d70b-4d7e-be72-cbd2b082170e
+
+	measure 'Contagem Usuários com Avaliação SE - Alunos' = ```
+			
+			    CALCULATE(
+			        [Contagem Usuários com Avaliação SE],
+			        KEEPFILTERS(not ISBLANK(fBUNivel0[Departamento 2]))
+			    )
+			```
+		formatString: 0
+		lineageTag: 861ea5f5-f7d6-4228-8785-4deaf9a39133
+
+	column count
+		dataType: int64
+		formatString: 0
+		lineageTag: ac32da0a-0b9e-4050-8b78-9c77457a1fea
+		summarizeBy: sum
+		sourceColumn: count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'id da rede'
+		dataType: string
+		lineageTag: a742fc59-cc88-462d-9934-97031795dced
+		summarizeBy: none
+		sourceColumn: id da rede
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'nome da rede'
+		dataType: string
+		lineageTag: 8328d1be-f4ff-4196-9447-87d63d80b479
+		summarizeBy: none
+		sourceColumn: nome da rede
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ID da escola'
+		dataType: string
+		lineageTag: b5d87cb6-30c2-439f-b1a3-6a5a9f1f6690
+		summarizeBy: none
+		sourceColumn: ID da escola
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'nome da escola'
+		dataType: string
+		lineageTag: 168a248e-15ad-455e-95da-d755298ce223
+		summarizeBy: none
+		sourceColumn: nome da escola
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rede
+		dataType: string
+		lineageTag: 2fa07182-1322-4664-bad6-2b189732bf24
+		summarizeBy: none
+		sourceColumn: Rede
+
+		annotation SummarizationSetBy = Automatic
+
+	column Escola
+		dataType: string
+		lineageTag: 18c1655d-801f-4d91-ad64-b1c62dac7839
+		summarizeBy: none
+		sourceColumn: Escola
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClientUniqueIdentifier
+		dataType: string
+		lineageTag: d54d3f28-0d9d-4bfb-aa4b-4d2eb62ee560
+		summarizeBy: none
+		sourceColumn: ClientUniqueIdentifier
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtd_alunos
+		dataType: int64
+		formatString: 0
+		lineageTag: 391d6ee5-989f-42af-9186-b43e080978c8
+		summarizeBy: sum
+		sourceColumn: qtd_alunos
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'É igual (alunos e avaliações)' = dAVSE[count]=dAVSE[qtd_alunos]
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c2a9d6d5-6916-4aa9-a908-e894296323e8
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dAVSE = m
+		mode: import
+		queryGroup: API
+		source =
+				let
+				    Fonte = Csv.Document(Web.Contents("https://metabase.mindzup.com.br/api/public/card/c0c587e7-0bc8-4122-8149-26f3dc1871d3/query/csv"),[Delimiter=","]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"count", Int64.Type}}),
+				    #"Coluna Mesclada Inserida" = Table.AddColumn(#"Tipo Alterado", "Mesclado", each Text.Combine({"N", [id da rede]}), type text),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Coluna Mesclada Inserida",{{"Mesclado", "Rede"}}),
+				    #"Coluna Mesclada Inserida1" = Table.AddColumn(#"Colunas Renomeadas", "Mesclado", each Text.Combine({"S", [ID da escola]}), type text),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Coluna Mesclada Inserida1",{{"Mesclado", "Escola"}}),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Colunas Renomeadas1", "Personalizar", each if Text.Contains([nome da escola], "Escola Prof") then [Rede] else [Escola]),
+				    #"Colunas Renomeadas2" = Table.RenameColumns(#"Personalização Adicionada",{{"Personalizar", "ClientUniqueIdentifier"}}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Colunas Renomeadas2",{{"qtd_alunos", Int64.Type}})
+				in
+				    #"Tipo Alterado1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

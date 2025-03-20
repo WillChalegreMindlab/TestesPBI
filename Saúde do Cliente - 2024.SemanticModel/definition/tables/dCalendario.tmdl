@@ -1,0 +1,38 @@
+table dCalendario
+	lineageTag: 1e1aad90-d882-4a98-b0d9-ee663d90ea3a
+
+	column Data
+		formatString: Short Date
+		lineageTag: e4468f5c-bd33-4b2d-a3f3-27cf97ae4dde
+		summarizeBy: none
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: f4908e51-f8a2-49f4-9a7f-2605ca0b5aeb
+			defaultHierarchy: LocalDateTable_a64876a0-ab0e-404d-8638-675d2959ff39.'Hierarquia de datas'
+
+		changedProperty = FormatString
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	hierarchy 'Date Hierarquia'
+		isHidden
+		lineageTag: 9ec3e7ac-9314-4637-8a6d-7c68e2c3033b
+
+		level Data
+			lineageTag: fcff98ec-6891-45d2-93a0-a55d2df9ae88
+			column: Data
+
+	partition dCalendario-75a45695-94c1-4912-a12f-17acd268d643 = calculated
+		mode: import
+		source =
+				CALENDAR(MIN(dIsat[AditionalInformation.CreatedDate]), MAX('dLogdeAçoes'[Data]))
+				--CALENDAR(MIN(dIsat[AditionalInformation.CreatedDate]), DATE(2023,03,10))
+
+	annotation PBI_Id = 8124afa5803044a092ec0d75eb3497da
+

@@ -1,0 +1,404 @@
+table dInscricoesDetalhado
+	lineageTag: 0d7bd7a7-6a82-46dd-9cc2-44a93a28fdf5
+
+	column 'Nº de inscrição'
+		dataType: string
+		lineageTag: 86f174d0-d425-4115-a52e-83ba7ec3e200
+		summarizeBy: none
+		sourceColumn: Nº de inscrição
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Lição
+		dataType: string
+		lineageTag: 446ddcf9-29b2-4da1-8828-5a252bc21791
+		summarizeBy: none
+		sourceColumn: Lição
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Turma
+		dataType: string
+		lineageTag: 0673271c-ee12-4c57-81aa-95b0e0deb086
+		summarizeBy: none
+		sourceColumn: Turma
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Status da Turma'
+		dataType: string
+		lineageTag: 045c1f4b-020d-43f3-8465-978c42f1d199
+		summarizeBy: none
+		sourceColumn: Status da Turma
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Início da turma'
+		dataType: string
+		lineageTag: 703ff345-5e2d-443b-972a-8489157cf49d
+		summarizeBy: none
+		sourceColumn: Início da turma
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Término da turma'
+		dataType: string
+		lineageTag: 8aa81de4-a845-4efe-8156-cd7e48d23297
+		summarizeBy: none
+		sourceColumn: Término da turma
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Usuário
+		dataType: string
+		lineageTag: 800b5818-42c4-4fee-879e-82d73c12e0a9
+		summarizeBy: none
+		sourceColumn: Usuário
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CPF
+		dataType: string
+		lineageTag: fdac234d-d14b-4088-8cb9-e2618d5b6b33
+		summarizeBy: none
+		sourceColumn: CPF
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Login
+		dataType: string
+		lineageTag: 2b922659-ff0a-4982-b8b9-9d4edcd73a59
+		summarizeBy: none
+		sourceColumn: Login
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Email
+		dataType: string
+		lineageTag: e186dc30-e61b-4ef9-bb96-399d4a41caa3
+		summarizeBy: none
+		sourceColumn: Email
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cargo
+		dataType: string
+		lineageTag: ba323727-f04f-40c4-bc1f-8f906e183c69
+		summarizeBy: none
+		sourceColumn: Cargo
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Função
+		dataType: string
+		lineageTag: 9d30bd14-2523-4290-b9a1-383db1c7e622
+		summarizeBy: none
+		sourceColumn: Função
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Data de admissão'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 976b8986-0bc5-439e-a41d-3ed96c30b955
+		summarizeBy: none
+		sourceColumn: Data de admissão
+
+		variation Variation
+			isDefault
+			relationship: b308354b-e6c9-4385-b00a-4d41f1ce4c6d
+			defaultHierarchy: LocalDateTable_5d4bbf77-9993-4c52-b512-9cf3e93eab26.'Hierarquia de datas'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Último acesso'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 12fb38a9-c5af-468f-9f1e-8b9545a0e222
+		summarizeBy: none
+		sourceColumn: Último acesso
+
+		variation Variation
+			isDefault
+			relationship: b63620bd-7509-4629-955f-65dd6708af15
+			defaultHierarchy: LocalDateTable_7acc179c-f4c9-4371-845d-8d696029e949.'Hierarquia de datas'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Data de conclusão'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3174fd9c-7501-4888-a8af-38a8b6c9ac95
+		summarizeBy: none
+		sourceColumn: Data de conclusão
+
+		variation Variation
+			isDefault
+			relationship: 7f3cde29-5ec3-47c3-93f5-11a51fb73111
+			defaultHierarchy: LocalDateTable_6e6fac33-9421-4721-b305-7b00eefb7054.'Hierarquia de datas'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nota
+		dataType: string
+		lineageTag: 15d085a1-3d4c-4261-a5bb-09b3444c8a96
+		summarizeBy: none
+		sourceColumn: Nota
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Status na turma'
+		dataType: string
+		lineageTag: c2d8640a-b3b8-47fb-8ed4-b25509566d76
+		summarizeBy: none
+		sourceColumn: Status na turma
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column '% de conclusão'
+		dataType: double
+		formatString: 0.00
+		lineageTag: e01fc0fb-19b0-420a-9180-294425460efa
+		summarizeBy: sum
+		sourceColumn: % de conclusão
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipo lição'
+		dataType: string
+		lineageTag: 1b5d9fee-1417-4b71-9897-e1ea8fb0410a
+		summarizeBy: none
+		sourceColumn: Tipo lição
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Carga horária'
+		dataType: string
+		lineageTag: 9f8de4c2-d142-46ab-849d-fced90c99cd4
+		summarizeBy: none
+		sourceColumn: Carga horária
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Indispensabilidade
+		dataType: string
+		lineageTag: 65e9d832-67fc-4d19-a6fa-fdefa14546ed
+		summarizeBy: none
+		sourceColumn: Indispensabilidade
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Departamento 1'
+		dataType: string
+		lineageTag: 9621911f-1096-4c8a-beaa-70666c5e3bda
+		summarizeBy: none
+		sourceColumn: Departamento 1
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Departamento 2'
+		dataType: string
+		lineageTag: 3cde709b-34f9-4438-a0a6-ca960df9eecc
+		summarizeBy: none
+		sourceColumn: Departamento 2
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Data de inscrição'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 33f02835-db7b-49bb-88c6-c060022efafc
+		summarizeBy: none
+		sourceColumn: Data de inscrição
+
+		variation Variation
+			isDefault
+			relationship: 3b5f7281-c8df-4452-9b5a-85ede50ddfee
+			defaultHierarchy: LocalDateTable_4591b6b7-4d40-4b8e-a05d-ae7106280655.'Hierarquia de datas'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Status na turma.2'
+		dataType: string
+		lineageTag: 483cd067-0dbd-472c-8177-e823bae6cdfc
+		summarizeBy: none
+		sourceColumn: Status na turma.2
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Personalizar
+		dataType: string
+		lineageTag: 6a692117-8473-4eda-aebb-96265225f087
+		summarizeBy: none
+		sourceColumn: Personalizar
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Categoria
+		dataType: string
+		lineageTag: ba4ffb64-6433-4a84-a5a8-1d67255fc180
+		summarizeBy: none
+		sourceColumn: Categoria
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Instituição '
+		dataType: string
+		lineageTag: 99ce06b7-4953-4c77-9221-2febf25dff5f
+		summarizeBy: none
+		sourceColumn: "Instituição "
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Departamento 3'
+		dataType: string
+		lineageTag: a567306a-fd37-4d00-b533-8446380d6318
+		summarizeBy: none
+		sourceColumn: Departamento 3
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Departamento 4'
+		dataType: string
+		lineageTag: 4d782995-aef9-414c-9365-1ae437cdbf91
+		summarizeBy: none
+		sourceColumn: Departamento 4
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gravação?
+		dataType: double
+		lineageTag: 4f388a17-53ac-4e2a-b179-0932d3cb5c26
+		summarizeBy: sum
+		sourceColumn: Gravação?
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Status Gravação' =
+			
+			
+			VAR Gravacao = if(VALUE(dInscricoesDetalhado[Gravação?])>=50,"Ok","")
+			
+			RETURN Gravacao
+		lineageTag: ce2dcaf9-e603-401c-a7c7-0d9cc448d879
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Status Final' = if(dInscricoesDetalhado[Status na turma]="Ok","Ok",if(dInscricoesDetalhado[Status Gravação]="Ok","Ok",""))
+		lineageTag: 24e3110f-eed2-40ce-b7c3-6ed36a03f7e5
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dInscricoesDetalhado-943bb2ab-8b45-4e85-a478-eb1f97c83f99 = m
+		mode: import
+		queryGroup: Relatórios
+		source =
+				let
+				    timestamp_now = DateTime.From(DateTimeZone.ToText(DateTimeZone.UtcNow())) - #duration(0, 3, 0, 0),
+				    #"Data Extraída" = Date.From(timestamp_now),
+				    date_text = Date.ToText(#"Data Extraída", "yyyy-MM-dd"),
+				    string = date_text & KEY,
+				    senha_codificada = codificacao(string),
+				    Fonte = Json.Document(Web.Contents(LINK_FUNCAO, [Query=[senha=senha_codificada]])),
+				    link = Fonte[link_inscricoes_detalhado],
+				    path = Text.Split(link, "/"){5},
+				    arquivo = Csv.Document(Web.Contents(CAMINHO_BUCKET & "/inscricoes_detalhado", [RelativePath=path])),
+				    arquivo_cabecalho = Table.PromoteHeaders(arquivo, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(arquivo_cabecalho,{{"Data de admissão", type date}, {"Último acesso", type date}, {"Data de inscrição", type datetime}, {"Data de conclusão", type datetime}, {"% de conclusão", type number}}),
+				    #"Texto em Maiúscula" = Table.TransformColumns(#"Tipo Alterado",{{"Instituição ", Text.Upper, type text}, {"Departamento 1", Text.Upper, type text}, {"Departamento 2", Text.Upper, type text}, {"Departamento 3", Text.Upper, type text}}),
+				    #"Dividir Coluna por Delimitador" = Table.SplitColumn(Table.TransformColumnTypes(#"Texto em Maiúscula", {{"Data de inscrição", type text}}, "pt-BR"), "Data de inscrição", Splitter.SplitTextByEachDelimiter({" "}, QuoteStyle.Csv, true), {"Data de inscrição.1", "Data de inscrição.2"}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Dividir Coluna por Delimitador",{{"Data de inscrição.1", "Data de inscrição"}}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Colunas Renomeadas",{{"Data de inscrição", type date}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado1",{"Data de inscrição.2"}),
+				    #"Coluna Duplicada" = Table.DuplicateColumn(#"Colunas Removidas", "Status na turma", "Status na turma - Copiar"),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Coluna Duplicada",{{"Status na turma - Copiar", "Status na turma.2"}}),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Colunas Renomeadas1","Concluído","Ok",Replacer.ReplaceText,{"Status na turma"}),
+				    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído","Pendente","Ok",Replacer.ReplaceText,{"Status na turma"}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Valor Substituído1", each [Data de inscrição] > #date(2024, 1, 1)),
+				    #"Linhas Filtradas1" = Table.SelectRows(#"Linhas Filtradas", each ([Status da Turma] = "Concluída" or [Status da Turma] = "Disponível")),
+				    #"Coluna Condicional Adicionada" = Table.AddColumn(#"Linhas Filtradas1", "Personalizar", each if [Tipo lição] = "Tutoria" then "Sim" else if Text.Contains([Turma], "2024") then "Sim" else "Não"),
+				    #"Linhas Filtradas2" = Table.SelectRows(#"Coluna Condicional Adicionada", each ([Personalizar] = "Sim") and ([Lição] <> "Comunidade dos Educadores")),
+				    #"Linhas Filtradas3" = Table.SelectRows(#"Linhas Filtradas2", each [Categoria] <> "Tutorias - 2022"),
+				    #"Coluna Condicional Adicionada1" = Table.AddColumn(#"Linhas Filtradas3", "Personalizar.1", each if Text.Contains([Turma], "GRAVAÇÃO") then [#"% de conclusão"] else ""),
+				    #"Colunas Renomeadas2" = Table.RenameColumns(#"Coluna Condicional Adicionada1",{{"Personalizar.1", "Gravação?"}}),
+				    #"Tipo Alterado2" = Table.TransformColumnTypes(#"Colunas Renomeadas2",{{"Gravação?", type number}}),
+				    #"Linhas Filtradas4" = Table.SelectRows(#"Tipo Alterado2", each not Text.Contains([Turma], "Maceió"))
+				in
+				    #"Linhas Filtradas4"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Saúde do Cliente - 2024"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "813d4dcb-3260-4151-9946-446ca2bd2c55"
+  }
+}

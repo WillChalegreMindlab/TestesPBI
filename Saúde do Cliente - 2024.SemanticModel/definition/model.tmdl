@@ -1,0 +1,96 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		fastCombine
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup Relatórios
+
+	annotation PBI_QueryGroupOrder = 6
+
+queryGroup 'Instituição + Departamentos'
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup API
+
+	annotation PBI_QueryGroupOrder = 5
+
+queryGroup 'Consultas sheets'
+
+	annotation PBI_QueryGroupOrder = 3
+
+annotation PBI_QueryOrder = ["fBUNivel0","dLogdeAçoes","dIsat","dMindzup","dRelatoriodeUsuarios","dInscricoesDetalhado","dMHS","dNPS","dAvalieasAulas","dAvalieTutoria","dResponsaveis","dReceita","dCupons","fAPIISAT","dEntregaMateriais","docs_google","KEY","LINK_FUNCAO","CAMINHO_BUCKET","codificacao","dAvalieasAulasPVML","Lições","dAvalieasAulasCreches","dEntregaMateriaisPartes","Metas","MKT","dTutorias","ProfessoresUsandoAgenda","ProfessoresAgendaAulaDada","Jornada","Jornada - (Informações Clientes)","formacoes_completa","lista_formacoes","dAVSE","dNotícias","Códigos","AgendaMenteInovadora","dPercepcaoprofessores"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.140.1577.0 (25.02)+00af0910c5ca19a229c472b0dfc17a2c488f6b0a
+
+annotation PBI_RemovedChildren = [{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"b2b5cc3b-795f-4f72-a559-e9893fc73de5","fromColumnLocalLineageTag":"7103b336-384b-4d9a-ae81-138af6821d6b","toTableLocalLineageTag":"be9bacee-43ec-45e9-b114-7a0ccd292bff","toColumnLocalLineageTag":"d83f9899-7397-46b0-946a-29a6a214f286"}},"objectType":"Relationship"}]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table dLogdeAçoes
+ref table dIsat
+ref table dRelatoriodeUsuarios
+ref table DateTableTemplate_6a8207b8-b829-4576-b69b-3823040937b8
+ref table dInscricoesDetalhado
+ref table dAvalieasAulas
+ref table dCupons
+ref table dMHS
+ref table dNPS
+ref table dAvalieTutoria
+ref table dMindzup
+ref table dReceita
+ref table dCalendario
+ref table dResponsaveis
+ref table LocalDateTable_1a38f17e-6272-43b5-bcff-3983e28ab1f3
+ref table LocalDateTable_1c017a63-aef1-432c-aca9-57a826f70adf
+ref table LocalDateTable_05c5b471-c756-4520-aba3-3b76e2880cf2
+ref table LocalDateTable_90c52f0c-a622-4757-bca0-c1a94e2f58ba
+ref table fBUNivel0
+ref table LocalDateTable_a64876a0-ab0e-404d-8638-675d2959ff39
+ref table LocalDateTable_15407988-8d80-4925-a5ce-d85c6d69a482
+ref table LocalDateTable_721c77bf-93cb-4cbf-a95d-b707fc3e9c33
+ref table dEntregaMateriais
+ref table dAvalieasAulasPVML
+ref table LocalDateTable_0d86869e-1bb6-4282-8061-63201c339d59
+ref table LocalDateTable_ec2b95e2-9e99-4a79-a6fc-6d5ebe0131d0
+ref table LocalDateTable_d6d6323f-301e-4b35-99b5-9b787319589c
+ref table LocalDateTable_aa5ccf21-6eed-4dff-a0c0-9e83e7935981
+ref table LocalDateTable_5d4bbf77-9993-4c52-b512-9cf3e93eab26
+ref table LocalDateTable_7acc179c-f4c9-4371-845d-8d696029e949
+ref table LocalDateTable_6e6fac33-9421-4721-b305-7b00eefb7054
+ref table LocalDateTable_4591b6b7-4d40-4b8e-a05d-ae7106280655
+ref table Lições
+ref table dAvalieasAulasCreches
+ref table LocalDateTable_f78e9390-3314-4a36-b48e-c210cc1d8e2e
+ref table LocalDateTable_0ceeae06-726e-49b3-b13a-e8397e34e427
+ref table dEntregaMateriaisPartes
+ref table 'Material Completo'
+ref table Metas
+ref table MKT
+ref table dTutorias
+ref table LocalDateTable_afb24a74-f83f-4312-badc-c7f05c49518e
+ref table 'Funil Agenda'
+ref table ProfessoresUsandoAgenda
+ref table ProfessoresAgendaAulaDada
+ref table Jornada
+ref table 'Jornada - (Informações Clientes)'
+ref table formacoes_completa
+ref table lista_formacoes
+ref table LocalDateTable_a1ffb483-8a9a-4115-bd04-1537ee42ab99
+ref table LocalDateTable_061b0a03-aec3-4e19-8b42-cce01dfea8be
+ref table LocalDateTable_06484c59-03a1-4a1e-85ae-e85862ba1dbd
+ref table dAVSE
+ref table dNotícias
+ref table LocalDateTable_310dc37a-34f1-4126-82c0-58945133f7b5
+ref table Códigos
+ref table AgendaMenteInovadora
+ref table dPercepcaoprofessores
+
+ref cultureInfo pt-BR
+
